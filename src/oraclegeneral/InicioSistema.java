@@ -11,13 +11,15 @@ public class InicioSistema {
     
     public static void main(String[] args) {
         if(Conexion.verificarUsuario()==true){
-           Login frmLogin = new Login(); 
+            System.out.println("NO entro");
+            Login frmLogin = new Login(); 
            frmLogin.setVisible(true);
         }else{
-            Conexion.creacionUsuario();
-            Conexion.creacionBase();
+            System.out.println("SI entro");
+            if((Conexion.creacionUsuario() ==true) && (Conexion.creacionBase()==true)){
             Login frmLogin = new Login();
             frmLogin.setVisible(true);
+            }
         }
     }
 }

@@ -32,10 +32,19 @@ public class BaseFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1920, 1080));
-        setPreferredSize(new java.awt.Dimension(1662, 1058));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/other/images/fondoBase.png"))); // NOI18N
-        getContentPane().add(jLabel1, java.awt.BorderLayout.CENTER);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -1,4 +1,8 @@
 package oraclegeneral;
+import controllers.Productos;
+import java.util.List;
+import java.util.stream.Collectors;
+import models.Producto;
 import views.Login;
 /**
  *Clase que iniciara el sistema y verificara la existencia del usuario de la base de datos que se 
@@ -10,16 +14,28 @@ import views.Login;
 public class InicioSistema {
     
     public static void main(String[] args) {
-        if(Conexion.verificarUsuario()==true){
-            System.out.println("NO entro");
-            Login frmLogin = new Login(); 
-           frmLogin.setVisible(true);
-        }else{
-            System.out.println("SI entro");
-            if((Conexion.creacionUsuario() ==true) && (Conexion.creacionBase()==true)){
-            Login frmLogin = new Login();
-            frmLogin.setVisible(true);
-            }
-        }
+       
+        
+        List<Producto> productos = (List<Producto>) Productos.select(Conexion.getDBConexion(), "SELECT * FROM Producto", 3, Producto.class);
+        System.out.println("productos = " + productos.stream().collect(Collectors.toList()));
+        
+        
+        
+        
+//        if(Conexion.verificarUsuario()==true){
+//            System.out.println("NO entro");
+//            Login frmLogin = new Login(); 
+//           frmLogin.setVisible(true);
+//        }else{
+//            System.out.println("SI entro");
+//            if((Conexion.creacionUsuario() ==true) && (Conexion.creacionBase()==true)){
+//            Login frmLogin = new Login();
+//            frmLogin.setVisible(true);
+//            }
+//        }
     }
+    
+    
+    
+    
 }

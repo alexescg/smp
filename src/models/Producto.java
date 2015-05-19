@@ -7,40 +7,41 @@ import java.beans.PropertyChangeSupport;
  * @author Alejandro
  */
 public class Producto extends BaseModel{
-    public static final String PROP_ID = "PROP_ID";
+    public static final String PROP_ID_PRODUCTO = "PROP_ID_PRODUCTO";
     public static final String PROP_NOMBRE = "PROP_NOMBRE";
-    public static final String PROP_PRECIOUNITARIO = "PROP_PRECIOUNITARIO";
+    public static final String PROP_PRECIO_UNITARIO = "PROP_PRECIO_UNITARIO";
+
     
-    private Integer id;
+    private Integer id_producto;
     
     private String nombre;
     
-    private Double precioUnitario;
+    private Double precio_unitario;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     public Producto() {
     }
 
-    public Producto(Integer id, String nombre, Double precioUnitario) {
-        this.id = id;
+    public Producto(Integer id_producto, String nombre, Double precio_unitario) {
+        this.id_producto = id_producto;
         this.nombre = nombre;
-        this.precioUnitario = precioUnitario;
+        this.precio_unitario = precio_unitario;
     }
 
     /**
-     * @return the id
+     * @return the id_producto
      */
-    public Integer getId() {
-        return id;
+    public Integer getId_producto() {
+        return id_producto;
     }
 
     /**
-     * @param id the id to set
+     * @param id_producto the id_producto to set
      */
-    public void setId(Integer id) {
-        java.lang.Integer oldId = this.id;
-        this.id = id;
-        propertyChangeSupport.firePropertyChange(PROP_ID, oldId, id);
+    public void setId_producto(Integer id_producto) {
+        java.lang.Integer oldId_producto = this.id_producto;
+        this.id_producto = id_producto;
+        propertyChangeSupport.firePropertyChange(PROP_ID_PRODUCTO, oldId_producto, id_producto);
     }
 
     /**
@@ -60,20 +61,21 @@ public class Producto extends BaseModel{
     }
 
     /**
-     * @return the precioUnitario
+     * @return the precio_unitario
      */
-    public Double getPrecioUnitario() {
-        return precioUnitario;
+    public Double getPrecio_unitario() {
+        return precio_unitario;
     }
 
     /**
-     * @param precioUnitario the precioUnitario to set
+     * @param precio_unitario the precio_unitario to set
      */
-    public void setPrecioUnitario(Double precioUnitario) {
-        java.lang.Double oldPrecioUnitario = this.precioUnitario;
-        this.precioUnitario = precioUnitario;
-        propertyChangeSupport.firePropertyChange(PROP_PRECIOUNITARIO, oldPrecioUnitario, precioUnitario);
+    public void setPrecio_unitario(Double precio_unitario) {
+        java.lang.Double oldPrecio_unitario = this.precio_unitario;
+        this.precio_unitario = precio_unitario;
+        propertyChangeSupport.firePropertyChange(PROP_PRECIO_UNITARIO, oldPrecio_unitario, precio_unitario);
     }
+    
     
     
 }

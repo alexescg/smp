@@ -71,7 +71,7 @@ public class Conexion {
         System.out.println(".....");
         File file = new File("CrearUsuario.txt");
         usuario = "system";
-        contrasena = JOptionPane.showInputDialog("Introdusca la contraseña del usuario system");
+        contrasena = JOptionPane.showInputDialog("Introduzca la contraseña del usuario system");
         try {
             FileReader in =  new FileReader(file.getAbsolutePath());
             BufferedReader br = new BufferedReader(in);

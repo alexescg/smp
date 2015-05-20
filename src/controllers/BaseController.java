@@ -15,29 +15,35 @@ import java.util.List;
  */
 public class BaseController {
 
+    /**
+     * Metodo generico que mapea las consultas a una tabla
+     * @param connection
+     * @param sql
+     * @param rows
+     * @param clase
+     * @return 
+     */
     public static List<?> select(Connection connection, String sql, Integer rows, Class clase) {
-        List<Class> objects = new ArrayList<>();
+        List objects = new ArrayList<>();
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             try (ResultSet rs = ps.executeQuery()) {
 
                 Integer rowCount = 1;
                 ResultSetMetaData rsmd = rs.getMetaData();
                 Integer columnCount = rsmd.getColumnCount();
-                Object object = clase.newInstance();
+                //Object object = clase.newInstance();
                 //if (rows == null) {
-                System.out.println("rs.next() = " + rs.next());
-                
                     while (rs.next()) {
-                        for (int i = 1; i < columnCount; i++) {
+                        Object object = clase.newInstance();
+                        for (int i = 1; i <= columnCount; i++) {
                             
-                            String name = rsmd.getColumnName(i);
+                            String name = rsmd.getColumnName(i).toLowerCase();
                             Field field = clase.getField(name);
-                            field.set(object, rs.getObject(rowCount));
-                            objects.add((Class) object);
-                            rowCount++;
-                            
+                            field.set(object, rs.getObject(i));
+
                         }
-                       
+                        objects.add(object);
+                        rowCount++;
                     }
                      rs.close();
                //     }

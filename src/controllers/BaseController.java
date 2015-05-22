@@ -1,6 +1,6 @@
 package controllers;
 
-import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,62 +8,56 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import utils.StringUtils;
 
 /**
- *
+ * Clase que sirve como controlador Base para hacer consultas utilizando Reflection.
  * @author Alejandro Escobedo
  */
 public class BaseController {
 
     /**
-     * Metodo generico que mapea las consultas a una tabla
+     * Metodo generico que mapea las consultas de tipo select a una lista.
+     *
      * @param connection
      * @param sql
-     * @param rows
      * @param clase
-     * @return 
+     * @return Lista con los elementos que devuelva el select
      */
-    public static List<?> select(Connection connection, String sql, Integer rows, Class clase) {
+    public static List<?> select(Connection connection, String sql, Class clase) {
         List objects = new ArrayList<>();
+
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             try (ResultSet rs = ps.executeQuery()) {
 
-                Integer rowCount = 1;
                 ResultSetMetaData rsmd = rs.getMetaData();
                 Integer columnCount = rsmd.getColumnCount();
-                //Object object = clase.newInstance();
-                //if (rows == null) {
-                    while (rs.next()) {
-                        Object object = clase.newInstance();
-                        for (int i = 1; i <= columnCount; i++) {
-                            
-                            String name = rsmd.getColumnName(i).toLowerCase();
-                            Field field = clase.getField(name);
-                            field.set(object, rs.getObject(i));
 
-                        }
-                        objects.add(object);
-                        rowCount++;
+                while (rs.next()) {
+                    Object object = clase.newInstance();
+
+                    for (int i = 1; i <= columnCount; i++) {
+
+                        String name = rsmd.getColumnName(i).toLowerCase();
+                        name = String.format("set%s", StringUtils.capitalize(name));
+
+                        Class[] params = new Class[1];
+                        Object obj = rs.getObject(i);
+                        params[0] = obj.getClass();
+
+                        Method method = clase.getDeclaredMethod(name, params);
+                        method.invoke(object, obj);
                     }
-                     rs.close();
-               //     }
-//           //     } else {
-//                    while (rs.next() && rowCount <= rows) {
-//                        for (int i = 1; i < columnCount; i++) {
-//                            
-//                            String name = rsmd.getColumnName(i);
-//                            Field field = clase.getField(name);
-//                            field.set(object, rs.getObject(rowCount));
-//                            objects.add((Class) object);
-//                        }
-//                    }
-//                //}
+                    objects.add(object);
+                }
+                rs.close();
+
             } catch (Exception e) {
-                System.out.println("e = Data Access Exception" + e);
+                System.out.println("e = " + e);
             }
 
         } catch (Exception e) {
-            System.out.println("e =  Data Acccess Exception" + e);
+            System.out.println("e = " + e);
         }
         return objects;
     }
@@ -74,24 +68,11 @@ public class BaseController {
      * @param connection
      * @param sql
      */
-    public static void ddlQuery(Connection connection, String sql) {
+    public static void executeQuery(Connection connection, String sql) {
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.execute();
         } catch (SQLException e) {
 
         }
     }
-//    
-//     public static int execDML(Connection connection, String sql) {
-//        System.out.println(sql);
-//        try (PreparedStatement ps = connection.prepareStatement(sql)) {
-//            return ps.executeUpdate();
-//
-//        } catch (SQLException e) {
-//            throw new DataAccessException(e);
-//        }
-//
-//
-//    }
-
 }

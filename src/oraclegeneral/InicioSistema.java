@@ -19,28 +19,28 @@ public class InicioSistema {
 
 
         
-        List<Producto> productos = (List<Producto>) Productos.select(Conexion.getDBConexion(), "SELECT * FROM Producto", Producto.class);
-        
-        System.out.println("productos = " + productos.stream().collect(Collectors.toList()));
-        
-        productos.stream().forEach((producto) -> {
-            System.out.println("productoid = " + producto.getId_producto());
-            System.out.println("productonombre = " + producto.getNombre());
-            System.out.println("productonombre = " + producto.getPrecio_unitario());
-        });
+//        List<Producto> productos = (List<Producto>) Productos.select(Conexion.getDBConexion(), "SELECT * FROM Producto", Producto.class);
+//        
+//        System.out.println("productos = " + productos.stream().collect(Collectors.toList()));
+//        
+//        productos.stream().forEach((producto) -> {
+//            System.out.println("productoid = " + producto.getId_producto());
+//            System.out.println("productonombre = " + producto.getNombre());
+//            System.out.println("productonombre = " + producto.getPrecio_unitario());
+//        });
 
 
-//        if(Conexion.verificarUsuario()==true){
-//            System.out.println("NO entro");
-//            Login frmLogin = new Login(); 
-//           frmLogin.setVisible(true);
-//        }else{
-//            System.out.println("SI entro");
-//            if((Conexion.creacionUsuario() ==true) && (Conexion.creacionBase()==true)){
-//            Login frmLogin = new Login();
-//            frmLogin.setVisible(true);
-//            }
-//        }
+        if(Conexion.verificarUsuario()==true){
+            System.out.println("NO entro");
+            Login frmLogin = new Login(); 
+           frmLogin.setVisible(true);
+        }else{
+            System.out.println("SI entro");
+            if((Conexion.creacionUsuario() ==true) && (Conexion.creacionBase()==true)){
+            Login frmLogin = new Login();
+            frmLogin.setVisible(true);
+            }
+        }
             }
     
     

@@ -15,16 +15,9 @@ public class InicioSistema {
     
     public static void main(String[] args) {
        
-        
-        List<Producto> productos = (List<Producto>) Productos.select(Conexion.getDBConexion(), "SELECT nombre, id_producto FROM Producto", 3, Producto.class);
-        
-        System.out.println("productos = " + productos.stream().collect(Collectors.toList()));
-        
-        productos.stream().forEach((producto) -> {
-            System.out.println("productoid = " + producto.id_producto);
-            System.out.println("productonombre = " + producto.nombre);
-            System.out.println("producto = " + producto.precio_unitario);
-        });
+
+
+
 
 
 //        if(Conexion.verificarUsuario()==true){
@@ -38,7 +31,7 @@ public class InicioSistema {
 //            frmLogin.setVisible(true);
 //            }
 //        }
-    }
+            }
     
     
     

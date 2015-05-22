@@ -8,6 +8,6 @@ Sistema diseñado para el mantenimiento basico de una panaderia, donde se pueden
 - Oracle
 
 ###Modelo Conceptual de la Base de Datos
-![alt tag](https://cloud.githubusercontent.com/assets/10780058/7661501/69fb5e7c-fb10-11e4-96c7-a1c785735ec6.jpg)
+![alt tag](https://cloud.githubusercontent.com/assets/10780058/7763286/d7fbc6ce-fffb-11e4-9d32-e01e692fc16e.jpg)
 ###Modelo Logico de la Base de Datos
-![alt tag](https://cloud.githubusercontent.com/assets/10780058/7661502/6c62c4fc-fb10-11e4-8e88-225f50d5beb7.jpg)
+![alt tag](https://cloud.githubusercontent.com/assets/10780058/7763287/d7ff7792-fffb-11e4-9abd-5759ea11572c.jpg)

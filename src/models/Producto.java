@@ -12,25 +12,29 @@ public class Producto extends BaseModel{
     public static final String PROP_NOMBRE = "PROP_NOMBRE";
     public static final String PROP_PRECIO_UNITARIO = "PROP_PRECIO_UNITARIO";
 
+    private BigDecimal id_producto;
     
-    public static final String PROP_ID_PRODUCTO_1 = "PROP_ID_PRODUCTO_1";
-    public BigDecimal id_producto;
+    private String nombre;
     
-    public String nombre;
-    
-    public BigDecimal precio_unitario;
+    private BigDecimal precio_unitario;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
-    public Producto() {
+    /**
+     * @return the id_producto
+     */
+    public BigDecimal getId_producto() {
+        return id_producto;
     }
 
-    public Producto(BigDecimal id_producto, String nombre, BigDecimal precio_unitario) {
+    /**
+     * @param id_producto the id_producto to set
+     */
+    public void setId_producto(BigDecimal id_producto) {
+        java.math.BigDecimal oldId_producto = this.id_producto;
         this.id_producto = id_producto;
-        this.nombre = nombre;
-        this.precio_unitario = precio_unitario;
+        propertyChangeSupport.firePropertyChange(PROP_ID_PRODUCTO, oldId_producto, id_producto);
     }
 
-  
     /**
      * @return the nombre
      */
@@ -47,23 +51,22 @@ public class Producto extends BaseModel{
         propertyChangeSupport.firePropertyChange(PROP_NOMBRE, oldNombre, nombre);
     }
 
-
     /**
-     * @return the id_producto
+     * @return the precio_unitario
      */
-    public BigDecimal getId_producto() {
-        return id_producto;
+    public BigDecimal getPrecio_unitario() {
+        return precio_unitario;
     }
 
     /**
-     * @param id_producto the id_producto to set
+     * @param precio_unitario the precio_unitario to set
      */
-    public void setId_producto(BigDecimal id_producto) {
-        java.math.BigDecimal oldId_producto = this.id_producto;
-        this.id_producto = id_producto;
-        propertyChangeSupport.firePropertyChange(PROP_ID_PRODUCTO_1, oldId_producto, id_producto);
+    public void setPrecio_unitario(BigDecimal precio_unitario) {
+        java.math.BigDecimal oldPrecio_unitario = this.precio_unitario;
+        this.precio_unitario = precio_unitario;
+        propertyChangeSupport.firePropertyChange(PROP_PRECIO_UNITARIO, oldPrecio_unitario, precio_unitario);
     }
-    
-    
+
+   
     
 }

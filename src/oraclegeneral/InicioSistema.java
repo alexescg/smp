@@ -18,6 +18,16 @@ public class InicioSistema {
 
 
 
+        
+        List<Producto> productos = (List<Producto>) Productos.select(Conexion.getDBConexion(), "SELECT * FROM Producto", Producto.class);
+        
+        System.out.println("productos = " + productos.stream().collect(Collectors.toList()));
+        
+        productos.stream().forEach((producto) -> {
+            System.out.println("productoid = " + producto.getId_producto());
+            System.out.println("productonombre = " + producto.getNombre());
+            System.out.println("productonombre = " + producto.getPrecio_unitario());
+        });
 
 
 //        if(Conexion.verificarUsuario()==true){

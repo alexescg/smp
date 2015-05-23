@@ -1,52 +1,37 @@
 package models;
 
 import java.beans.PropertyChangeSupport;
+import java.math.BigDecimal;
 
 /**
  *
  * @author Alejandro Escobedo
  */
-public class Usuario extends BaseModel{
-    public static final String PROP_USUARIOID = "PROP_USUARIOID";
+public class Usuario extends BaseModel{    
+    public static final String PROP_ID_USUARIO = "PROP_ID_USUARIO";
     public static final String PROP_USUARIO = "PROP_USUARIO";
     public static final String PROP_CONTRASENA = "PROP_CONTRASENA";
-    
-    private Integer usuarioId;
+    private BigDecimal id_usuario;
     
     private String usuario;
     
     private String contrasena;
-
-    public Usuario() {
-    }
-
-    public Usuario(Integer usuarioId, String usuario, String contrasena) {
-        this.usuarioId = usuarioId;
-        this.usuario = usuario;
-        this.contrasena = contrasena;
-    }
-    
-    public Usuario(String usuario, String contrasena) {
-        this.usuario = usuario;
-        this.contrasena = contrasena;
-    }
-    
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     /**
-     * @return the usuarioId
+     * @return the id_usuario
      */
-    public Integer getUsuarioId() {
-        return usuarioId;
+    public BigDecimal getId_usuario() {
+        return id_usuario;
     }
 
     /**
-     * @param usuarioId the usuarioId to set
+     * @param id_usuario the id_usuario to set
      */
-    public void setUsuarioId(Integer usuarioId) {
-        java.lang.Integer oldUsuarioId = this.usuarioId;
-        this.usuarioId = usuarioId;
-        propertyChangeSupport.firePropertyChange(PROP_USUARIOID, oldUsuarioId, usuarioId);
+    public void setId_usuario(BigDecimal id_usuario) {
+        java.math.BigDecimal oldId_usuario = this.id_usuario;
+        this.id_usuario = id_usuario;
+        propertyChangeSupport.firePropertyChange(PROP_ID_USUARIO, oldId_usuario, id_usuario);
     }
 
     /**
@@ -80,7 +65,4 @@ public class Usuario extends BaseModel{
         this.contrasena = contrasena;
         propertyChangeSupport.firePropertyChange(PROP_CONTRASENA, oldContrasena, contrasena);
     }
-    
-    
-    
 }

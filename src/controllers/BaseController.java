@@ -51,7 +51,7 @@ public class BaseController {
                     objects.add(object);
                 }
                 rs.close();
-
+                connection.close();
             } catch (Exception e) {
                 System.out.println("e = " + e);
             }

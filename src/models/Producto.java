@@ -17,6 +17,9 @@ public class Producto extends BaseModel{
     private String nombre;
     
     private BigDecimal precio_unitario;
+    
+    private BigDecimal cantidad_disponible;
+    
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     /**
@@ -65,6 +68,19 @@ public class Producto extends BaseModel{
         java.math.BigDecimal oldPrecio_unitario = this.precio_unitario;
         this.precio_unitario = precio_unitario;
         propertyChangeSupport.firePropertyChange(PROP_PRECIO_UNITARIO, oldPrecio_unitario, precio_unitario);
+    }
+    
+    public BigDecimal getCantidad_disponible() {
+        return cantidad_disponible;
+    }
+
+    /**
+     * @param precio_unitario the precio_unitario to set
+     */
+    public void setCantidad_disponible(BigDecimal cantidad_disponible) {
+        java.math.BigDecimal oldCantidad_disponible = this.cantidad_disponible;
+        this.cantidad_disponible = cantidad_disponible;
+        propertyChangeSupport.firePropertyChange(PROP_PRECIO_UNITARIO, oldCantidad_disponible, cantidad_disponible);
     }
 
    

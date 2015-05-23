@@ -26,7 +26,7 @@ public class Ingrediente extends BaseModel{
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     /**
-     * Metodo para obtener un id_ingrediente de un objeto Ingrediente.
+     * Método para obtener un id_ingrediente de un objeto Ingrediente.
      * @return the id_ingrediente
      */
     public BigInteger getId_ingrediente() {
@@ -34,7 +34,7 @@ public class Ingrediente extends BaseModel{
     }
 
     /**
-     * Metodo para asignar un id_ingrediente a un objeto Ingrediente.
+     * Método para asignar un id_ingrediente a un objeto Ingrediente.
      * @param id_ingrediente the id_ingrediente to set
      */
     public void setId_ingrediente(BigInteger id_ingrediente) {
@@ -44,7 +44,7 @@ public class Ingrediente extends BaseModel{
     }
 
     /**
-     * Metodo para obtener un nombre_ingrediente de un objeto Ingrediente.
+     * Método para obtener un nombre_ingrediente de un objeto Ingrediente.
      * @return the nombre_ingrediente
      */
     public String getNombre_ingrediente() {
@@ -52,7 +52,7 @@ public class Ingrediente extends BaseModel{
     }
 
     /**
-     * Metodo para asignar un nombre_ingrediente a un objeto Ingrediente.
+     * Método para asignar un nombre_ingrediente a un objeto Ingrediente.
      * @param nombre_ingrediente the nombre_ingrediente to set
      */
     public void setNombre_ingrediente(String nombre_ingrediente) {
@@ -62,7 +62,7 @@ public class Ingrediente extends BaseModel{
     }
 
     /**
-     * Metodo para obtener existencia_inventario de un objeto Ingrediente.
+     * Método para obtener existencia_inventario de un objeto Ingrediente.
      * @return the existencia_inventario
      */
     public BigInteger getExistencia_inventario() {
@@ -70,7 +70,7 @@ public class Ingrediente extends BaseModel{
     }
 
     /**
-     * Metodo para asignar un nombre_ingrediente a un objeto Ingrediente.
+     * Método para asignar un nombre_ingrediente a un objeto Ingrediente.
      * @param existencia_inventario the existencia_inventario to set
      */
     public void setExistencia_inventario(BigInteger existencia_inventario) {
@@ -80,7 +80,7 @@ public class Ingrediente extends BaseModel{
     }
 
     /**
-     * Metodo para obtener costo compra de un objeto Ingrediente.
+     * Método para obtener costo compra de un objeto Ingrediente.
      * @return the costo_compra
      */
     public BigInteger getCosto_compra() {
@@ -88,7 +88,7 @@ public class Ingrediente extends BaseModel{
     }
 
     /**
-     * Metodo para asignar un nombre_ingrediente a un objeto Ingrediente.
+     * Método para asignar un nombre_ingrediente a un objeto Ingrediente.
      * @param costo_compra the costo_compra to set
      */
     public void setCosto_compra(BigInteger costo_compra) {
@@ -98,7 +98,7 @@ public class Ingrediente extends BaseModel{
     }
 
     /**
-     * Metodo para obtener un id_proveedor de un objeto Ingrediente.
+     * Método para obtener un id_proveedor de un objeto Ingrediente.
      * @return the id_proveedor
      */
     public BigInteger getId_proveedor() {
@@ -106,7 +106,7 @@ public class Ingrediente extends BaseModel{
     }
 
     /**
-     * Metodo para asignar un nombre_ingrediente a un objeto Ingrediente.
+     * Método para asignar un nombre_ingrediente a un objeto Ingrediente.
      * @param id_proveedor the id_proveedor to set
      */
     public void setId_proveedor(BigInteger id_proveedor) {

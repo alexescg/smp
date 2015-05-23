@@ -1,7 +1,7 @@
 package models;
 
 import java.beans.PropertyChangeSupport;
-import java.math.BigInteger;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 /**
@@ -16,31 +16,31 @@ public class OrdenIngrediente extends BaseModel{
     public static final String PROP_PROVEEDOR = "PROP_PROVEEDOR";
     public static final String PROP_INGREDIENTE = "PROP_INGREDIENTE";
     
-    private BigInteger id;
+    private BigDecimal id;
     
-    private BigInteger Cantidad;
+    private BigDecimal Cantidad;
     
     private Timestamp fechaPedido;
     
-    private BigInteger totalCompra;
+    private BigDecimal totalCompra;
 
-    private BigInteger proveedor;
+    private BigDecimal proveedor;
     
-    private BigInteger ingrediente;
+    private BigDecimal ingrediente;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     /**
      * @return the id
      */
-    public BigInteger getId() {
+    public BigDecimal getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(BigInteger id) {
-        java.math.BigInteger oldId = this.id;
+    public void setId(BigDecimal id) {
+        java.math.BigDecimal oldId = this.id;
         this.id = id;
         propertyChangeSupport.firePropertyChange(PROP_ID, oldId, id);
     }
@@ -48,15 +48,15 @@ public class OrdenIngrediente extends BaseModel{
     /**
      * @return the Cantidad
      */
-    public BigInteger getCantidad() {
+    public BigDecimal getCantidad() {
         return Cantidad;
     }
 
     /**
      * @param Cantidad the Cantidad to set
      */
-    public void setCantidad(BigInteger Cantidad) {
-        java.math.BigInteger oldCantidad = this.Cantidad;
+    public void setCantidad(BigDecimal Cantidad) {
+        java.math.BigDecimal oldCantidad = this.Cantidad;
         this.Cantidad = Cantidad;
         propertyChangeSupport.firePropertyChange(PROP_CANTIDAD, oldCantidad, Cantidad);
     }
@@ -80,15 +80,15 @@ public class OrdenIngrediente extends BaseModel{
     /**
      * @return the totalCompra
      */
-    public BigInteger getTotalCompra() {
+    public BigDecimal getTotalCompra() {
         return totalCompra;
     }
 
     /**
      * @param totalCompra the totalCompra to set
      */
-    public void setTotalCompra(BigInteger totalCompra) {
-        java.math.BigInteger oldTotalCompra = this.totalCompra;
+    public void setTotalCompra(BigDecimal totalCompra) {
+        java.math.BigDecimal oldTotalCompra = this.totalCompra;
         this.totalCompra = totalCompra;
         propertyChangeSupport.firePropertyChange(PROP_TOTALCOMPRA, oldTotalCompra, totalCompra);
     }
@@ -96,15 +96,15 @@ public class OrdenIngrediente extends BaseModel{
     /**
      * @return the proveedor
      */
-    public BigInteger getProveedor() {
+    public BigDecimal getProveedor() {
         return proveedor;
     }
 
     /**
      * @param proveedor the proveedor to set
      */
-    public void setProveedor(BigInteger proveedor) {
-        java.math.BigInteger oldProveedor = this.proveedor;
+    public void setProveedor(BigDecimal proveedor) {
+        java.math.BigDecimal oldProveedor = this.proveedor;
         this.proveedor = proveedor;
         propertyChangeSupport.firePropertyChange(PROP_PROVEEDOR, oldProveedor, proveedor);
     }
@@ -112,15 +112,15 @@ public class OrdenIngrediente extends BaseModel{
     /**
      * @return the ingrediente
      */
-    public BigInteger getIngrediente() {
+    public BigDecimal getIngrediente() {
         return ingrediente;
     }
 
     /**
      * @param ingrediente the ingrediente to set
      */
-    public void setIngrediente(BigInteger ingrediente) {
-        java.math.BigInteger oldIngrediente = this.ingrediente;
+    public void setIngrediente(BigDecimal ingrediente) {
+        java.math.BigDecimal oldIngrediente = this.ingrediente;
         this.ingrediente = ingrediente;
         propertyChangeSupport.firePropertyChange(PROP_INGREDIENTE, oldIngrediente, ingrediente);
     }

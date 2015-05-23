@@ -1,72 +1,76 @@
 package models;
 
 import java.beans.PropertyChangeSupport;
-import java.math.BigInteger;
+import java.math.BigDecimal;
 
 /**
  * Clase que contiene los atributos de Ingrediente-Receta.
  * @author Alejandro Escobedo
  */
 public class IngredienteReceta extends BaseModel{
-    public static final String PROP_INGREDIENTE = "PROP_INGREDIENTE";
-    public static final String PROP_PROVEEDOR = "PROP_PROVEEDOR";
-    public static final String PROP_CANTIDADINGREDIENTE = "PROP_CANTIDADINGREDIENTE";
+    public static final String PROP_ID_INGREDIENTE = "PROP_ID_INGREDIENTE";
+    public static final String PROP_ID_PROVEEDOR = "PROP_ID_PROVEEDOR";
+    public static final String PROP_CANTIDAD_INGREDIENTE = "PROP_CANTIDAD_INGREDIENTE";
     
-    //Id ingrediente
-    private BigInteger ingrediente;
+    private BigDecimal id_ingrediente;
     
-    //Id proveedor
-    private BigInteger proveedor;
+    private BigDecimal id_proveedor;
     
-    private BigInteger cantidadIngrediente;
+    private BigDecimal cantidad_ingrediente;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     /**
-     * @return the ingrediente
+     * Método para obtener un id_ingrediente de un objeto IngredienteReceta.
+     * @return the id_ingrediente
      */
-    public BigInteger getIngrediente() {
-        return ingrediente;
+    public BigDecimal getId_ingrediente() {
+        return id_ingrediente;
     }
 
     /**
-     * @param ingrediente the ingrediente to set
+     * Método para asignar un id_ingrediente a un objeto IngredienteReceta.
+     * @param id_ingrediente the id_ingrediente to set
      */
-    public void setIngrediente(BigInteger ingrediente) {
-        java.math.BigInteger oldIngrediente = this.ingrediente;
-        this.ingrediente = ingrediente;
-        propertyChangeSupport.firePropertyChange(PROP_INGREDIENTE, oldIngrediente, ingrediente);
+    public void setId_ingrediente(BigDecimal id_ingrediente) {
+        java.math.BigDecimal oldId_ingrediente = this.id_ingrediente;
+        this.id_ingrediente = id_ingrediente;
+        propertyChangeSupport.firePropertyChange(PROP_ID_INGREDIENTE, oldId_ingrediente, id_ingrediente);
     }
 
     /**
-     * @return the proveedor
+     * Método para obtener un id_proveedor de un objeto IngredienteReceta.
+     * @return the id_proveedor
      */
-    public BigInteger getProveedor() {
-        return proveedor;
+    public BigDecimal getId_proveedor() {
+        return id_proveedor;
     }
 
     /**
-     * @param proveedor the proveedor to set
+     * Método para asignar un id_proveedor a un objeto IngredienteReceta.
+     * @param id_proveedor the id_proveedor to set
      */
-    public void setProveedor(BigInteger proveedor) {
-        java.math.BigInteger oldProveedor = this.proveedor;
-        this.proveedor = proveedor;
-        propertyChangeSupport.firePropertyChange(PROP_PROVEEDOR, oldProveedor, proveedor);
+    public void setId_proveedor(BigDecimal id_proveedor) {
+        java.math.BigDecimal oldId_proveedor = this.id_proveedor;
+        this.id_proveedor = id_proveedor;
+        propertyChangeSupport.firePropertyChange(PROP_ID_PROVEEDOR, oldId_proveedor, id_proveedor);
     }
 
     /**
-     * @return the cantidadIngrediente
+     * Método para obtener un cantidad_ingrediente de un objeto IngredienteReceta.
+     * @return the cantidad_ingrediente
      */
-    public BigInteger getCantidadIngrediente() {
-        return cantidadIngrediente;
+    public BigDecimal getCantidad_ingrediente() {
+        return cantidad_ingrediente;
     }
 
     /**
-     * @param cantidadIngrediente the cantidadIngrediente to set
+     * Método para asignar un cantidad_ingrediente a un objeto IngredienteReceta.
+     * @param cantidad_ingrediente the cantidad_ingrediente to set
      */
-    public void setCantidadIngrediente(BigInteger cantidadIngrediente) {
-        java.math.BigInteger oldCantidadIngrediente = this.cantidadIngrediente;
-        this.cantidadIngrediente = cantidadIngrediente;
-        propertyChangeSupport.firePropertyChange(PROP_CANTIDADINGREDIENTE, oldCantidadIngrediente, cantidadIngrediente);
+    public void setCantidad_ingrediente(BigDecimal cantidad_ingrediente) {
+        java.math.BigDecimal oldCantidad_ingrediente = this.cantidad_ingrediente;
+        this.cantidad_ingrediente = cantidad_ingrediente;
+        propertyChangeSupport.firePropertyChange(PROP_CANTIDAD_INGREDIENTE, oldCantidad_ingrediente, cantidad_ingrediente);
     }
-    
+
 }

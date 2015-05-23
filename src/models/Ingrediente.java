@@ -1,7 +1,8 @@
 package models;
 
 import java.beans.PropertyChangeSupport;
-import java.math.BigInteger;
+import java.math.BigDecimal;
+import java.math.BigDecimal;
 
 /**
  * Clase que contiene los atributos de un Ingrediente.
@@ -14,22 +15,22 @@ public class Ingrediente extends BaseModel{
     public static final String PROP_COSTO_COMPRA = "PROP_COSTO_COMPRA";
     public static final String PROP_ID_PROVEEDOR = "PROP_ID_PROVEEDOR";
 
-    private BigInteger id_ingrediente;
+    private BigDecimal id_ingrediente;
     
     private String nombre_ingrediente;
     
-    private BigInteger existencia_inventario;
+    private BigDecimal existencia_inventario;
     
-    private BigInteger costo_compra;
+    private BigDecimal costo_compra;
     
-    private BigInteger id_proveedor;
+    private BigDecimal id_proveedor;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     /**
      * Método para obtener un id_ingrediente de un objeto Ingrediente.
      * @return the id_ingrediente
      */
-    public BigInteger getId_ingrediente() {
+    public BigDecimal getId_ingrediente() {
         return id_ingrediente;
     }
 
@@ -37,8 +38,8 @@ public class Ingrediente extends BaseModel{
      * Método para asignar un id_ingrediente a un objeto Ingrediente.
      * @param id_ingrediente the id_ingrediente to set
      */
-    public void setId_ingrediente(BigInteger id_ingrediente) {
-        java.math.BigInteger oldId_ingrediente = this.id_ingrediente;
+    public void setId_ingrediente(BigDecimal id_ingrediente) {
+        java.math.BigDecimal oldId_ingrediente = this.id_ingrediente;
         this.id_ingrediente = id_ingrediente;
         propertyChangeSupport.firePropertyChange(PROP_ID_INGREDIENTE, oldId_ingrediente, id_ingrediente);
     }
@@ -65,7 +66,7 @@ public class Ingrediente extends BaseModel{
      * Método para obtener existencia_inventario de un objeto Ingrediente.
      * @return the existencia_inventario
      */
-    public BigInteger getExistencia_inventario() {
+    public BigDecimal getExistencia_inventario() {
         return existencia_inventario;
     }
 
@@ -73,8 +74,8 @@ public class Ingrediente extends BaseModel{
      * Método para asignar un nombre_ingrediente a un objeto Ingrediente.
      * @param existencia_inventario the existencia_inventario to set
      */
-    public void setExistencia_inventario(BigInteger existencia_inventario) {
-        java.math.BigInteger oldExistencia_inventario = this.existencia_inventario;
+    public void setExistencia_inventario(BigDecimal existencia_inventario) {
+        java.math.BigDecimal oldExistencia_inventario = this.existencia_inventario;
         this.existencia_inventario = existencia_inventario;
         propertyChangeSupport.firePropertyChange(PROP_EXISTENCIA_INVENTARIO, oldExistencia_inventario, existencia_inventario);
     }
@@ -83,7 +84,7 @@ public class Ingrediente extends BaseModel{
      * Método para obtener costo compra de un objeto Ingrediente.
      * @return the costo_compra
      */
-    public BigInteger getCosto_compra() {
+    public BigDecimal getCosto_compra() {
         return costo_compra;
     }
 
@@ -91,8 +92,8 @@ public class Ingrediente extends BaseModel{
      * Método para asignar un nombre_ingrediente a un objeto Ingrediente.
      * @param costo_compra the costo_compra to set
      */
-    public void setCosto_compra(BigInteger costo_compra) {
-        java.math.BigInteger oldCosto_compra = this.costo_compra;
+    public void setCosto_compra(BigDecimal costo_compra) {
+        java.math.BigDecimal oldCosto_compra = this.costo_compra;
         this.costo_compra = costo_compra;
         propertyChangeSupport.firePropertyChange(PROP_COSTO_COMPRA, oldCosto_compra, costo_compra);
     }
@@ -101,7 +102,7 @@ public class Ingrediente extends BaseModel{
      * Método para obtener un id_proveedor de un objeto Ingrediente.
      * @return the id_proveedor
      */
-    public BigInteger getId_proveedor() {
+    public BigDecimal getId_proveedor() {
         return id_proveedor;
     }
 
@@ -109,8 +110,8 @@ public class Ingrediente extends BaseModel{
      * Método para asignar un nombre_ingrediente a un objeto Ingrediente.
      * @param id_proveedor the id_proveedor to set
      */
-    public void setId_proveedor(BigInteger id_proveedor) {
-        java.math.BigInteger oldId_proveedor = this.id_proveedor;
+    public void setId_proveedor(BigDecimal id_proveedor) {
+        java.math.BigDecimal oldId_proveedor = this.id_proveedor;
         this.id_proveedor = id_proveedor;
         propertyChangeSupport.firePropertyChange(PROP_ID_PROVEEDOR, oldId_proveedor, id_proveedor);
     }

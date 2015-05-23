@@ -120,7 +120,15 @@ public class Login extends BaseFrame {
         
         usr = txtUsuario.getText();
         pass = txtContra.getText();
-        controllers.Usuarios.checkUsuario(usr, pass);
+        if(controllers.Usuarios.checkUsuario(usr, pass)){
+            MenuAdministrador menuAdmin = new MenuAdministrador();
+            menuAdmin.setVisible(true);
+            this.dispose();
+        }else{
+            MenuVendedor menuVendedor = new MenuVendedor();
+            menuVendedor.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_cmdAccederActionPerformed
 
     /**

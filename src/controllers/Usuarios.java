@@ -14,15 +14,17 @@ import views.BaseFrame;
  */
 public class Usuarios extends BaseController{
     
-    public static void checkUsuario(String usuario, String contra){
+    public static Boolean checkUsuario(String usuario, String contra){
         String query = "select * from usuarios where usuario like '"+usuario+"' and contrasena like '"+contra+"'";
         List<Usuario> usuarios = (List<Usuario>) Usuarios.select(Conexion.getDBConexion(), query, Usuario.class);
         if(usuarios!=null){
             try{
             if(usuarios.get(0).getUsuario().equals(usuario) && usuarios.get(0).getContrasena().equals(contra)){
-                BaseFrame bs = new BaseFrame();
-                bs.setVisible(true);
-            } 
+                if(usuarios.get(0).getUsuario().equals("administrador"))
+                    return true;
+                }else{
+                return false;
+            }
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Usuario/Contraseña incorrecta.");
             }
@@ -30,6 +32,7 @@ public class Usuarios extends BaseController{
             JOptionPane.showMessageDialog(null, "Usuario/Contraseña incorrecta.");
             
         }
+        return false;
     }
     
 }

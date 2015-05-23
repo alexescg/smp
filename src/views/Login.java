@@ -8,8 +8,8 @@ import javax.swing.JOptionPane;
  */
 public class Login extends BaseFrame {
 
-    String usr;
-    String pass;
+    private String usr;
+    private String pass;
     
     /**
      * Creates new form Login
@@ -159,10 +159,8 @@ public class Login extends BaseFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Login().setVisible(true);
         });
     }
 

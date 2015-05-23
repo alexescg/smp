@@ -34,6 +34,7 @@ public class Usuario extends BaseModel{
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     /**
+     * Método para obtener un usuarioId de un objeto Usuario.
      * @return the usuarioId
      */
     public Integer getUsuarioId() {
@@ -41,6 +42,7 @@ public class Usuario extends BaseModel{
     }
 
     /**
+     * Método para asignar un usuarioId de un objeto Usuario.
      * @param usuarioId the usuarioId to set
      */
     public void setUsuarioId(Integer usuarioId) {
@@ -50,6 +52,7 @@ public class Usuario extends BaseModel{
     }
 
     /**
+     * Método para obtener un usuario de un objeto Usuario.
      * @return the usuario
      */
     public String getUsuario() {
@@ -57,6 +60,7 @@ public class Usuario extends BaseModel{
     }
 
     /**
+     * Método para asignar un usuario de un objeto Usuario.
      * @param usuario the usuario to set
      */
     public void setUsuario(String usuario) {
@@ -66,6 +70,7 @@ public class Usuario extends BaseModel{
     }
 
     /**
+     * Método para obtener una contrasena de un objeto Usuario.
      * @return the contrasena
      */
     public String getContrasena() {
@@ -73,6 +78,7 @@ public class Usuario extends BaseModel{
     }
 
     /**
+     * Método para asignar una contraseña de un objeto Usuario.
      * @param contrasena the contrasena to set
      */
     public void setContrasena(String contrasena) {

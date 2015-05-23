@@ -30,6 +30,7 @@ public class Receta extends BaseModel{
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     /**
+     * Método para obtener un id_receta de un objeto Receta.
      * @return the id_receta
      */
     public BigDecimal getId_receta() {
@@ -37,6 +38,7 @@ public class Receta extends BaseModel{
     }
 
     /**
+     * Método para asignar un id_receta de un objeto Receta.
      * @param id_receta the id_receta to set
      */
     public void setId_receta(BigDecimal id_receta) {
@@ -46,6 +48,7 @@ public class Receta extends BaseModel{
     }
 
     /**
+     * Método para obtener un id_producto de un objeto Receta.
      * @return the id_producto
      */
     public BigDecimal getId_producto() {
@@ -53,6 +56,7 @@ public class Receta extends BaseModel{
     }
 
     /**
+     * Método para asignar un id_producto de un objeto Receta.
      * @param id_producto the id_producto to set
      */
     public void setId_producto(BigDecimal id_producto) {
@@ -62,6 +66,7 @@ public class Receta extends BaseModel{
     }
 
     /**
+     * Método para obtener un tiempo_coccion de un objeto Receta.
      * @return the tiempo_coccion
      */
     public BigDecimal getTiempo_coccion() {
@@ -69,6 +74,7 @@ public class Receta extends BaseModel{
     }
 
     /**
+     * Método para asignar un tiempo_coccion de un objeto Receta.
      * @param tiempo_coccion the tiempo_coccion to set
      */
     public void setTiempo_coccion(BigDecimal tiempo_coccion) {
@@ -78,6 +84,7 @@ public class Receta extends BaseModel{
     }
 
     /**
+     * Método para obtener una cantidad_hecha de un objeto Receta.
      * @return the cantidad_hecha
      */
     public BigDecimal getCantidad_hecha() {
@@ -85,6 +92,7 @@ public class Receta extends BaseModel{
     }
 
     /**
+     * Método para asignar una cantidad_hecha de un objeto Receta.
      * @param cantidad_hecha the cantidad_hecha to set
      */
     public void setCantidad_hecha(BigDecimal cantidad_hecha) {
@@ -94,6 +102,7 @@ public class Receta extends BaseModel{
     }
 
     /**
+     * Método para obtener una descripcion de un objeto Receta.
      * @return the descripcion
      */
     public String getDescripcion() {
@@ -101,6 +110,7 @@ public class Receta extends BaseModel{
     }
 
     /**
+     * Método para asignar una descripcion de un objeto Receta.
      * @param descripcion the descripcion to set
      */
     public void setDescripcion(String descripcion) {
@@ -110,6 +120,7 @@ public class Receta extends BaseModel{
     }
 
     /**
+     * Método para obtener una imagen de un objeto Receta.
      * @return the imagen
      */
     public Image getImagen() {
@@ -117,6 +128,7 @@ public class Receta extends BaseModel{
     }
 
     /**
+     * Método para asignar una imagen de un objeto Receta.
      * @param imagen the imagen to set
      */
     public void setImagen(Image imagen) {

@@ -27,6 +27,7 @@ public class Proveedor extends BaseModel{
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     /**
+     * Método para obtener un id_proveedor de un objeto Proveedor.
      * @return the id_proveedor
      */
     public BigDecimal getId_proveedor() {
@@ -34,6 +35,7 @@ public class Proveedor extends BaseModel{
     }
 
     /**
+     * Método para asignar un id_proveedor de un objeto Proveedor.
      * @param id_proveedor the id_proveedor to set
      */
     public void setId_proveedor(BigDecimal id_proveedor) {
@@ -43,6 +45,7 @@ public class Proveedor extends BaseModel{
     }
 
     /**
+     * Método para obtener un nombre_proveedor de un objeto Proveedor.
      * @return the nombre_proveedor
      */
     public String getNombre_proveedor() {
@@ -50,6 +53,7 @@ public class Proveedor extends BaseModel{
     }
 
     /**
+     * Método para asignar un nombre_proveedor de un objeto Proveedor.
      * @param nombre_proveedor the nombre_proveedor to set
      */
     public void setNombre_proveedor(String nombre_proveedor) {
@@ -59,6 +63,7 @@ public class Proveedor extends BaseModel{
     }
 
     /**
+     * Método para obtener una direccion_proveedor de un objeto Proveedor.
      * @return the direccion_proveedor
      */
     public String getDireccion_proveedor() {
@@ -66,6 +71,7 @@ public class Proveedor extends BaseModel{
     }
 
     /**
+     * Método para asignar una direccion_proveedor de un objeto Proveedor.
      * @param direccion_proveedor the direccion_proveedor to set
      */
     public void setDireccion_proveedor(String direccion_proveedor) {
@@ -75,6 +81,7 @@ public class Proveedor extends BaseModel{
     }
 
     /**
+     * Método para obtener un telefono de un objeto Proveedor.
      * @return the telefono
      */
     public BigDecimal getTelefono() {
@@ -82,6 +89,7 @@ public class Proveedor extends BaseModel{
     }
 
     /**
+     * Método para asignar un telefono de un objeto Proveedor.
      * @param telefono the telefono to set
      */
     public void setTelefono(BigDecimal telefono) {
@@ -91,6 +99,7 @@ public class Proveedor extends BaseModel{
     }
 
     /**
+     * Método para obtener una ciudad de un objeto Proveedor.
      * @return the ciudad
      */
     public String getCiudad() {
@@ -98,6 +107,7 @@ public class Proveedor extends BaseModel{
     }
 
     /**
+     * Método para asignar una ciudad de un objeto Proveedor.
      * @param ciudad the ciudad to set
      */
     public void setCiudad(String ciudad) {

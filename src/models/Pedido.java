@@ -27,6 +27,7 @@ public class Pedido extends BaseModel{
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     /**
+     * Método para obtener un id_pedido de un objeto Pedido.
      * @return the id_pedido
      */
     public BigDecimal getId_pedido() {
@@ -34,6 +35,7 @@ public class Pedido extends BaseModel{
     }
 
     /**
+     * Método para asignar un id_pedido de un objeto Pedido.
      * @param id_pedido the id_pedido to set
      */
     public void setId_pedido(BigDecimal id_pedido) {
@@ -43,6 +45,7 @@ public class Pedido extends BaseModel{
     }
 
     /**
+     * Método para obtener una fecha_pedido de un objeto Pedido.
      * @return the fecha_pedido
      */
     public Timestamp getFecha_pedido() {
@@ -50,6 +53,7 @@ public class Pedido extends BaseModel{
     }
 
     /**
+     * Método para asignar una fecha_pedido de un objeto Pedido.
      * @param fecha_pedido the fecha_pedido to set
      */
     public void setFecha_pedido(Timestamp fecha_pedido) {
@@ -59,6 +63,7 @@ public class Pedido extends BaseModel{
     }
 
     /**
+     * Método para obtener un total de un objeto Pedido.
      * @return the total
      */
     public BigDecimal getTotal() {
@@ -66,6 +71,7 @@ public class Pedido extends BaseModel{
     }
 
     /**
+     * Método para asignar un total de un objeto Pedido.
      * @param total the total to set
      */
     public void setTotal(BigDecimal total) {
@@ -75,6 +81,7 @@ public class Pedido extends BaseModel{
     }
 
     /**
+     * Método para obtener una fecha_entrega de un objeto Pedido.
      * @return the fecha_entrega
      */
     public Timestamp getFecha_entrega() {
@@ -82,6 +89,7 @@ public class Pedido extends BaseModel{
     }
 
     /**
+     * Método para asignar una fecha_entrega de un objeto Pedido.
      * @param fecha_entrega the fecha_entrega to set
      */
     public void setFecha_entrega(Timestamp fecha_entrega) {
@@ -91,6 +99,7 @@ public class Pedido extends BaseModel{
     }
 
     /**
+     * Método para obtener un estado de un objeto Pedido.
      * @return the estado
      */
     public String getEstado() {
@@ -98,6 +107,7 @@ public class Pedido extends BaseModel{
     }
 
     /**
+     * Método para asignar un pedido de un objeto Pedido.
      * @param estado the estado to set
      */
     public void setEstado(String estado) {

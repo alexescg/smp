@@ -20,6 +20,7 @@ public class Producto extends BaseModel{
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     /**
+     * Método para obtener un id_producto de un objeto Producto.
      * @return the id_producto
      */
     public BigDecimal getId_producto() {
@@ -27,6 +28,7 @@ public class Producto extends BaseModel{
     }
 
     /**
+     * Método para asignar un id_producto a un objeto Producto.
      * @param id_producto the id_producto to set
      */
     public void setId_producto(BigDecimal id_producto) {
@@ -36,6 +38,7 @@ public class Producto extends BaseModel{
     }
 
     /**
+     * Método para obtener un nombre de un objeto Producto.
      * @return the nombre
      */
     public String getNombre() {
@@ -43,6 +46,7 @@ public class Producto extends BaseModel{
     }
 
     /**
+     * Método para asignar un nombre de un objeto Producto.
      * @param nombre the nombre to set
      */
     public void setNombre(String nombre) {
@@ -52,6 +56,7 @@ public class Producto extends BaseModel{
     }
 
     /**
+     * Método para obtener un precio_unitario de un objeto Producto.
      * @return the precio_unitario
      */
     public BigDecimal getPrecio_unitario() {
@@ -59,6 +64,7 @@ public class Producto extends BaseModel{
     }
 
     /**
+     * Método para asignar un precio_unitario de un objeto Producto.
      * @param precio_unitario the precio_unitario to set
      */
     public void setPrecio_unitario(BigDecimal precio_unitario) {

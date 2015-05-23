@@ -115,13 +115,11 @@ public class Login extends BaseFrame {
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
        
     }//GEN-LAST:event_txtUsuarioActionPerformed
-    private void validar(){
+
+    private void cmdAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAccederActionPerformed
+        
         usr = txtUsuario.getText();
         pass = txtContra.getText();
-        System.out.println("pass = " + pass);
-    }
-    private void cmdAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAccederActionPerformed
-        validar();
         controllers.Usuarios.checkUsuario(usr, pass);
     }//GEN-LAST:event_cmdAccederActionPerformed
 

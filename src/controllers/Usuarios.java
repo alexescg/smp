@@ -18,10 +18,14 @@ public class Usuarios extends BaseController{
         String query = "select * from usuarios where usuario like '"+usuario+"' and contrasena like '"+contra+"'";
         List<Usuario> usuarios = (List<Usuario>) Usuarios.select(Conexion.getDBConexion(), query, Usuario.class);
         if(usuarios!=null){
+            try{
             if(usuarios.get(0).getUsuario().equals(usuario) && usuarios.get(0).getContrasena().equals(contra)){
                 BaseFrame bs = new BaseFrame();
                 bs.setVisible(true);
             } 
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Usuario/Contraseña incorrecta.");
+            }
         }else{
             JOptionPane.showMessageDialog(null, "Usuario/Contraseña incorrecta.");
             

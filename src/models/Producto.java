@@ -4,8 +4,8 @@ import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
 
 /**
- *
- * @author Alejandro
+ * Clase para que contiene los atributos de un Producto.
+ * @author Alejandro Escobedo
  */
 public class Producto extends BaseModel{
     public static final String PROP_ID_PRODUCTO = "PROP_ID_PRODUCTO";

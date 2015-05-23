@@ -2,10 +2,10 @@ package models;
 
 import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
- *
+ * Clase que contiene lo atributos de un Pedido.
  * @author Alejandro Escobedo
  */
 public class Pedido extends BaseModel{
@@ -17,11 +17,11 @@ public class Pedido extends BaseModel{
     
     private BigDecimal id_pedido;
     
-    private Date fecha_pedido;
+    private Timestamp fecha_pedido;
     
     private BigDecimal total;
     
-    private Date fecha_entrega;
+    private Timestamp fecha_entrega;
     
     private String estado;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
@@ -45,15 +45,15 @@ public class Pedido extends BaseModel{
     /**
      * @return the fecha_pedido
      */
-    public Date getFecha_pedido() {
+    public Timestamp getFecha_pedido() {
         return fecha_pedido;
     }
 
     /**
      * @param fecha_pedido the fecha_pedido to set
      */
-    public void setFecha_pedido(Date fecha_pedido) {
-        java.util.Date oldFecha_pedido = this.fecha_pedido;
+    public void setFecha_pedido(Timestamp fecha_pedido) {
+        java.sql.Timestamp oldFecha_pedido = this.fecha_pedido;
         this.fecha_pedido = fecha_pedido;
         propertyChangeSupport.firePropertyChange(PROP_FECHA_PEDIDO, oldFecha_pedido, fecha_pedido);
     }
@@ -77,15 +77,15 @@ public class Pedido extends BaseModel{
     /**
      * @return the fecha_entrega
      */
-    public Date getFecha_entrega() {
+    public Timestamp getFecha_entrega() {
         return fecha_entrega;
     }
 
     /**
      * @param fecha_entrega the fecha_entrega to set
      */
-    public void setFecha_entrega(Date fecha_entrega) {
-        java.util.Date oldFecha_entrega = this.fecha_entrega;
+    public void setFecha_entrega(Timestamp fecha_entrega) {
+        java.sql.Timestamp oldFecha_entrega = this.fecha_entrega;
         this.fecha_entrega = fecha_entrega;
         propertyChangeSupport.firePropertyChange(PROP_FECHA_ENTREGA, oldFecha_entrega, fecha_entrega);
     }

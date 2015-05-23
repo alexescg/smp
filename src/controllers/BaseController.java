@@ -11,7 +11,9 @@ import java.util.List;
 import utils.StringUtils;
 
 /**
- * Clase que sirve como controlador Base para hacer consultas utilizando Reflection.
+ * Clase que sirve como controlador Base para hacer consultas utilizando
+ * Reflection.
+ *
  * @author Alejandro Escobedo
  */
 public class BaseController {
@@ -22,6 +24,7 @@ public class BaseController {
      * <ul>
      * <li><b>BigInteger: </b> Para datos numericos</li>
      * <li><b>String: </b> Para datos de cadena</li>
+     * <li><b>Timestamp: </b>Para datos de tipo Date</li>
      * </ul>
      * @param connection
      * @param sql

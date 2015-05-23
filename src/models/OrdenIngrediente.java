@@ -2,6 +2,7 @@ package models;
 
 import java.beans.PropertyChangeSupport;
 import java.math.BigInteger;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -20,14 +21,14 @@ public class OrdenIngrediente extends BaseModel{
     
     private BigInteger Cantidad;
     
-    private Date fechaPedido;
+    private Timestamp fechaPedido;
     
     private BigInteger totalCompra;
 
     private BigInteger proveedor;
     
     private BigInteger ingrediente;
-    private transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
+    private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     /**
      * @return the id
@@ -64,15 +65,15 @@ public class OrdenIngrediente extends BaseModel{
     /**
      * @return the fechaPedido
      */
-    public Date getFechaPedido() {
+    public Timestamp getFechaPedido() {
         return fechaPedido;
     }
 
     /**
      * @param fechaPedido the fechaPedido to set
      */
-    public void setFechaPedido(Date fechaPedido) {
-        java.util.Date oldFechaPedido = this.fechaPedido;
+    public void setFechaPedido(Timestamp fechaPedido) {
+        java.sql.Timestamp oldFechaPedido = this.fechaPedido;
         this.fechaPedido = fechaPedido;
         propertyChangeSupport.firePropertyChange(PROP_FECHAPEDIDO, oldFechaPedido, fechaPedido);
     }
@@ -124,7 +125,5 @@ public class OrdenIngrediente extends BaseModel{
         this.ingrediente = ingrediente;
         propertyChangeSupport.firePropertyChange(PROP_INGREDIENTE, oldIngrediente, ingrediente);
     }
-
-    
 }
 

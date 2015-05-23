@@ -30,6 +30,7 @@ public class OrdenIngrediente extends BaseModel{
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     /**
+     * Método para obtener un id_orden de un objeto OrdenIngrediente.
      * @return the id_orden
      */
     public BigDecimal getId_orden() {
@@ -37,6 +38,7 @@ public class OrdenIngrediente extends BaseModel{
     }
 
     /**
+     * Método para asignar un id_orden de un objeto OrdenIngrediente.
      * @param id_orden the id_orden to set
      */
     public void setId_orden(BigDecimal id_orden) {
@@ -46,6 +48,7 @@ public class OrdenIngrediente extends BaseModel{
     }
 
     /**
+     *  Método para obtener una cantidad de un objeto OrdenIngrediente.
      * @return the cantidad
      */
     public BigDecimal getCantidad() {
@@ -53,6 +56,7 @@ public class OrdenIngrediente extends BaseModel{
     }
 
     /**
+     *  Método para asignar una cantidad de un objeto OrdenIngrediente.
      * @param cantidad the cantidad to set
      */
     public void setCantidad(BigDecimal cantidad) {
@@ -62,6 +66,7 @@ public class OrdenIngrediente extends BaseModel{
     }
 
     /**
+     *  Método para obtener una fecha_pedido de un objeto OrdenIngrediente.
      * @return the fecha_pedido
      */
     public Timestamp getFecha_pedido() {
@@ -69,6 +74,7 @@ public class OrdenIngrediente extends BaseModel{
     }
 
     /**
+     *  Método para asignar una fecha_pedido de un objeto OrdenIngrediente.
      * @param fecha_pedido the fecha_pedido to set
      */
     public void setFecha_pedido(Timestamp fecha_pedido) {
@@ -78,6 +84,7 @@ public class OrdenIngrediente extends BaseModel{
     }
 
     /**
+     *  Método para obtener un total_compra de un objeto OrdenIngrediente.
      * @return the total_compra
      */
     public BigDecimal getTotal_compra() {
@@ -85,6 +92,7 @@ public class OrdenIngrediente extends BaseModel{
     }
 
     /**
+     *  Método para asignar un total_compra de un objeto OrdenIngrediente.
      * @param total_compra the total_compra to set
      */
     public void setTotal_compra(BigDecimal total_compra) {
@@ -94,6 +102,7 @@ public class OrdenIngrediente extends BaseModel{
     }
 
     /**
+     *  Método para obtener un id_proveedor de un objeto OrdenIngrediente.
      * @return the id_proveedor
      */
     public BigDecimal getId_proveedor() {
@@ -101,6 +110,7 @@ public class OrdenIngrediente extends BaseModel{
     }
 
     /**
+     *  Método para asignar un id_proveedor de un objeto OrdenIngrediente.
      * @param id_proveedor the id_proveedor to set
      */
     public void setId_proveedor(BigDecimal id_proveedor) {
@@ -110,6 +120,7 @@ public class OrdenIngrediente extends BaseModel{
     }
 
     /**
+     *  Método para obtener un id_ingrediente de un objeto OrdenIngrediente.
      * @return the id_ingrediente
      */
     public BigDecimal getId_ingrediente() {
@@ -117,6 +128,7 @@ public class OrdenIngrediente extends BaseModel{
     }
 
     /**
+     *  Método para asignar un id_ingrediente de un objeto OrdenIngrediente.
      * @param id_ingrediente the id_ingrediente to set
      */
     public void setId_ingrediente(BigDecimal id_ingrediente) {

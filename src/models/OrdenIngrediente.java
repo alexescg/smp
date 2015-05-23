@@ -9,120 +9,122 @@ import java.sql.Timestamp;
  * @author Alejandro Escobedo
  */
 public class OrdenIngrediente extends BaseModel{
-    public static final String PROP_ID = "PROP_ID";
+    public static final String PROP_ID_ORDEN = "PROP_ID_ORDEN";
     public static final String PROP_CANTIDAD = "PROP_CANTIDAD";
-    public static final String PROP_FECHAPEDIDO = "PROP_FECHAPEDIDO";
-    public static final String PROP_TOTALCOMPRA = "PROP_TOTALCOMPRA";
-    public static final String PROP_PROVEEDOR = "PROP_PROVEEDOR";
-    public static final String PROP_INGREDIENTE = "PROP_INGREDIENTE";
+    public static final String PROP_FECHA_PEDIDO = "PROP_FECHA_PEDIDO";
+    public static final String PROP_TOTAL_COMPRA = "PROP_TOTAL_COMPRA";
+    public static final String PROP_ID_PROVEEDOR = "PROP_ID_PROVEEDOR";
+    public static final String PROP_ID_INGREDIENTE = "PROP_ID_INGREDIENTE";
     
-    private BigDecimal id;
+    private BigDecimal id_orden;
     
-    private BigDecimal Cantidad;
+    private BigDecimal cantidad;
     
-    private Timestamp fechaPedido;
+    private Timestamp fecha_pedido;
     
-    private BigDecimal totalCompra;
+    private BigDecimal total_compra;
 
-    private BigDecimal proveedor;
+    private BigDecimal id_proveedor;
     
-    private BigDecimal ingrediente;
+    private BigDecimal id_ingrediente;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     /**
-     * @return the id
+     * @return the id_orden
      */
-    public BigDecimal getId() {
-        return id;
+    public BigDecimal getId_orden() {
+        return id_orden;
     }
 
     /**
-     * @param id the id to set
+     * @param id_orden the id_orden to set
      */
-    public void setId(BigDecimal id) {
-        java.math.BigDecimal oldId = this.id;
-        this.id = id;
-        propertyChangeSupport.firePropertyChange(PROP_ID, oldId, id);
+    public void setId_orden(BigDecimal id_orden) {
+        java.math.BigDecimal oldId_orden = this.id_orden;
+        this.id_orden = id_orden;
+        propertyChangeSupport.firePropertyChange(PROP_ID_ORDEN, oldId_orden, id_orden);
     }
 
     /**
-     * @return the Cantidad
+     * @return the cantidad
      */
     public BigDecimal getCantidad() {
-        return Cantidad;
+        return cantidad;
     }
 
     /**
-     * @param Cantidad the Cantidad to set
+     * @param cantidad the cantidad to set
      */
-    public void setCantidad(BigDecimal Cantidad) {
-        java.math.BigDecimal oldCantidad = this.Cantidad;
-        this.Cantidad = Cantidad;
-        propertyChangeSupport.firePropertyChange(PROP_CANTIDAD, oldCantidad, Cantidad);
+    public void setCantidad(BigDecimal cantidad) {
+        java.math.BigDecimal oldCantidad = this.cantidad;
+        this.cantidad = cantidad;
+        propertyChangeSupport.firePropertyChange(PROP_CANTIDAD, oldCantidad, cantidad);
     }
 
     /**
-     * @return the fechaPedido
+     * @return the fecha_pedido
      */
-    public Timestamp getFechaPedido() {
-        return fechaPedido;
+    public Timestamp getFecha_pedido() {
+        return fecha_pedido;
     }
 
     /**
-     * @param fechaPedido the fechaPedido to set
+     * @param fecha_pedido the fecha_pedido to set
      */
-    public void setFechaPedido(Timestamp fechaPedido) {
-        java.sql.Timestamp oldFechaPedido = this.fechaPedido;
-        this.fechaPedido = fechaPedido;
-        propertyChangeSupport.firePropertyChange(PROP_FECHAPEDIDO, oldFechaPedido, fechaPedido);
+    public void setFecha_pedido(Timestamp fecha_pedido) {
+        java.sql.Timestamp oldFecha_pedido = this.fecha_pedido;
+        this.fecha_pedido = fecha_pedido;
+        propertyChangeSupport.firePropertyChange(PROP_FECHA_PEDIDO, oldFecha_pedido, fecha_pedido);
     }
 
     /**
-     * @return the totalCompra
+     * @return the total_compra
      */
-    public BigDecimal getTotalCompra() {
-        return totalCompra;
+    public BigDecimal getTotal_compra() {
+        return total_compra;
     }
 
     /**
-     * @param totalCompra the totalCompra to set
+     * @param total_compra the total_compra to set
      */
-    public void setTotalCompra(BigDecimal totalCompra) {
-        java.math.BigDecimal oldTotalCompra = this.totalCompra;
-        this.totalCompra = totalCompra;
-        propertyChangeSupport.firePropertyChange(PROP_TOTALCOMPRA, oldTotalCompra, totalCompra);
+    public void setTotal_compra(BigDecimal total_compra) {
+        java.math.BigDecimal oldTotal_compra = this.total_compra;
+        this.total_compra = total_compra;
+        propertyChangeSupport.firePropertyChange(PROP_TOTAL_COMPRA, oldTotal_compra, total_compra);
     }
 
     /**
-     * @return the proveedor
+     * @return the id_proveedor
      */
-    public BigDecimal getProveedor() {
-        return proveedor;
+    public BigDecimal getId_proveedor() {
+        return id_proveedor;
     }
 
     /**
-     * @param proveedor the proveedor to set
+     * @param id_proveedor the id_proveedor to set
      */
-    public void setProveedor(BigDecimal proveedor) {
-        java.math.BigDecimal oldProveedor = this.proveedor;
-        this.proveedor = proveedor;
-        propertyChangeSupport.firePropertyChange(PROP_PROVEEDOR, oldProveedor, proveedor);
+    public void setId_proveedor(BigDecimal id_proveedor) {
+        java.math.BigDecimal oldId_proveedor = this.id_proveedor;
+        this.id_proveedor = id_proveedor;
+        propertyChangeSupport.firePropertyChange(PROP_ID_PROVEEDOR, oldId_proveedor, id_proveedor);
     }
 
     /**
-     * @return the ingrediente
+     * @return the id_ingrediente
      */
-    public BigDecimal getIngrediente() {
-        return ingrediente;
+    public BigDecimal getId_ingrediente() {
+        return id_ingrediente;
     }
 
     /**
-     * @param ingrediente the ingrediente to set
+     * @param id_ingrediente the id_ingrediente to set
      */
-    public void setIngrediente(BigDecimal ingrediente) {
-        java.math.BigDecimal oldIngrediente = this.ingrediente;
-        this.ingrediente = ingrediente;
-        propertyChangeSupport.firePropertyChange(PROP_INGREDIENTE, oldIngrediente, ingrediente);
+    public void setId_ingrediente(BigDecimal id_ingrediente) {
+        java.math.BigDecimal oldId_ingrediente = this.id_ingrediente;
+        this.id_ingrediente = id_ingrediente;
+        propertyChangeSupport.firePropertyChange(PROP_ID_INGREDIENTE, oldId_ingrediente, id_ingrediente);
     }
+
+
 }
 

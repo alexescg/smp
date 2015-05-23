@@ -96,7 +96,6 @@ public class BaseController {
     combo.removeAllItems();
     
     String methodName = String.format("get%s", StringUtils.capitalize(val));
-    Class[] params = new Class[0];
     Method method = clase.getDeclaredMethod(methodName);
         
         elementos.stream().forEach((elemento) -> {

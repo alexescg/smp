@@ -11,14 +11,19 @@ import java.util.List;
 import utils.StringUtils;
 
 /**
- * Clase que sirve como controlador Base para hacer consultas utilizando Reflection.
+ * Clase que sirve como controlador base para todos los controladores
  * @author Alejandro Escobedo
  */
 public class BaseController {
 
     /**
      * Metodo generico que mapea las consultas de tipo select a una lista.
-     *
+     * Necesita:
+     * <ul>
+     * <li><b>BigDecimal: </b> Para datos numericos</li>
+     * <li><b>String: </b> Para datos de cadena</li>
+     * <li><b>Timestamp: </b>Para datos de tipo Date</li>
+     * </ul>
      * @param connection
      * @param sql
      * @param clase
@@ -63,8 +68,7 @@ public class BaseController {
     }
 
     /**
-     * Metodo para poder hacer querys de tipo ddl
-     *
+     * Metodo para poder ejecutar querys en la base de datos.
      * @param connection
      * @param sql
      */

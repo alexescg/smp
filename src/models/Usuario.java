@@ -4,8 +4,8 @@ import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
 
 /**
- *
- * @author Alejandro Escobedo
+ * Clase que contiene los atributos de un Usuario.
+ * @author Alejandro Escobedo, Erik Zubia
  */
 public class Usuario extends BaseModel{    
     public static final String PROP_ID_USUARIO = "PROP_ID_USUARIO";
@@ -19,14 +19,16 @@ public class Usuario extends BaseModel{
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     /**
-     * @return the id_usuario
+     * Método para obtener un usuarioId de un objeto Usuario.
+     * @return the usuarioId
      */
     public BigDecimal getId_usuario() {
         return id_usuario;
     }
 
     /**
-     * @param id_usuario the id_usuario to set
+     * Método para asignar un usuarioId de un objeto Usuario.
+     * @param usuarioId the usuarioId to set
      */
     public void setId_usuario(BigDecimal id_usuario) {
         java.math.BigDecimal oldId_usuario = this.id_usuario;
@@ -35,6 +37,7 @@ public class Usuario extends BaseModel{
     }
 
     /**
+     * Método para obtener un usuario de un objeto Usuario.
      * @return the usuario
      */
     public String getUsuario() {
@@ -42,6 +45,7 @@ public class Usuario extends BaseModel{
     }
 
     /**
+     * Método para asignar un usuario de un objeto Usuario.
      * @param usuario the usuario to set
      */
     public void setUsuario(String usuario) {
@@ -51,6 +55,7 @@ public class Usuario extends BaseModel{
     }
 
     /**
+     * Método para obtener una contrasena de un objeto Usuario.
      * @return the contrasena
      */
     public String getContrasena() {
@@ -58,6 +63,7 @@ public class Usuario extends BaseModel{
     }
 
     /**
+     * Método para asignar una contraseña de un objeto Usuario.
      * @param contrasena the contrasena to set
      */
     public void setContrasena(String contrasena) {

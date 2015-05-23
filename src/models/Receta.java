@@ -1,82 +1,140 @@
 package models;
 
+import java.awt.Image;
 import java.beans.PropertyChangeSupport;
+import java.math.BigDecimal;
 
 /**
- *
+ * Clase que contiene los atributos de un Receta.
  * @author Alejandro Escobedo
  */
 public class Receta extends BaseModel{
-    public static final String PROP_ID = "PROP_ID";
-    public static final String PROP_TIPOCOCION = "PROP_TIPOCOCION";
-    public static final String PROP_CANTIDADPRODUCIDA = "PROP_CANTIDADPRODUCIDA";
+    public static final String PROP_ID_RECETA = "PROP_ID_RECETA";
+    public static final String PROP_ID_PRODUCTO = "PROP_ID_PRODUCTO";
+    public static final String PROP_TIEMPO_COCCION = "PROP_TIEMPO_COCCION";
+    public static final String PROP_CANTIDAD_HECHA = "PROP_CANTIDAD_HECHA";
+    public static final String PROP_DESCRIPCION = "PROP_DESCRIPCION";
+    public static final String PROP_IMAGEN = "PROP_IMAGEN";
+
+    private BigDecimal id_receta;
     
-    private Integer id;
+    private BigDecimal id_producto;
     
-    private Double tipoCocion;
+    private BigDecimal tiempo_coccion;
     
-    private Double cantidadProducida;
+    private BigDecimal cantidad_hecha;
     
+    private String descripcion;
+    
+    private Image imagen;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
-    public Receta() {
-    }
-
-    public Receta(Integer id, Double tipoCocion, Double cantidadProducida) {
-        this.id = id;
-        this.tipoCocion = tipoCocion;
-        this.cantidadProducida = cantidadProducida;
+    /**
+     * Método para obtener un id_receta de un objeto Receta.
+     * @return the id_receta
+     */
+    public BigDecimal getId_receta() {
+        return id_receta;
     }
 
     /**
-     * @return the id
+     * Método para asignar un id_receta de un objeto Receta.
+     * @param id_receta the id_receta to set
      */
-    public Integer getId() {
-        return id;
+    public void setId_receta(BigDecimal id_receta) {
+        java.math.BigDecimal oldId_receta = this.id_receta;
+        this.id_receta = id_receta;
+        propertyChangeSupport.firePropertyChange(PROP_ID_RECETA, oldId_receta, id_receta);
     }
 
     /**
-     * @param id the id to set
+     * Método para obtener un id_producto de un objeto Receta.
+     * @return the id_producto
      */
-    public void setId(Integer id) {
-        java.lang.Integer oldId = this.id;
-        this.id = id;
-        propertyChangeSupport.firePropertyChange(PROP_ID, oldId, id);
+    public BigDecimal getId_producto() {
+        return id_producto;
     }
 
     /**
-     * @return the tipoCocion
+     * Método para asignar un id_producto de un objeto Receta.
+     * @param id_producto the id_producto to set
      */
-    public Double getTipoCocion() {
-        return tipoCocion;
+    public void setId_producto(BigDecimal id_producto) {
+        java.math.BigDecimal oldId_producto = this.id_producto;
+        this.id_producto = id_producto;
+        propertyChangeSupport.firePropertyChange(PROP_ID_PRODUCTO, oldId_producto, id_producto);
     }
 
     /**
-     * @param tipoCocion the tipoCocion to set
+     * Método para obtener un tiempo_coccion de un objeto Receta.
+     * @return the tiempo_coccion
      */
-    public void setTipoCocion(Double tipoCocion) {
-        java.lang.Double oldTipoCocion = this.tipoCocion;
-        this.tipoCocion = tipoCocion;
-        propertyChangeSupport.firePropertyChange(PROP_TIPOCOCION, oldTipoCocion, tipoCocion);
+    public BigDecimal getTiempo_coccion() {
+        return tiempo_coccion;
     }
 
     /**
-     * @return the cantidadProducida
+     * Método para asignar un tiempo_coccion de un objeto Receta.
+     * @param tiempo_coccion the tiempo_coccion to set
      */
-    public Double getCantidadProducida() {
-        return cantidadProducida;
+    public void setTiempo_coccion(BigDecimal tiempo_coccion) {
+        java.math.BigDecimal oldTiempo_coccion = this.tiempo_coccion;
+        this.tiempo_coccion = tiempo_coccion;
+        propertyChangeSupport.firePropertyChange(PROP_TIEMPO_COCCION, oldTiempo_coccion, tiempo_coccion);
     }
 
     /**
-     * @param cantidadProducida the cantidadProducida to set
+     * Método para obtener una cantidad_hecha de un objeto Receta.
+     * @return the cantidad_hecha
      */
-    public void setCantidadProducida(Double cantidadProducida) {
-        java.lang.Double oldCantidadProducida = this.cantidadProducida;
-        this.cantidadProducida = cantidadProducida;
-        propertyChangeSupport.firePropertyChange(PROP_CANTIDADPRODUCIDA, oldCantidadProducida, cantidadProducida);
+    public BigDecimal getCantidad_hecha() {
+        return cantidad_hecha;
     }
-    
-    
-    
-    
+
+    /**
+     * Método para asignar una cantidad_hecha de un objeto Receta.
+     * @param cantidad_hecha the cantidad_hecha to set
+     */
+    public void setCantidad_hecha(BigDecimal cantidad_hecha) {
+        java.math.BigDecimal oldCantidad_hecha = this.cantidad_hecha;
+        this.cantidad_hecha = cantidad_hecha;
+        propertyChangeSupport.firePropertyChange(PROP_CANTIDAD_HECHA, oldCantidad_hecha, cantidad_hecha);
+    }
+
+    /**
+     * Método para obtener una descripcion de un objeto Receta.
+     * @return the descripcion
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    /**
+     * Método para asignar una descripcion de un objeto Receta.
+     * @param descripcion the descripcion to set
+     */
+    public void setDescripcion(String descripcion) {
+        java.lang.String oldDescripcion = this.descripcion;
+        this.descripcion = descripcion;
+        propertyChangeSupport.firePropertyChange(PROP_DESCRIPCION, oldDescripcion, descripcion);
+    }
+
+    /**
+     * Método para obtener una imagen de un objeto Receta.
+     * @return the imagen
+     */
+    public Image getImagen() {
+        return imagen;
+    }
+
+    /**
+     * Método para asignar una imagen de un objeto Receta.
+     * @param imagen the imagen to set
+     */
+    public void setImagen(Image imagen) {
+        java.awt.Image oldImagen = this.imagen;
+        this.imagen = imagen;
+        propertyChangeSupport.firePropertyChange(PROP_IMAGEN, oldImagen, imagen);
+    }
+   
 }

@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import oracle.jdbc.pool.OracleDataSource;
 
 /**
- *Clase que contiene los metodos para la conexion de la base de datos asi como
+ * Clase que contiene los metodos para la conexion de la base de datos asi como
  * los metodos de busqueda y de actualizacion de la base.
  * @author Erik David Zubia Hernandez
  * @version 1.0

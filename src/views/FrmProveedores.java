@@ -195,11 +195,10 @@ public class FrmProveedores extends BaseFrame {
             
             Proveedores.executeQuery(Conexion.getDBConexion(), String.format("insert into proveedores(id_proveedor, nombre_proveedor, direccion_proveedor, telefono, ciudad) values(%s, '%s', '%s', %s, '%s')", id, nombreProveedor, direccionProveedor, telefono, ciudad));
             JOptionPane.showMessageDialog(rootPane, "Añadido exitosamente!");
-            txtCiudad.setText(VACIO);
+            txtCiudad.setText(Proveedor.VACIO);
             txtNombre.setText(Proveedor.VACIO);
             txtDireccion.setText(Proveedor.VACIO);
             txtTelefono.setText(Proveedor.VACIO);
-            txtCiudad.setText(Proveedor.VACIO);
             
             
         }else{

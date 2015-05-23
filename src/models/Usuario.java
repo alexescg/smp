@@ -3,8 +3,8 @@ package models;
 import java.beans.PropertyChangeSupport;
 
 /**
- *
- * @author Alejandro Escobedo
+ * Clase que contiene los atributos de un Usuario.
+ * @author Alejandro Escobedo, Erik Zubia
  */
 public class Usuario extends BaseModel{
     public static final String PROP_USUARIOID = "PROP_USUARIOID";

@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 /**
- * Clase que contiene lo atributos de un Pedido.
+ * Clase que contiene los atributos de un Pedido.
  * @author Alejandro Escobedo
  */
 public class Pedido extends BaseModel{

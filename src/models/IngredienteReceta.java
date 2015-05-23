@@ -4,7 +4,7 @@ import java.beans.PropertyChangeSupport;
 import java.math.BigInteger;
 
 /**
- *
+ * Clase que contiene los atributos de Ingrediente-Receta.
  * @author Alejandro Escobedo
  */
 public class IngredienteReceta extends BaseModel{

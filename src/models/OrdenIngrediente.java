@@ -3,10 +3,9 @@ package models;
 import java.beans.PropertyChangeSupport;
 import java.math.BigInteger;
 import java.sql.Timestamp;
-import java.util.Date;
 
 /**
- *
+ * Clase que contiene los atributos de OrdenIngrediente.
  * @author Alejandro Escobedo
  */
 public class OrdenIngrediente extends BaseModel{

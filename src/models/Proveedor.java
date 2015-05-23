@@ -4,7 +4,7 @@ import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
 
 /**
- *
+ * Clase que contiene los atributos de un Proveedor.
  * @author Alejandro Escobedo
  */
 public class Proveedor extends BaseModel{

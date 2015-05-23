@@ -4,107 +4,115 @@ import java.beans.PropertyChangeSupport;
 import java.math.BigInteger;
 
 /**
- *
+ * Clase que contiene los atributos de un Ingrediente.
  * @author Alejandro Escobedo
  */
 public class Ingrediente extends BaseModel{
-    public static final String PROP_ID = "PROP_ID";
-    public static final String PROP_NOMBREINGREDIENTE = "PROP_NOMBREINGREDIENTE";
-    public static final String PROP_EXISTENCIAINVENTARIO = "PROP_EXISTENCIAINVENTARIO";
-    public static final String PROP_COSTOCOMPRA = "PROP_COSTOCOMPRA";
-    public static final String PROP_PROVEEDOR = "PROP_PROVEEDOR";
+    public static final String PROP_ID_INGREDIENTE = "PROP_ID_INGREDIENTE";
+    public static final String PROP_NOMBRE_INGREDIENTE = "PROP_NOMBRE_INGREDIENTE";
+    public static final String PROP_EXISTENCIA_INVENTARIO = "PROP_EXISTENCIA_INVENTARIO";
+    public static final String PROP_COSTO_COMPRA = "PROP_COSTO_COMPRA";
+    public static final String PROP_ID_PROVEEDOR = "PROP_ID_PROVEEDOR";
 
-    private BigInteger id;
+    private BigInteger id_ingrediente;
     
-    private String nombreIngrediente;
+    private String nombre_ingrediente;
     
-    private BigInteger existenciaInventario;
+    private BigInteger existencia_inventario;
     
-    private BigInteger costoCompra;
+    private BigInteger costo_compra;
     
-    private BigInteger proveedor;
+    private BigInteger id_proveedor;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     /**
-     * @return the id
+     * Metodo para obtener un id_ingrediente de un objeto Ingrediente.
+     * @return the id_ingrediente
      */
-    public BigInteger getId() {
-        return id;
+    public BigInteger getId_ingrediente() {
+        return id_ingrediente;
     }
 
     /**
-     * @param id the id to set
+     * Metodo para asignar un id_ingrediente a un objeto Ingrediente.
+     * @param id_ingrediente the id_ingrediente to set
      */
-    public void setId(BigInteger id) {
-        java.math.BigInteger oldId = this.id;
-        this.id = id;
-        propertyChangeSupport.firePropertyChange(PROP_ID, oldId, id);
+    public void setId_ingrediente(BigInteger id_ingrediente) {
+        java.math.BigInteger oldId_ingrediente = this.id_ingrediente;
+        this.id_ingrediente = id_ingrediente;
+        propertyChangeSupport.firePropertyChange(PROP_ID_INGREDIENTE, oldId_ingrediente, id_ingrediente);
     }
 
     /**
-     * @return the nombreIngrediente
+     * Metodo para obtener un nombre_ingrediente de un objeto Ingrediente.
+     * @return the nombre_ingrediente
      */
-    public String getNombreIngrediente() {
-        return nombreIngrediente;
+    public String getNombre_ingrediente() {
+        return nombre_ingrediente;
     }
 
     /**
-     * @param nombreIngrediente the nombreIngrediente to set
+     * Metodo para asignar un nombre_ingrediente a un objeto Ingrediente.
+     * @param nombre_ingrediente the nombre_ingrediente to set
      */
-    public void setNombreIngrediente(String nombreIngrediente) {
-        java.lang.String oldNombreIngrediente = this.nombreIngrediente;
-        this.nombreIngrediente = nombreIngrediente;
-        propertyChangeSupport.firePropertyChange(PROP_NOMBREINGREDIENTE, oldNombreIngrediente, nombreIngrediente);
+    public void setNombre_ingrediente(String nombre_ingrediente) {
+        java.lang.String oldNombre_ingrediente = this.nombre_ingrediente;
+        this.nombre_ingrediente = nombre_ingrediente;
+        propertyChangeSupport.firePropertyChange(PROP_NOMBRE_INGREDIENTE, oldNombre_ingrediente, nombre_ingrediente);
     }
 
     /**
-     * @return the existenciaInventario
+     * Metodo para obtener existencia_inventario de un objeto Ingrediente.
+     * @return the existencia_inventario
      */
-    public BigInteger getExistenciaInventario() {
-        return existenciaInventario;
+    public BigInteger getExistencia_inventario() {
+        return existencia_inventario;
     }
 
     /**
-     * @param existenciaInventario the existenciaInventario to set
+     * Metodo para asignar un nombre_ingrediente a un objeto Ingrediente.
+     * @param existencia_inventario the existencia_inventario to set
      */
-    public void setExistenciaInventario(BigInteger existenciaInventario) {
-        java.math.BigInteger oldExistenciaInventario = this.existenciaInventario;
-        this.existenciaInventario = existenciaInventario;
-        propertyChangeSupport.firePropertyChange(PROP_EXISTENCIAINVENTARIO, oldExistenciaInventario, existenciaInventario);
+    public void setExistencia_inventario(BigInteger existencia_inventario) {
+        java.math.BigInteger oldExistencia_inventario = this.existencia_inventario;
+        this.existencia_inventario = existencia_inventario;
+        propertyChangeSupport.firePropertyChange(PROP_EXISTENCIA_INVENTARIO, oldExistencia_inventario, existencia_inventario);
     }
 
     /**
-     * @return the costoCompra
+     * Metodo para obtener costo compra de un objeto Ingrediente.
+     * @return the costo_compra
      */
-    public BigInteger getCostoCompra() {
-        return costoCompra;
+    public BigInteger getCosto_compra() {
+        return costo_compra;
     }
 
     /**
-     * @param costoCompra the costoCompra to set
+     * Metodo para asignar un nombre_ingrediente a un objeto Ingrediente.
+     * @param costo_compra the costo_compra to set
      */
-    public void setCostoCompra(BigInteger costoCompra) {
-        java.math.BigInteger oldCostoCompra = this.costoCompra;
-        this.costoCompra = costoCompra;
-        propertyChangeSupport.firePropertyChange(PROP_COSTOCOMPRA, oldCostoCompra, costoCompra);
+    public void setCosto_compra(BigInteger costo_compra) {
+        java.math.BigInteger oldCosto_compra = this.costo_compra;
+        this.costo_compra = costo_compra;
+        propertyChangeSupport.firePropertyChange(PROP_COSTO_COMPRA, oldCosto_compra, costo_compra);
     }
 
     /**
-     * @return the proveedor
+     * Metodo para obtener un id_proveedor de un objeto Ingrediente.
+     * @return the id_proveedor
      */
-    public BigInteger getProveedor() {
-        return proveedor;
+    public BigInteger getId_proveedor() {
+        return id_proveedor;
     }
 
     /**
-     * @param proveedor the proveedor to set
+     * Metodo para asignar un nombre_ingrediente a un objeto Ingrediente.
+     * @param id_proveedor the id_proveedor to set
      */
-    public void setProveedor(BigInteger proveedor) {
-        java.math.BigInteger oldProveedor = this.proveedor;
-        this.proveedor = proveedor;
-        propertyChangeSupport.firePropertyChange(PROP_PROVEEDOR, oldProveedor, proveedor);
+    public void setId_proveedor(BigInteger id_proveedor) {
+        java.math.BigInteger oldId_proveedor = this.id_proveedor;
+        this.id_proveedor = id_proveedor;
+        propertyChangeSupport.firePropertyChange(PROP_ID_PROVEEDOR, oldId_proveedor, id_proveedor);
     }
-    
-    
     
 }

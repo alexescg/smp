@@ -11,9 +11,7 @@ import java.util.List;
 import utils.StringUtils;
 
 /**
- * Clase que sirve como controlador Base para hacer consultas utilizando
- * Reflection.
- *
+ * Clase que sirve como controlador base para todos los controladores
  * @author Alejandro Escobedo
  */
 public class BaseController {
@@ -70,8 +68,7 @@ public class BaseController {
     }
 
     /**
-     * Metodo para poder hacer querys de tipo ddl
-     *
+     * Metodo para poder ejecutar querys en la base de datos.
      * @param connection
      * @param sql
      */

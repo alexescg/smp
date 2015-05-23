@@ -5,7 +5,7 @@ import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
 
 /**
- *
+ * Clase que contiene los atributos de un Receta.
  * @author Alejandro Escobedo
  */
 public class Receta extends BaseModel{

@@ -19,7 +19,6 @@ public class FrmProveedores extends BaseFrame {
     private String telefono;
     private String ciudad;
     private final static String id = "proveedor_seq.nextval";
-    private final static String VACIO = "";
     
     /**
      * Creates new form Login
@@ -196,10 +195,11 @@ public class FrmProveedores extends BaseFrame {
             
             Proveedores.executeQuery(Conexion.getDBConexion(), String.format("insert into proveedores(id_proveedor, nombre_proveedor, direccion_proveedor, telefono, ciudad) values(%s, '%s', '%s', %s, '%s')", id, nombreProveedor, direccionProveedor, telefono, ciudad));
             JOptionPane.showMessageDialog(rootPane, "Añadido exitosamente!");
-            txtNombre.setText(VACIO);
-            txtDireccion.setText(VACIO);
-            txtTelefono.setText(VACIO);
             txtCiudad.setText(VACIO);
+            txtNombre.setText(Proveedor.VACIO);
+            txtDireccion.setText(Proveedor.VACIO);
+            txtTelefono.setText(Proveedor.VACIO);
+            txtCiudad.setText(Proveedor.VACIO);
             
             
         }else{

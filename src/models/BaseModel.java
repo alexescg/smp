@@ -7,6 +7,8 @@ package models;
  */
 public class BaseModel {
 
+    public static final String VACIO = "";
+    
     /**
      * Metodo para checar si algun valor es numerico.
      *
@@ -15,8 +17,8 @@ public class BaseModel {
      */
     public static Boolean isNumeric(String str) {
         try {
-            double d = Double.parseDouble(str);
-        } catch (NumberFormatException nfe) {
+            double d = Double.parseDouble(str.trim());
+        } catch (NumberFormatException e) {
             return false;
         }
         return true;

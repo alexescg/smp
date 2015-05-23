@@ -1,5 +1,6 @@
 package controllers;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +9,9 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import utils.StringUtils;
 
 /**
@@ -79,4 +83,30 @@ public class BaseController {
 
         }
     }
+    
+    /**
+     * Metodo que llena un combobox con los elementos de una lista, utilizando el getter del val de la clase.
+     * @param combo
+     * @param elementos
+     * @param val
+     * @param clase
+     * @throws Exception 
+     */
+    public static void fillCombo(JComboBox combo, List<?> elementos, String val, Class clase) throws Exception{
+    combo.removeAllItems();
+    
+    String methodName = String.format("get%s", StringUtils.capitalize(val));
+    Class[] params = new Class[0];
+    Method method = clase.getDeclaredMethod(methodName);
+        
+        elementos.stream().forEach((elemento) -> {
+
+        try {
+            combo.addItem(method.invoke(elemento, new Object[0]));
+        } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+            Logger.getLogger(BaseController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    });
+}
+
 }

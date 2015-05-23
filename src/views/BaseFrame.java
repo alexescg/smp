@@ -30,32 +30,9 @@ public class BaseFrame extends javax.swing.JFrame {
     JPanel panel1;
     Dimension screenSize;
     public BaseFrame() {
-        screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        try {
-            initComponents();
-            
-            setSize(screenSize);
-            this.setContentPane(new JLabel (new ImageIcon(ImageIO.read(new File("login2.png")))));
-            
-        } catch (IOException ex) {
-            setContentPane(rootPane);
-        }
         
-        panel1 = new JPanel();
-        
-        panel.setBackground(Color.red);
-        panel.setLocation(screenSize.height/2, screenSize.width/3);
     }
     
-    
-
-    public JPanel getPanel() {
-        return panel;
-    }
-
-    public void setPanel(JPanel panel) {
-        this.panel = panel;
-    }
     
     
 
@@ -68,8 +45,6 @@ public class BaseFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel = new javax.swing.JPanel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1920, 1080));
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -78,32 +53,15 @@ public class BaseFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
-        panel.setLayout(panelLayout);
-        panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
-        );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 288, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(249, 249, 249)
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(853, Short.MAX_VALUE))
+            .addGap(0, 1662, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(161, 161, 161)
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(609, Short.MAX_VALUE))
+            .addGap(0, 1058, Short.MAX_VALUE)
         );
 
         pack();
@@ -112,9 +70,22 @@ public class BaseFrame extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         System.out.println("asdasdasd");
     }//GEN-LAST:event_formWindowClosing
-
+    
+    
+    public void iniciarVentana(JPanel panel){
+        screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        try {
+            setSize(screenSize);
+            this.setContentPane(new JLabel (new ImageIcon(ImageIO.read(new File("login2.png")))));
+        } catch (IOException ex) {
+            setContentPane(rootPane);
+        }
+        this.add(panel);
+        panel.setLocation(screenSize.width/4, screenSize.height/2-(panel.getHeight()));
+        this.pack();
+        initComponents();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 }

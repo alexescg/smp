@@ -1,6 +1,7 @@
 package models;
 
 import java.beans.PropertyChangeSupport;
+import java.math.BigInteger;
 
 /**
  *
@@ -12,41 +13,30 @@ public class Ingrediente extends BaseModel{
     public static final String PROP_EXISTENCIAINVENTARIO = "PROP_EXISTENCIAINVENTARIO";
     public static final String PROP_COSTOCOMPRA = "PROP_COSTOCOMPRA";
     public static final String PROP_PROVEEDOR = "PROP_PROVEEDOR";
-    
-    private Integer id;
+
+    private BigInteger id;
     
     private String nombreIngrediente;
     
-    private Integer existenciaInventario;
+    private BigInteger existenciaInventario;
     
-    private Double costoCompra;
+    private BigInteger costoCompra;
     
-    private Proveedor proveedor;
+    private BigInteger proveedor;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
-
-    public Ingrediente() {
-    }
-
-    public Ingrediente(Integer id, String nombreIngrediente, Integer existenciaInventario, Double costoCompra, Proveedor proveedor) {
-        this.id = id;
-        this.nombreIngrediente = nombreIngrediente;
-        this.existenciaInventario = existenciaInventario;
-        this.costoCompra = costoCompra;
-        this.proveedor = proveedor;
-    }
 
     /**
      * @return the id
      */
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(Integer id) {
-        java.lang.Integer oldId = this.id;
+    public void setId(BigInteger id) {
+        java.math.BigInteger oldId = this.id;
         this.id = id;
         propertyChangeSupport.firePropertyChange(PROP_ID, oldId, id);
     }
@@ -70,15 +60,15 @@ public class Ingrediente extends BaseModel{
     /**
      * @return the existenciaInventario
      */
-    public Integer getExistenciaInventario() {
+    public BigInteger getExistenciaInventario() {
         return existenciaInventario;
     }
 
     /**
      * @param existenciaInventario the existenciaInventario to set
      */
-    public void setExistenciaInventario(Integer existenciaInventario) {
-        java.lang.Integer oldExistenciaInventario = this.existenciaInventario;
+    public void setExistenciaInventario(BigInteger existenciaInventario) {
+        java.math.BigInteger oldExistenciaInventario = this.existenciaInventario;
         this.existenciaInventario = existenciaInventario;
         propertyChangeSupport.firePropertyChange(PROP_EXISTENCIAINVENTARIO, oldExistenciaInventario, existenciaInventario);
     }
@@ -86,15 +76,15 @@ public class Ingrediente extends BaseModel{
     /**
      * @return the costoCompra
      */
-    public Double getCostoCompra() {
+    public BigInteger getCostoCompra() {
         return costoCompra;
     }
 
     /**
      * @param costoCompra the costoCompra to set
      */
-    public void setCostoCompra(Double costoCompra) {
-        java.lang.Double oldCostoCompra = this.costoCompra;
+    public void setCostoCompra(BigInteger costoCompra) {
+        java.math.BigInteger oldCostoCompra = this.costoCompra;
         this.costoCompra = costoCompra;
         propertyChangeSupport.firePropertyChange(PROP_COSTOCOMPRA, oldCostoCompra, costoCompra);
     }
@@ -102,15 +92,15 @@ public class Ingrediente extends BaseModel{
     /**
      * @return the proveedor
      */
-    public Proveedor getProveedor() {
+    public BigInteger getProveedor() {
         return proveedor;
     }
 
     /**
      * @param proveedor the proveedor to set
      */
-    public void setProveedor(Proveedor proveedor) {
-        models.Proveedor oldProveedor = this.proveedor;
+    public void setProveedor(BigInteger proveedor) {
+        java.math.BigInteger oldProveedor = this.proveedor;
         this.proveedor = proveedor;
         propertyChangeSupport.firePropertyChange(PROP_PROVEEDOR, oldProveedor, proveedor);
     }

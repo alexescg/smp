@@ -18,7 +18,11 @@ public class BaseController {
 
     /**
      * Metodo generico que mapea las consultas de tipo select a una lista.
-     *
+     * Necesita:
+     * <ul>
+     * <li><b>BigInteger: </b> Para datos numericos</li>
+     * <li><b>String: </b> Para datos de cadena</li>
+     * </ul>
      * @param connection
      * @param sql
      * @param clase

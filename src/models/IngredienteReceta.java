@@ -1,6 +1,7 @@
 package models;
 
 import java.beans.PropertyChangeSupport;
+import java.math.BigInteger;
 
 /**
  *
@@ -11,34 +12,27 @@ public class IngredienteReceta extends BaseModel{
     public static final String PROP_PROVEEDOR = "PROP_PROVEEDOR";
     public static final String PROP_CANTIDADINGREDIENTE = "PROP_CANTIDADINGREDIENTE";
     
-    private Ingrediente ingrediente;
+    //Id ingrediente
+    private BigInteger ingrediente;
     
-    private Proveedor proveedor;
+    //Id proveedor
+    private BigInteger proveedor;
     
-    private Double cantidadIngrediente;
+    private BigInteger cantidadIngrediente;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
-
-    public IngredienteReceta() {
-    }
-
-    public IngredienteReceta(Ingrediente ingrediente, Proveedor proveedor, Double cantidadIngrediente) {
-        this.ingrediente = ingrediente;
-        this.proveedor = proveedor;
-        this.cantidadIngrediente = cantidadIngrediente;
-    }
 
     /**
      * @return the ingrediente
      */
-    public Ingrediente getIngrediente() {
+    public BigInteger getIngrediente() {
         return ingrediente;
     }
 
     /**
      * @param ingrediente the ingrediente to set
      */
-    public void setIngrediente(Ingrediente ingrediente) {
-        models.Ingrediente oldIngrediente = this.ingrediente;
+    public void setIngrediente(BigInteger ingrediente) {
+        java.math.BigInteger oldIngrediente = this.ingrediente;
         this.ingrediente = ingrediente;
         propertyChangeSupport.firePropertyChange(PROP_INGREDIENTE, oldIngrediente, ingrediente);
     }
@@ -46,15 +40,15 @@ public class IngredienteReceta extends BaseModel{
     /**
      * @return the proveedor
      */
-    public Proveedor getProveedor() {
+    public BigInteger getProveedor() {
         return proveedor;
     }
 
     /**
      * @param proveedor the proveedor to set
      */
-    public void setProveedor(Proveedor proveedor) {
-        models.Proveedor oldProveedor = this.proveedor;
+    public void setProveedor(BigInteger proveedor) {
+        java.math.BigInteger oldProveedor = this.proveedor;
         this.proveedor = proveedor;
         propertyChangeSupport.firePropertyChange(PROP_PROVEEDOR, oldProveedor, proveedor);
     }
@@ -62,19 +56,17 @@ public class IngredienteReceta extends BaseModel{
     /**
      * @return the cantidadIngrediente
      */
-    public Double getCantidadIngrediente() {
+    public BigInteger getCantidadIngrediente() {
         return cantidadIngrediente;
     }
 
     /**
      * @param cantidadIngrediente the cantidadIngrediente to set
      */
-    public void setCantidadIngrediente(Double cantidadIngrediente) {
-        java.lang.Double oldCantidadIngrediente = this.cantidadIngrediente;
+    public void setCantidadIngrediente(BigInteger cantidadIngrediente) {
+        java.math.BigInteger oldCantidadIngrediente = this.cantidadIngrediente;
         this.cantidadIngrediente = cantidadIngrediente;
         propertyChangeSupport.firePropertyChange(PROP_CANTIDADINGREDIENTE, oldCantidadIngrediente, cantidadIngrediente);
     }
-    
-    
     
 }

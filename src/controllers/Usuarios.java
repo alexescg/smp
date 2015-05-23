@@ -1,8 +1,10 @@
 package controllers;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import models.Usuario;
 import oraclegeneral.Conexion;
+import views.BaseFrame;
 
 /**
  * Clase controlador del modelo usuarios
@@ -12,13 +14,22 @@ import oraclegeneral.Conexion;
  */
 public class Usuarios extends BaseController{
     
-    public void checkUsuario(String usuario){
-        String query = "select contrasena from usuarios where usuario like '"+usuario+"'";
+    public static void checkUsuario(String usuario, String contra){
+        String query = "select * from usuarios where usuario like '"+usuario+"' and contrasena like '"+contra+"'";
         List<Usuario> usuarios = (List<Usuario>) Usuarios.select(Conexion.getDBConexion(), query, Usuario.class);
-        if(usuarios.get(0).getContrasena().equals(usuario)){
+        if(usuarios!=null){
+            try{
+            if(usuarios.get(0).getUsuario().equals(usuario) && usuarios.get(0).getContrasena().equals(contra)){
+                BaseFrame bs = new BaseFrame();
+                bs.setVisible(true);
+            } 
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Usuario/Contraseña incorrecta.");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuario/Contraseña incorrecta.");
             
         }
-        
     }
     
 }

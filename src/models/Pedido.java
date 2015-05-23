@@ -1,6 +1,7 @@
 package models;
 
 import java.beans.PropertyChangeSupport;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -8,134 +9,101 @@ import java.util.Date;
  * @author Alejandro Escobedo
  */
 public class Pedido extends BaseModel{
-    public static final String PROP_ID = "PROP_ID";
-    public static final String PROP_CANTIDADPRODUCTO = "PROP_CANTIDADPRODUCTO";
-    public static final String PROP_FECHAPEDIDO = "PROP_FECHAPEDIDO";
+    public static final String PROP_ID_PEDIDO = "PROP_ID_PEDIDO";
+    public static final String PROP_FECHA_PEDIDO = "PROP_FECHA_PEDIDO";
     public static final String PROP_TOTAL = "PROP_TOTAL";
-    public static final String PROP_FECHAENTREGA = "PROP_FECHAENTREGA";
-    public static final String PROP_PRODUCTO = "PROP_PRODUCTO";
+    public static final String PROP_FECHA_ENTREGA = "PROP_FECHA_ENTREGA";
+    public static final String PROP_ESTADO = "PROP_ESTADO";
     
-    private Integer id;
+    private BigDecimal id_pedido;
     
-    private Integer cantidadProducto;
+    private Date fecha_pedido;
     
-    private Date fechaPedido;
+    private BigDecimal total;
     
-    private Double total;
+    private Date fecha_entrega;
     
-    private Date fechaEntrega;
-    
-    private Producto producto;
+    private String estado;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
-    public Pedido() {
-    }
-
-    public Pedido(Integer id, Integer cantidadProducto, Date fechaPedido, Double total, Date fechaEntrega, Producto producto) {
-        this.id = id;
-        this.cantidadProducto = cantidadProducto;
-        this.fechaPedido = fechaPedido;
-        this.total = total;
-        this.fechaEntrega = fechaEntrega;
-        this.producto = producto;
+    /**
+     * @return the id_pedido
+     */
+    public BigDecimal getId_pedido() {
+        return id_pedido;
     }
 
     /**
-     * @return the id
+     * @param id_pedido the id_pedido to set
      */
-    public Integer getId() {
-        return id;
+    public void setId_pedido(BigDecimal id_pedido) {
+        java.math.BigDecimal oldId_pedido = this.id_pedido;
+        this.id_pedido = id_pedido;
+        propertyChangeSupport.firePropertyChange(PROP_ID_PEDIDO, oldId_pedido, id_pedido);
     }
 
     /**
-     * @param id the id to set
+     * @return the fecha_pedido
      */
-    public void setId(Integer id) {
-        java.lang.Integer oldId = this.id;
-        this.id = id;
-        propertyChangeSupport.firePropertyChange(PROP_ID, oldId, id);
+    public Date getFecha_pedido() {
+        return fecha_pedido;
     }
 
     /**
-     * @return the cantidadProducto
+     * @param fecha_pedido the fecha_pedido to set
      */
-    public Integer getCantidadProducto() {
-        return cantidadProducto;
-    }
-
-    /**
-     * @param cantidadProducto the cantidadProducto to set
-     */
-    public void setCantidadProducto(Integer cantidadProducto) {
-        java.lang.Integer oldCantidadProducto = this.cantidadProducto;
-        this.cantidadProducto = cantidadProducto;
-        propertyChangeSupport.firePropertyChange(PROP_CANTIDADPRODUCTO, oldCantidadProducto, cantidadProducto);
-    }
-
-    /**
-     * @return the fechaPedido
-     */
-    public Date getFechaPedido() {
-        return fechaPedido;
-    }
-
-    /**
-     * @param fechaPedido the fechaPedido to set
-     */
-    public void setFechaPedido(Date fechaPedido) {
-        java.util.Date oldFechaPedido = this.fechaPedido;
-        this.fechaPedido = fechaPedido;
-        propertyChangeSupport.firePropertyChange(PROP_FECHAPEDIDO, oldFechaPedido, fechaPedido);
+    public void setFecha_pedido(Date fecha_pedido) {
+        java.util.Date oldFecha_pedido = this.fecha_pedido;
+        this.fecha_pedido = fecha_pedido;
+        propertyChangeSupport.firePropertyChange(PROP_FECHA_PEDIDO, oldFecha_pedido, fecha_pedido);
     }
 
     /**
      * @return the total
      */
-    public Double getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 
     /**
      * @param total the total to set
      */
-    public void setTotal(Double total) {
-        java.lang.Double oldTotal = this.total;
+    public void setTotal(BigDecimal total) {
+        java.math.BigDecimal oldTotal = this.total;
         this.total = total;
         propertyChangeSupport.firePropertyChange(PROP_TOTAL, oldTotal, total);
     }
 
     /**
-     * @return the fechaEntrega
+     * @return the fecha_entrega
      */
-    public Date getFechaEntrega() {
-        return fechaEntrega;
+    public Date getFecha_entrega() {
+        return fecha_entrega;
     }
 
     /**
-     * @param fechaEntrega the fechaEntrega to set
+     * @param fecha_entrega the fecha_entrega to set
      */
-    public void setFechaEntrega(Date fechaEntrega) {
-        java.util.Date oldFechaEntrega = this.fechaEntrega;
-        this.fechaEntrega = fechaEntrega;
-        propertyChangeSupport.firePropertyChange(PROP_FECHAENTREGA, oldFechaEntrega, fechaEntrega);
+    public void setFecha_entrega(Date fecha_entrega) {
+        java.util.Date oldFecha_entrega = this.fecha_entrega;
+        this.fecha_entrega = fecha_entrega;
+        propertyChangeSupport.firePropertyChange(PROP_FECHA_ENTREGA, oldFecha_entrega, fecha_entrega);
     }
 
     /**
-     * @return the producto
+     * @return the estado
      */
-    public Producto getProducto() {
-        return producto;
+    public String getEstado() {
+        return estado;
     }
 
     /**
-     * @param producto the producto to set
+     * @param estado the estado to set
      */
-    public void setProducto(Producto producto) {
-        models.Producto oldProducto = this.producto;
-        this.producto = producto;
-        propertyChangeSupport.firePropertyChange(PROP_PRODUCTO, oldProducto, producto);
+    public void setEstado(String estado) {
+        java.lang.String oldEstado = this.estado;
+        this.estado = estado;
+        propertyChangeSupport.firePropertyChange(PROP_ESTADO, oldEstado, estado);
     }
-    
-    
     
 }

@@ -1,115 +1,91 @@
 package models;
 
 import java.beans.PropertyChangeSupport;
+import java.math.BigDecimal;
 
 /**
  *
  * @author Alejandro Escobedo
  */
 public class Proveedor extends BaseModel{
-    public static final String PROP_IDPROVEEDOR = "PROP_IDPROVEEDOR";
-    public static final String PROP_NOMBREPROVEEDOR = "PROP_NOMBREPROVEEDOR";
-    public static final String PROP_DIRECCIONPROVEEDOR = "PROP_DIRECCIONPROVEEDOR";
+    public static final String PROP_ID_PROVEEDOR = "PROP_ID_PROVEEDOR";
+    public static final String PROP_NOMBRE_PROVEEDOR = "PROP_NOMBRE_PROVEEDOR";
+    public static final String PROP_DIRECCION_PROVEEDOR = "PROP_DIRECCION_PROVEEDOR";
     public static final String PROP_TELEFONO = "PROP_TELEFONO";
     public static final String PROP_CIUDAD = "PROP_CIUDAD";
     
-    private Integer idProveedor;
     
-    private String nombreProveedor;
+    private BigDecimal id_proveedor;
     
-    private String direccionProveedor;
+    private String nombre_proveedor;
     
-    private Integer telefono;
+    private String direccion_proveedor;
+    
+    private BigDecimal telefono;
     
     private String ciudad;
-    
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
-    public Proveedor() {
-    }
-
-    public Proveedor(Integer idProveedor, String nombreProveedor, String direccionProveedor, Integer telefono, String ciudad) {
-        this.idProveedor = idProveedor;
-        this.nombreProveedor = nombreProveedor;
-        this.direccionProveedor = direccionProveedor;
-        this.telefono = telefono;
-        this.ciudad = ciudad;
-    }
-    
     /**
-     * Constructor para proveedor sin id.
-     * @param nombreProveedor
-     * @param direccionProveedor
-     * @param telefono
-     * @param ciudad 
+     * @return the id_proveedor
      */
-    public Proveedor(String nombreProveedor, String direccionProveedor, Integer telefono, String ciudad) {
-        this.nombreProveedor = nombreProveedor;
-        this.direccionProveedor = direccionProveedor;
-        this.telefono = telefono;
-        this.ciudad = ciudad;
+    public BigDecimal getId_proveedor() {
+        return id_proveedor;
     }
 
     /**
-     * @return the idProveedor
+     * @param id_proveedor the id_proveedor to set
      */
-    public Integer getIdProveedor() {
-        return idProveedor;
+    public void setId_proveedor(BigDecimal id_proveedor) {
+        java.math.BigDecimal oldId_proveedor = this.id_proveedor;
+        this.id_proveedor = id_proveedor;
+        propertyChangeSupport.firePropertyChange(PROP_ID_PROVEEDOR, oldId_proveedor, id_proveedor);
     }
 
     /**
-     * @param idProveedor the idProveedor to set
+     * @return the nombre_proveedor
      */
-    public void setIdProveedor(Integer idProveedor) {
-        java.lang.Integer oldIdProveedor = this.idProveedor;
-        this.idProveedor = idProveedor;
-        propertyChangeSupport.firePropertyChange(PROP_IDPROVEEDOR, oldIdProveedor, idProveedor);
+    public String getNombre_proveedor() {
+        return nombre_proveedor;
     }
 
     /**
-     * @return the nombreProveedor
+     * @param nombre_proveedor the nombre_proveedor to set
      */
-    public String getNombreProveedor() {
-        return nombreProveedor;
+    public void setNombre_proveedor(String nombre_proveedor) {
+        java.lang.String oldNombre_proveedor = this.nombre_proveedor;
+        this.nombre_proveedor = nombre_proveedor;
+        propertyChangeSupport.firePropertyChange(PROP_NOMBRE_PROVEEDOR, oldNombre_proveedor, nombre_proveedor);
     }
 
     /**
-     * @param nombreProveedor the nombreProveedor to set
+     * @return the direccion_proveedor
      */
-    public void setNombreProveedor(String nombreProveedor) {
-        java.lang.String oldNombreProveedor = this.nombreProveedor;
-        this.nombreProveedor = nombreProveedor;
-        propertyChangeSupport.firePropertyChange(PROP_NOMBREPROVEEDOR, oldNombreProveedor, nombreProveedor);
+    public String getDireccion_proveedor() {
+        return direccion_proveedor;
     }
 
     /**
-     * @return the direccionProveedor
+     * @param direccion_proveedor the direccion_proveedor to set
      */
-    public String getDireccionProveedor() {
-        return direccionProveedor;
-    }
-
-    /**
-     * @param direccionProveedor the direccionProveedor to set
-     */
-    public void setDireccionProveedor(String direccionProveedor) {
-        java.lang.String oldDireccionProveedor = this.direccionProveedor;
-        this.direccionProveedor = direccionProveedor;
-        propertyChangeSupport.firePropertyChange(PROP_DIRECCIONPROVEEDOR, oldDireccionProveedor, direccionProveedor);
+    public void setDireccion_proveedor(String direccion_proveedor) {
+        java.lang.String oldDireccion_proveedor = this.direccion_proveedor;
+        this.direccion_proveedor = direccion_proveedor;
+        propertyChangeSupport.firePropertyChange(PROP_DIRECCION_PROVEEDOR, oldDireccion_proveedor, direccion_proveedor);
     }
 
     /**
      * @return the telefono
      */
-    public Integer getTelefono() {
+    public BigDecimal getTelefono() {
         return telefono;
     }
 
     /**
      * @param telefono the telefono to set
      */
-    public void setTelefono(Integer telefono) {
-        java.lang.Integer oldTelefono = this.telefono;
+    public void setTelefono(BigDecimal telefono) {
+        java.math.BigDecimal oldTelefono = this.telefono;
         this.telefono = telefono;
         propertyChangeSupport.firePropertyChange(PROP_TELEFONO, oldTelefono, telefono);
     }

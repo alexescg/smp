@@ -1,14 +1,21 @@
 package models;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import static javax.print.attribute.Size2DSyntax.MM;
+
 /**
  * Modelo que sirve como base para todos los demas modelos
  *
- * @author Alejandro Escobedo
+ * @author Alejandro Escobedo, Daniela Santillanes
+ * @version 1.0
+ * @since 26/05/2015
  */
 public class BaseModel {
 
     public static final String VACIO = "";
-    
+
     /**
      * Metodo para checar si algun valor es numerico.
      *
@@ -32,6 +39,33 @@ public class BaseModel {
      */
     public static Boolean isValidString(String str) {
         return str != null && !str.isEmpty() && !str.trim().isEmpty();
+    }
+
+    /**
+     * Método que nos verifica si algún valor es una Fecha.
+     * 
+     * @param fecha
+     * @return 
+     */
+    public static boolean isFecha(String fecha) {
+        if (fecha == null) {
+            return false;
+        }
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        if (fecha.trim().length() != dateFormat.toPattern().length()) {
+            return false;
+        }
+
+        dateFormat.setLenient(false);
+
+        try {
+            dateFormat.parse(fecha.trim());
+        } catch (ParseException pe) {
+            return false;
+        }
+        return true;
     }
 
 }

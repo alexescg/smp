@@ -21,7 +21,7 @@ public class FrmProductos extends BaseFrame {
     private String nombreProducto;
     private String precioUnitario;
     private String cantidadDisponible;
-    private final static String id = "proveedor_seq.nextval";
+    private final static String id = "product_seq.nextval";
     
     /**
      * Creates new form Login

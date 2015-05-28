@@ -2,11 +2,19 @@ package views;
 
 import controllers.BaseController;
 import controllers.Ingredientes;
+import controllers.Pedidos;
+import controllers.Productos;
 import controllers.Proveedores;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import models.BaseModel;
 import models.Ingrediente;
+import models.Producto;
 import models.Proveedor;
 import oraclegeneral.Conexion;
 
@@ -20,14 +28,23 @@ public class FrmPedidosProductos extends BaseFrame {
 
     private String idPedido;
     private String idProducto;
-    private String cantidad;
+    private Integer cantidad;
 
     /**
      * Creates new form Login
      */
-    public FrmPedidosProductos() {
+    private List<Producto> productosCombo = new ArrayList<>();
+    private FrmPedidos ventanaPedido;
+    private Producto productoAgregar = new Producto();
+    public FrmPedidosProductos(FrmPedidos frm) {
         initComponents();
-        super.iniciarVentana(panel);
+        ventanaPedido = frm;
+        productosCombo = (List<Producto>) Productos.select(Conexion.getDBConexion(), "select * from productos", Producto.class);
+        try {
+            Pedidos.fillCombo(comboProductos, productosCombo, "nombre", Producto.class);
+        } catch (Exception ex) {
+            Logger.getLogger(FrmPedidosProductos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -40,24 +57,15 @@ public class FrmPedidosProductos extends BaseFrame {
     private void initComponents() {
 
         panel = new javax.swing.JPanel();
-        txtNombre = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         cmdAcceder = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        txtExistencia = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtCosto = new javax.swing.JTextField();
+        txtCantidad = new javax.swing.JTextField();
         btnCerrar = new javax.swing.JButton();
+        comboProductos = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Id. Pedido:");
 
         cmdAcceder.setText("Agregar");
         cmdAcceder.addActionListener(new java.awt.event.ActionListener() {
@@ -68,17 +76,11 @@ public class FrmPedidosProductos extends BaseFrame {
 
         jLabel3.setText("Id. Producto:");
 
-        txtExistencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtExistenciaActionPerformed(evt);
-            }
-        });
-
         jLabel4.setText("Cantidad:");
 
-        txtCosto.addActionListener(new java.awt.event.ActionListener() {
+        txtCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCostoActionPerformed(evt);
+                txtCantidadActionPerformed(evt);
             }
         });
 
@@ -89,50 +91,50 @@ public class FrmPedidosProductos extends BaseFrame {
             }
         });
 
+        comboProductos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(panelLayout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panelLayout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txtExistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(cmdAcceder)
                 .addGap(112, 112, 112)
                 .addComponent(btnCerrar)
                 .addGap(40, 40, 40))
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel4))
+                            .addGroup(panelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel3)))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtExistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(comboProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCerrar)
@@ -145,124 +147,68 @@ public class FrmPedidosProductos extends BaseFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(21, 21, 21)
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-
-    }//GEN-LAST:event_txtNombreActionPerformed
-
     private void cmdAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAccederActionPerformed
-
-//        if (Ingredient.isValidString(txtNombre.getText())
-//                && Ingrediente.isNumeric(txtExistencia.getText())
-//                && Ingrediente.isNumeric(txtCosto.getText())
-//                && Ingrediente.isNumeric(txtProveedor.getText())) {
-//
-//            nombreIngrediente = txtNombre.getText();
-//            System.out.println("nombreIngrediente = " + nombreIngrediente);
-//            existencia = txtExistencia.getText();
-//            System.out.println("existencia = " + existencia);
-//            costo = txtCosto.getText();
-//            System.out.println("costo = " + costo);
-//            proveedor = txtProveedor.getText();
-//            System.out.println("proveedor = " + proveedor);
-//            
-//            Ingredientes.executeQuery(Conexion.getDBConexion(), String.format("insert into ingredientes values(%s, '%s', %s, %s, %s)", id, nombreIngrediente, existencia, costo, proveedor));
-//            JOptionPane.showMessageDialog(rootPane, "Añadido exitosamente!");
-//            txtNombre.setText(Ingrediente.VACIO);
-//            txtExistencia.setText(Ingrediente.VACIO);
-//            txtCosto.setText(Ingrediente.VACIO);
-//            txtProveedor.setText(Ingrediente.VACIO);
-//
-//        } else {
-//            JOptionPane.showMessageDialog(rootPane, "Invalido");
-//        }
-
-
+        
+        productoAgregar = productosCombo.get(comboProductos.getSelectedIndex());
+        productoAgregar.setCantidad_disponible(BigDecimal.valueOf(Double.parseDouble(txtCantidad.getText())));
+        ventanaPedido.getProductos().add(productoAgregar);
+        ventanaPedido.setCantidad(Integer.parseInt(txtCantidad.getText()));
+        System.out.println(ventanaPedido.getProductos().toString());
+        System.out.println(ventanaPedido.getCantidad());
+        ventanaPedido.refrescarTabla();
+        this.dispose();
     }//GEN-LAST:event_cmdAccederActionPerformed
 
-    private void txtExistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtExistenciaActionPerformed
+    private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtExistenciaActionPerformed
-
-    private void txtCostoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCostoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCostoActionPerformed
+    }//GEN-LAST:event_txtCantidadActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmPedidosProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmPedidosProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmPedidosProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmPedidosProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new FrmPedidosProductos().setVisible(true);
-        });
+    public Producto getProductoAgregar() {
+        return productoAgregar;
     }
 
+    public void setProductoAgregar(Producto productoAgregar) {
+        this.productoAgregar = productoAgregar;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton cmdAcceder;
+    private javax.swing.JComboBox comboProductos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel panel;
-    private javax.swing.JTextField txtCosto;
-    private javax.swing.JTextField txtExistencia;
-    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtCantidad;
     // End of variables declaration//GEN-END:variables
 }

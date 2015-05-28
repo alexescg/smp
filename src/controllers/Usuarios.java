@@ -26,7 +26,7 @@ public class Usuarios extends BaseController{
                 return false;
             }
             }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Usuario/Contraseña incorrecta.");
+                JOptionPane.showMessageDialog(null, "Acceso como vendedor.");
             }
         }else{
             JOptionPane.showMessageDialog(null, "Usuario/Contraseña incorrecta.");

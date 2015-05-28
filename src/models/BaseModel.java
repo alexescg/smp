@@ -15,7 +15,7 @@ import static javax.print.attribute.Size2DSyntax.MM;
 public class BaseModel {
 
     public static final String VACIO = "";
-
+    public static final String CURRENT_TIMESTAMP = "CURRENT_TIMESTAMP";
     /**
      * Metodo para checar si algun valor es numerico.
      *

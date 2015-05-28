@@ -35,7 +35,9 @@ public class BaseController {
      */
     public static List<?> select(Connection connection, String sql, Class clase) {
         List objects = new ArrayList<>();
-
+        System.out.println(connection);
+        System.out.println(sql);
+        System.out.println(clase);
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             try (ResultSet rs = ps.executeQuery()) {
 
@@ -59,16 +61,19 @@ public class BaseController {
                     }
                     objects.add(object);
                 }
-                rs.close();
+                ps.close();
                 connection.close();
             } catch (Exception e) {
-                System.out.println("e = " + e);
+                System.out.println("e = 1: " + e);
+                ps.close();
+                connection.close();
             }
 
         } catch (Exception e) {
-            System.out.println("e = " + e);
+            System.out.println("e = 2: " + e);
         }
         return objects;
+        
     }
 
     /**

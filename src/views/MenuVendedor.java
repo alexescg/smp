@@ -7,8 +7,10 @@
 package views;
 
 /**
- *
- * @author paradoja
+ *Ventana de menu vendedor en la cual accesa cuando no es un admin el usuario
+ * @author Erik David Zubia Hernandez
+ * @since 27/05/2015
+ * @version 1.0
  */
 public class MenuVendedor extends BaseFrame{
 
@@ -38,12 +40,22 @@ public class MenuVendedor extends BaseFrame{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnPedido.setText("Hacer Pedido");
+        btnPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPedidoActionPerformed(evt);
+            }
+        });
 
         btnVender.setText("Vender Mercancia");
 
         btnRecetas.setText("Ver Recetas");
 
         btnPedidosV.setText("Ver Pedidos");
+        btnPedidosV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPedidosVActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
@@ -96,6 +108,16 @@ public class MenuVendedor extends BaseFrame{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidoActionPerformed
+        FrmPedidos frmPedido = new FrmPedidos();
+        frmPedido.setVisible(true);
+    }//GEN-LAST:event_btnPedidoActionPerformed
+
+    private void btnPedidosVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidosVActionPerformed
+        FrmVerPedidos frmVerPedidos = new FrmVerPedidos();
+        frmVerPedidos.setVisible(true);
+    }//GEN-LAST:event_btnPedidosVActionPerformed
 
     /**
      * @param args the command line arguments

@@ -3,6 +3,7 @@ package views;
 import controllers.BaseController;
 import controllers.Pedidos;
 import controllers.PedidosProductos;
+import controllers.Productos;
 import controllers.Proveedores;
 import java.awt.Dialog;
 import java.math.BigDecimal;
@@ -14,11 +15,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import models.BaseModel;
 import models.Pedido;
+import models.PedidoProducto;
 import models.Producto;
 import models.Proveedor;
 import oraclegeneral.Conexion;
@@ -29,21 +33,30 @@ import oraclegeneral.Conexion;
  * @version 1.0
  * @since 26/05/2015
  */
-public class FrmPedidos extends BaseFrame {
+public class FrmVerPedidos extends BaseFrame {
 
+    private String query = ("(0");
     private static Integer cantidad;
     private static String fechaEntrega;
     private Double total;
-    private static List<Producto> productos = new ArrayList<Producto>();
     private DefaultTableModel model;
     private final static String id = "pedidos_seq.nextval";
-
+    List<PedidoProducto> pedidosProducto;
+    List<Pedido> pedidosCombo;
+    List<Producto> productos;
     /**
      * Creates new form Login
      */
-    public FrmPedidos() {
+    
+    public FrmVerPedidos() {
         initComponents();
         super.iniciarVentana(panel);
+        pedidosCombo =(List<Pedido>) Pedidos.select(Conexion.getDBConexion(), "select * from pedidos", Pedido.class);
+        try {
+            Pedidos.fillCombo(comboPedidos, pedidosCombo, "id_pedido", Pedido.class);
+        } catch (Exception ex) {
+            Logger.getLogger(FrmPedidosProductos.class.getName()).log(Level.SEVERE, null, ex);
+        }
         model = (DefaultTableModel) tblProductos.getModel();
     }
 
@@ -59,33 +72,21 @@ public class FrmPedidos extends BaseFrame {
         panel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtFechaEntrega = new javax.swing.JTextField();
-        btnAgregarPro = new javax.swing.JButton();
         cmdAgregarP = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProductos = new javax.swing.JTable();
         lblTotal = new javax.swing.JLabel();
+        lblFechaEntrega = new javax.swing.JLabel();
+        comboPedidos = new javax.swing.JComboBox();
+        btnRefrescar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Hacer Pedido");
+        jLabel1.setText("Ver pedido");
 
         jLabel3.setText("Fecha de Entrega: ");
-
-        txtFechaEntrega.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaEntregaActionPerformed(evt);
-            }
-        });
-
-        btnAgregarPro.setText("AgregarProducto");
-        btnAgregarPro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarProActionPerformed(evt);
-            }
-        });
 
         cmdAgregarP.setText("Agregar");
         cmdAgregarP.addActionListener(new java.awt.event.ActionListener() {
@@ -108,52 +109,74 @@ public class FrmPedidos extends BaseFrame {
 
             },
             new String [] {
-                "Nombre del Producto", "Precio unitario", "Cantidad"
+                "Nombre del Producto", "Cantidad"
             }
         ));
         jScrollPane1.setViewportView(tblProductos);
 
         lblTotal.setText("0");
 
+        lblFechaEntrega.setText("jLabel2");
+
+        comboPedidos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboPedidosActionPerformed(evt);
+            }
+        });
+
+        btnRefrescar.setText("Refrescar Tabla");
+        btnRefrescar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefrescarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtFechaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAgregarPro))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
+                        .addGap(39, 39, 39)
+                        .addComponent(comboPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51)
+                        .addComponent(btnRefrescar))
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
+                        .addContainerGap()
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelLayout.createSequentialGroup()
-                                .addGap(166, 166, 166)
-                                .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblFechaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelLayout.createSequentialGroup()
-                                .addComponent(cmdAgregarP)
-                                .addGap(147, 147, 147)
-                                .addComponent(btnCerrar))
-                            .addComponent(jLabel4))))
-                .addContainerGap(122, Short.MAX_VALUE))
+                                .addGap(12, 12, 12)
+                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelLayout.createSequentialGroup()
+                                        .addGap(166, 166, 166)
+                                        .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelLayout.createSequentialGroup()
+                                        .addComponent(cmdAgregarP)
+                                        .addGap(147, 147, 147)
+                                        .addComponent(btnCerrar))
+                                    .addComponent(jLabel4))))))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(comboPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRefrescar))
+                .addGap(14, 14, 14)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtFechaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregarPro))
+                    .addComponent(lblFechaEntrega))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -177,57 +200,56 @@ public class FrmPedidos extends BaseFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdAgregarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAgregarPActionPerformed
-        List<Pedido> pedidos= new ArrayList<>();
-        Integer idPedido, productosSize;
-        if (Pedido.isFecha(txtFechaEntrega.getText()) 
-                && Pedido.isNumeric(lblTotal.getText())) {
-            fechaEntrega = txtFechaEntrega.getText();
-            total = Double.parseDouble(lblTotal.getText());
-            Pedidos.executeQuery(Conexion.getDBConexion(), String.format("insert into pedidos(id_pedido, fecha_pedido, total, fecha_entrega, estado) values(%s, %s, %s, (TO_DATE('%s', 'dd/mm/yyyy')), 'HACIENDO')", id, BaseModel.CURRENT_TIMESTAMP, total, fechaEntrega));
-            pedidos= (List<Pedido>) Pedidos.select(Conexion.getDBConexion(), "select * from pedidos", Pedido.class);
-            idPedido = pedidos.get(pedidos.size()-1).getId_pedido().intValue();
-            productos.stream().forEach((producto)->{
-                PedidosProductos.executeQuery(Conexion.getDBConexion(), String.format("insert into pedidos_producto values (%s,%s,%s)", idPedido, producto.getId_producto(), producto.getCantidad_disponible()));
-                System.out.println("Si entro");
-            });
-            JOptionPane.showMessageDialog(rootPane, "Añadido exitosamente!");
-            txtFechaEntrega.setText(Pedido.VACIO);
-            
-            
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "Invalido");
-        }
-        
+//        List<Pedido> pedidos= new ArrayList<>();
+//        Integer idPedido, productosSize;
+//        if (Pedido.isFecha(txtFechaEntrega.getText()) 
+//                && Pedido.isNumeric(lblTotal.getText())) {
+//            fechaEntrega = txtFechaEntrega.getText();
+//            total = Double.parseDouble(lblTotal.getText());
+//            Pedidos.executeQuery(Conexion.getDBConexion(), String.format("insert into pedidos(id_pedido, fecha_pedido, total, fecha_entrega, estado) values(%s, %s, %s, (TO_DATE('%s', 'dd/mm/yyyy')), 'HACIENDO')", id, BaseModel.CURRENT_TIMESTAMP, total, fechaEntrega));
+//            pedidos= (List<Pedido>) Pedidos.select(Conexion.getDBConexion(), "select * from pedidos", Pedido.class);
+//            idPedido = pedidos.get(pedidos.size()-1).getId_pedido().intValue();
+//            productos.stream().forEach((producto)->{
+//                PedidosProductos.executeQuery(Conexion.getDBConexion(), String.format("insert into pedidos_producto values (%s,%s,%s)", idPedido, producto.getId_producto(), producto.getCantidad_disponible()));
+//                System.out.println("Si entro");
+//            });
+//            JOptionPane.showMessageDialog(rootPane, "Añadido exitosamente!");
+//            txtFechaEntrega.setText(Pedido.VACIO);
+//            
+//            
+//        }else{
+//            JOptionPane.showMessageDialog(rootPane, "Invalido");
+//        }
+//        
         
         
     }//GEN-LAST:event_cmdAgregarPActionPerformed
-
-    private void txtFechaEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaEntregaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaEntregaActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
 
-    private void btnAgregarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProActionPerformed
-        FrmPedidosProductos frmAgregarProducto = new FrmPedidosProductos(this);
-        frmAgregarProducto.setVisible(true);
-    }//GEN-LAST:event_btnAgregarProActionPerformed
+    private void comboPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPedidosActionPerformed
+        
+    }//GEN-LAST:event_comboPedidosActionPerformed
+
+    private void btnRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefrescarActionPerformed
+        accionRefrescar();
+    }//GEN-LAST:event_btnRefrescarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,13 +268,13 @@ public class FrmPedidos extends BaseFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmVerPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmVerPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmVerPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmVerPedidos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -265,46 +287,64 @@ public class FrmPedidos extends BaseFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new FrmPedidos().setVisible(true);
+            new FrmVerPedidos().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarPro;
     private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnRefrescar;
     private javax.swing.JButton cmdAgregarP;
+    private javax.swing.JComboBox comboPedidos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblFechaEntrega;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JPanel panel;
     private javax.swing.JTable tblProductos;
-    private javax.swing.JTextField txtFechaEntrega;
     // End of variables declaration//GEN-END:variables
 
-    public void refrescarTabla(){
-        List<String> list = new ArrayList<String>();
-        list.add(productos.get(productos.size()-1).getNombre());
-        list.add(productos.get(productos.size()-1).getPrecio_unitario().toString());
-        list.add(productos.get(productos.size()-1).getCantidad_disponible().toString());
-        model.addRow(list.toArray());
-        total = Double.parseDouble(lblTotal.getText()) + (productos.get(productos.size()-1).getPrecio_unitario().floatValue() * Double.parseDouble(cantidad.toString()));
+    public void accionRefrescar(){
+        lblFechaEntrega.setText(pedidosCombo.get(comboPedidos.getSelectedIndex()).getFecha_entrega().toString());
+        total = pedidosCombo.get(comboPedidos.getSelectedIndex()).getTotal().doubleValue();
         lblTotal.setText(String.valueOf(total));
-        tblProductos.setModel(model);
+        pedidosProducto =(List<PedidoProducto>) PedidosProductos.select(Conexion.getDBConexion(), String.format("select * from pedidos_producto where id_pedido=%s", pedidosCombo.get(comboPedidos.getSelectedIndex()).getId_pedido()), PedidoProducto.class);
+        pedidosProducto.stream().forEach((pedidoPro)->{
+            query= query + (","+ pedidoPro.getId_producto().toString());
+            System.out.println(query);
+        });
+        query+=")";
+        productos=(List<Producto>) Productos.select(Conexion.getDBConexion(), String.format("select * from productos where id_producto in %s", query), Producto.class);
+        mostrarTabla();
     }
-    public static void agregarProductos(List<Producto> productosNueva, Integer cantidad) {
-        productos = productosNueva;
-        cantidad = cantidad;
+    public void mostrarTabla(){
+        pedidosProducto.stream().forEach((tablaProductos)->{
+            List<String> list = new ArrayList<String>();
+            productos.stream().forEach((producto)->{
+                if(producto.getId_producto().equals(tablaProductos.getId_producto())){
+                    list.add(producto.getNombre());
+                }
+            });
+            list.add(tablaProductos.getCantidad().toString());
+            model.addRow(list.toArray());
+            
+               
+        });
+        
+            tblProductos.setModel(model);
+       
     }
+    
+    
+   
 
     public List<Producto> getProductos() {
         return productos;
     }
 
-    public void setProductos(List<Producto> productos) {
-        FrmPedidos.productos = productos;
-    }
+    
     
     
     public Integer getCantidad() {

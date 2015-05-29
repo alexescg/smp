@@ -283,6 +283,9 @@ public class FrmPedidos extends BaseFrame {
     private javax.swing.JTextField txtFechaEntrega;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Metodo que refresca la tabla cada vez que se agrega un producto.
+     */
     public void refrescarTabla(){
         List<String> list = new ArrayList<String>();
         list.add(productos.get(productos.size()-1).getNombre());
@@ -293,6 +296,13 @@ public class FrmPedidos extends BaseFrame {
         lblTotal.setText(String.valueOf(total));
         tblProductos.setModel(model);
     }
+    
+    /**
+     * Metodo que agrega un producto a la ventana actual dentro de la lista local.
+     * @param productosNueva lista de productos que se manda del frame AgregarProducto con el nuevo producto
+     * agregado
+     * @param cantidad cantidad pedida del producto en cuestion.
+     */
     public static void agregarProductos(List<Producto> productosNueva, Integer cantidad) {
         productos = productosNueva;
         cantidad = cantidad;

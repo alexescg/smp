@@ -39,8 +39,9 @@ public class FrmVerPedidos extends BaseFrame {
     private static Integer cantidad;
     private static String fechaEntrega;
     private Double total;
+    private Boolean bandera=false;
     private DefaultTableModel model;
-    private final static String id = "pedidos_seq.nextval";
+    private DefaultTableModel model1;
     List<PedidoProducto> pedidosProducto;
     List<Pedido> pedidosCombo;
     List<Producto> productos;
@@ -58,6 +59,7 @@ public class FrmVerPedidos extends BaseFrame {
             Logger.getLogger(FrmPedidosProductos.class.getName()).log(Level.SEVERE, null, ex);
         }
         model = (DefaultTableModel) tblProductos.getModel();
+        model1= model;
     }
 
     /**
@@ -109,14 +111,14 @@ public class FrmVerPedidos extends BaseFrame {
 
             },
             new String [] {
-                "Nombre del Producto", "Cantidad"
+                "Nombre del Producto", "Cantidad Disponible", "Cantidad Pedida"
             }
         ));
         jScrollPane1.setViewportView(tblProductos);
 
         lblTotal.setText("0");
 
-        lblFechaEntrega.setText("jLabel2");
+        lblFechaEntrega.setText("Refresca los componentes. ");
 
         comboPedidos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboPedidos.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +127,7 @@ public class FrmVerPedidos extends BaseFrame {
             }
         });
 
-        btnRefrescar.setText("Refrescar Tabla");
+        btnRefrescar.setText("Refrescar Componentes");
         btnRefrescar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefrescarActionPerformed(evt);
@@ -144,25 +146,23 @@ public class FrmVerPedidos extends BaseFrame {
                         .addComponent(comboPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51)
                         .addComponent(btnRefrescar))
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblFechaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelLayout.createSequentialGroup()
-                                        .addGap(166, 166, 166)
-                                        .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(panelLayout.createSequentialGroup()
-                                        .addComponent(cmdAgregarP)
-                                        .addGap(147, 147, 147)
-                                        .addComponent(btnCerrar))
-                                    .addComponent(jLabel4))))))
+                    .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelLayout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addGap(18, 18, 18)
+                            .addComponent(lblFechaEntrega))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelLayout.createSequentialGroup()
+                            .addGap(12, 12, 12)
+                            .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelLayout.createSequentialGroup()
+                                    .addGap(166, 166, 166)
+                                    .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(panelLayout.createSequentialGroup()
+                                    .addComponent(cmdAgregarP)
+                                    .addGap(147, 147, 147)
+                                    .addComponent(btnCerrar))
+                                .addComponent(jLabel4)))))
                 .addContainerGap(137, Short.MAX_VALUE))
         );
         panelLayout.setVerticalGroup(
@@ -214,28 +214,30 @@ public class FrmVerPedidos extends BaseFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdAgregarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAgregarPActionPerformed
-//        List<Pedido> pedidos= new ArrayList<>();
-//        Integer idPedido, productosSize;
-//        if (Pedido.isFecha(txtFechaEntrega.getText()) 
-//                && Pedido.isNumeric(lblTotal.getText())) {
-//            fechaEntrega = txtFechaEntrega.getText();
-//            total = Double.parseDouble(lblTotal.getText());
-//            Pedidos.executeQuery(Conexion.getDBConexion(), String.format("insert into pedidos(id_pedido, fecha_pedido, total, fecha_entrega, estado) values(%s, %s, %s, (TO_DATE('%s', 'dd/mm/yyyy')), 'HACIENDO')", id, BaseModel.CURRENT_TIMESTAMP, total, fechaEntrega));
-//            pedidos= (List<Pedido>) Pedidos.select(Conexion.getDBConexion(), "select * from pedidos", Pedido.class);
-//            idPedido = pedidos.get(pedidos.size()-1).getId_pedido().intValue();
-//            productos.stream().forEach((producto)->{
-//                PedidosProductos.executeQuery(Conexion.getDBConexion(), String.format("insert into pedidos_producto values (%s,%s,%s)", idPedido, producto.getId_producto(), producto.getCantidad_disponible()));
-//                System.out.println("Si entro");
-//            });
-//            JOptionPane.showMessageDialog(rootPane, "Añadido exitosamente!");
-//            txtFechaEntrega.setText(Pedido.VACIO);
-//            
-//            
-//        }else{
-//            JOptionPane.showMessageDialog(rootPane, "Invalido");
-//        }
-//        
-        
+        Integer CantidadLograda=0;
+        pedidosProducto.stream().forEach((tablaProductos)->{
+            productos.stream().forEach((producto)->{
+                if(producto.getId_producto().equals(tablaProductos.getId_producto())){
+                    if(producto.getCantidad_disponible().intValue()<tablaProductos.getCantidad().intValue()){
+                        cambiarBandera();
+                        System.out.println(bandera);
+                    }
+                }
+            });
+        });
+            if(bandera==true){
+                JOptionPane.showMessageDialog(null, "Lo sentimos no tienes la cantidad necesaria para entregar el producto en este momento");
+            }else{
+                System.out.println("Si entro");
+                pedidosProducto.stream().forEach((tablaProductos)->{
+                        productos.stream().forEach((producto)->{
+                        if(producto.getId_producto().equals(tablaProductos.getId_producto())){
+                                System.out.println("Si entro aca");
+                                setNuevaCantidad(producto, tablaProductos);
+                        }
+                    });
+                });
+            }
         
     }//GEN-LAST:event_cmdAgregarPActionPerformed
 
@@ -306,7 +308,14 @@ public class FrmVerPedidos extends BaseFrame {
     private javax.swing.JTable tblProductos;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Metodo que refresca los componentes de la tabla sacandolos de la base de datos referenciado
+     * al pedido que se escoja.
+     */
     public void accionRefrescar(){
+        productos=null;
+        pedidosProducto=null;
+        query = ("(0");
         lblFechaEntrega.setText(pedidosCombo.get(comboPedidos.getSelectedIndex()).getFecha_entrega().toString());
         total = pedidosCombo.get(comboPedidos.getSelectedIndex()).getTotal().doubleValue();
         lblTotal.setText(String.valueOf(total));
@@ -319,22 +328,23 @@ public class FrmVerPedidos extends BaseFrame {
         productos=(List<Producto>) Productos.select(Conexion.getDBConexion(), String.format("select * from productos where id_producto in %s", query), Producto.class);
         mostrarTabla();
     }
+    
+    /**
+     * Metodo que agrega los campos a la tabla refrescandolos de la base de datos para que se agregen a la tabla
+     * del JFrame.
+     */
     public void mostrarTabla(){
-        pedidosProducto.stream().forEach((tablaProductos)->{
+        productos.stream().forEach((producto)->{
             List<String> list = new ArrayList<String>();
-            productos.stream().forEach((producto)->{
-                if(producto.getId_producto().equals(tablaProductos.getId_producto())){
+            pedidosProducto.stream().forEach((tabProducto)->{
+                if(producto.getId_producto().equals(tabProducto.getId_producto())){
                     list.add(producto.getNombre());
+                    list.add(producto.getCantidad_disponible().toString());
+                    list.add(tabProducto.getCantidad().toString());
                 }
             });
-            list.add(tablaProductos.getCantidad().toString());
             model.addRow(list.toArray());
-            
-               
         });
-        
-            tblProductos.setModel(model);
-       
     }
     
     
@@ -353,6 +363,28 @@ public class FrmVerPedidos extends BaseFrame {
 
     public void setCantidad(Integer aCantidad) {
         cantidad = aCantidad;
+    }
+
+    /**
+     * Metodo que cambia la variable bandera que permite pagar el pedido.
+     */
+    private void cambiarBandera() {
+        bandera = true;
+    }
+    
+    /**
+     * Metodo que asigna la nueva cantidad disponible al producto en cuestion
+     * @param producto producto que tiene la cantidad disponible.
+     * @param tablaProductos producto que contiene la cantidad a restar.
+     */
+    private void setNuevaCantidad(Producto producto, PedidoProducto tablaProductos) {
+        productos.get(productos.indexOf(producto)).setCantidad_disponible(
+                BigDecimal.valueOf(productos.get(productos.indexOf(producto)).getCantidad_disponible().doubleValue()
+                - pedidosProducto.get(pedidosProducto.indexOf(tablaProductos)).getCantidad().doubleValue()));
+        System.out.println(producto.getId_producto());
+        System.out.println(producto.getCantidad_disponible());
+        Productos.executeQuery(Conexion.getDBConexion(), "update productos set cantidad_disponible ="+productos.get(productos.indexOf(producto)).getCantidad_disponible().intValue()+" where id_producto="+productos.get(productos.indexOf(producto)).getId_producto());
+        
     }
     
 }

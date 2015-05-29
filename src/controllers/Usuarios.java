@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
 import models.Usuario;
 import oraclegeneral.Conexion;
@@ -14,25 +15,31 @@ import views.BaseFrame;
  */
 public class Usuarios extends BaseController{
     
-    public static Boolean checkUsuario(String usuario, String contra){
+    public static String checkUsuario(String usuario, String contra){
         String query = "select * from usuarios where usuario like '"+usuario+"' and contrasena like '"+contra+"'";
         List<Usuario> usuarios = (List<Usuario>) Usuarios.select(Conexion.getDBConexion(), query, Usuario.class);
-        if(usuarios!=null){
+        System.out.println("usuarios = " + usuarios.stream().collect(Collectors.toList()));
+        if(!usuarios.isEmpty()){
             try{
             if(usuarios.get(0).getUsuario().equals(usuario) && usuarios.get(0).getContrasena().equals(contra)){
-                if(usuarios.get(0).getUsuario().equals("administrador"))
-                    return true;
-                }else{
-                return false;
-            }
+                if(usuarios.get(0).getUsuario().equals("administrador")){
+                    return "admin";
+                    }else{
+                    System.out.println("1");
+                    return "vendedor";
+                    }
+                }
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Acceso como vendedor.");
+                System.out.println("2");
+                return "vendedor";
             }
         }else{
-            JOptionPane.showMessageDialog(null, "Usuario/Contraseña incorrecta.");
-            
+            System.out.println("3");
+            return "";
         }
-        return false;
+        System.out.println("4");
+        return "";
     }
     
 }

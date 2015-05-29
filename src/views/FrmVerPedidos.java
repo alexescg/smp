@@ -28,7 +28,7 @@ import models.Proveedor;
 import oraclegeneral.Conexion;
 
 /**
- * JFrame donde se agregan pedidos a la base de datos.
+ * JFrame donde se ven los pedidos que se encuentran en la base de datos.
  * @author Daniela Santillanes Castro
  * @version 1.0
  * @since 26/05/2015

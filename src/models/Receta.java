@@ -26,7 +26,6 @@ public class Receta extends BaseModel{
     
     private String descripcion;
     
-    private Image imagen;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     /**
@@ -117,24 +116,6 @@ public class Receta extends BaseModel{
         java.lang.String oldDescripcion = this.descripcion;
         this.descripcion = descripcion;
         propertyChangeSupport.firePropertyChange(PROP_DESCRIPCION, oldDescripcion, descripcion);
-    }
-
-    /**
-     * Método para obtener una imagen de un objeto Receta.
-     * @return the imagen
-     */
-    public Image getImagen() {
-        return imagen;
-    }
-
-    /**
-     * Método para asignar una imagen de un objeto Receta.
-     * @param imagen the imagen to set
-     */
-    public void setImagen(Image imagen) {
-        java.awt.Image oldImagen = this.imagen;
-        this.imagen = imagen;
-        propertyChangeSupport.firePropertyChange(PROP_IMAGEN, oldImagen, imagen);
     }
    
 }

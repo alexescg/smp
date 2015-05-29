@@ -121,10 +121,20 @@ public class Login extends BaseFrame {
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void cmdAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAccederActionPerformed
-        
         usr = txtUsuario.getText();
         pass = txtContra.getText();
-        
+        if(controllers.Usuarios.checkUsuario(usr, pass).equals("admin")){
+            MenuAdministrador menuAdmin = new MenuAdministrador();
+            menuAdmin.setVisible(true);
+            this.dispose();
+            
+        }else if(controllers.Usuarios.checkUsuario(usr, pass).equals("vendedor")){
+            MenuVendedor menuVendedor = new MenuVendedor();
+            menuVendedor.setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
+        }
     }//GEN-LAST:event_cmdAccederActionPerformed
 
     private void cmdAccederKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmdAccederKeyPressed

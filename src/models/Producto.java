@@ -76,12 +76,17 @@ public class Producto extends BaseModel{
         propertyChangeSupport.firePropertyChange(PROP_PRECIO_UNITARIO, oldPrecio_unitario, precio_unitario);
     }
     
+    /**
+     * Método para obtener una cantidad_disponible de un objeto Producto.
+     * @return cantidad_disponible
+     */
     public BigDecimal getCantidad_disponible() {
         return cantidad_disponible;
     }
 
     /**
-     * @param precio_unitario the precio_unitario to set
+     * Método para asignar una cantidad_disponible de un objeto Producto.
+     * @param cantidad_disponible 
      */
     public void setCantidad_disponible(BigDecimal cantidad_disponible) {
         java.math.BigDecimal oldCantidad_disponible = this.cantidad_disponible;

@@ -1,16 +1,15 @@
 package views;
 
-import controllers.BaseController;
 import controllers.Proveedores;
-import java.math.BigDecimal;
 import javax.swing.JOptionPane;
-import models.BaseModel;
 import models.Proveedor;
 import oraclegeneral.Conexion;
 
 /**
- *
- * @author Daniela Santillanes
+ * JFrame para agregar proveedores a la base de datos.
+ * @author Daniela Santillanes Castro 
+ * @version 1.0
+ * @since 28/05/2015
  */
 public class FrmProveedores extends BaseFrame {
 

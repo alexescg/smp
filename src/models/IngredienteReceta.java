@@ -9,12 +9,12 @@ import java.math.BigDecimal;
  */
 public class IngredienteReceta extends BaseModel{
     public static final String PROP_ID_INGREDIENTE = "PROP_ID_INGREDIENTE";
-    public static final String PROP_ID_PROVEEDOR = "PROP_ID_PROVEEDOR";
+    public static final String PROP_ID_RECETA = "PROP_ID_RECETA";
     public static final String PROP_CANTIDAD_INGREDIENTE = "PROP_CANTIDAD_INGREDIENTE";
     
     private BigDecimal id_ingrediente;
     
-    private BigDecimal id_proveedor;
+    private BigDecimal id_receta;
     
     private BigDecimal cantidad_ingrediente;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
@@ -38,21 +38,21 @@ public class IngredienteReceta extends BaseModel{
     }
 
     /**
-     * Método para obtener un id_proveedor de un objeto IngredienteReceta.
-     * @return the id_proveedor
+     * Método para obtener un id_receta de un objeto IngredienteReceta.
+     * @return the id_receta
      */
-    public BigDecimal getId_proveedor() {
-        return id_proveedor;
+    public BigDecimal getId_receta() {
+        return id_receta;
     }
 
     /**
      * Método para asignar un id_proveedor a un objeto IngredienteReceta.
-     * @param id_proveedor the id_proveedor to set
+     * @param id_receta the id_receta to set
      */
-    public void setId_proveedor(BigDecimal id_proveedor) {
-        java.math.BigDecimal oldId_proveedor = this.id_proveedor;
-        this.id_proveedor = id_proveedor;
-        propertyChangeSupport.firePropertyChange(PROP_ID_PROVEEDOR, oldId_proveedor, id_proveedor);
+    public void setId_receta(BigDecimal id_receta) {
+        java.math.BigDecimal oldId_receta = id_receta;
+        this.id_receta = id_receta;
+        propertyChangeSupport.firePropertyChange(PROP_ID_RECETA, oldId_receta, id_receta);
     }
 
     /**

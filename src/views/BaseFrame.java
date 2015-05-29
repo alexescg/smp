@@ -81,7 +81,7 @@ public class BaseFrame extends javax.swing.JFrame {
             setContentPane(rootPane);
         }
         this.add(panel);
-        panel.setLocation(screenSize.width/4, screenSize.height/2-(panel.getHeight()));
+        panel.setLocation(screenSize.width/4, screenSize.height/2-(panel.getHeight()/2));
         
         this.pack();
         initComponents();

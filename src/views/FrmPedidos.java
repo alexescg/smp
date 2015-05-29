@@ -1,26 +1,14 @@
 package views;
 
-import controllers.BaseController;
 import controllers.Pedidos;
 import controllers.PedidosProductos;
-import controllers.Proveedores;
-import java.awt.Dialog;
-import java.math.BigDecimal;
-import java.sql.Date;
-import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.TimeZone;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import models.BaseModel;
 import models.Pedido;
 import models.Producto;
-import models.Proveedor;
 import oraclegeneral.Conexion;
 
 /**
@@ -192,7 +180,7 @@ public class FrmPedidos extends BaseFrame {
 
     private void cmdAgregarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAgregarPActionPerformed
         List<Pedido> pedidos= new ArrayList<>();
-        Integer idPedido, productosSize;
+        Integer idPedido;
         if (Pedido.isFecha(txtFechaEntrega.getText()) 
                 && Pedido.isNumeric(lblTotal.getText())) {
             fechaEntrega = txtFechaEntrega.getText();
@@ -283,6 +271,10 @@ public class FrmPedidos extends BaseFrame {
     private javax.swing.JTextField txtFechaEntrega;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Metodo para que te aparezcan los datos que recien acabas de agregar a la
+     * tabla.
+     */
     public void refrescarTabla(){
         List<String> list = new ArrayList<String>();
         list.add(productos.get(productos.size()-1).getNombre());
@@ -293,24 +285,45 @@ public class FrmPedidos extends BaseFrame {
         lblTotal.setText(String.valueOf(total));
         tblProductos.setModel(model);
     }
+    
+    /**
+     * Metodo para agregar un producto a la lista de productos.
+     * @param productosNueva que es la lista de productos.
+     * @param cantidad que es la cantidad de ese producto.
+     */
     public static void agregarProductos(List<Producto> productosNueva, Integer cantidad) {
         productos = productosNueva;
         cantidad = cantidad;
     }
 
+    /**
+     * Metodo donde obtienes una lista de productos.
+     * @return productos que es la lista de productos.
+     */
     public List<Producto> getProductos() {
         return productos;
     }
 
+    /**
+     * Método para asignar productos a una lista de productos.
+     * @param productos que es la lista de productos.
+     */
     public void setProductos(List<Producto> productos) {
         FrmPedidos.productos = productos;
     }
     
-    
+    /**
+     * Método para obtener la cantidad que pidieron de ese producto.
+     * @return cantidad que es la cantidad que se requiere.
+     */
     public Integer getCantidad() {
         return cantidad;
     }
 
+    /**
+     * Método para asignar la cantidad que pidieron de ese producto.
+     * @param aCantidad que es la cantidad que se requiere
+     */
     public void setCantidad(Integer aCantidad) {
         cantidad = aCantidad;
     }

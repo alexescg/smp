@@ -63,7 +63,7 @@ public class FrmBorrarIngredientes extends BaseFrame {
             }
         });
 
-        jLabel3.setText("Nombre Ingrediente");
+        jLabel3.setText("Nombre Ingrediente:");
 
         btnCerrar.setText("Cerrar");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {

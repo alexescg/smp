@@ -39,6 +39,7 @@ public class FrmBorrarProductos extends BaseFrame {
      */
     public FrmBorrarProductos() {
         initComponents();
+        setTitle("Borrar Productos");
         super.iniciarVentana(panel);
         DefaultTableModel model = (DefaultTableModel) tableProductos.getModel();
 
@@ -108,9 +109,9 @@ public class FrmBorrarProductos extends BaseFrame {
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(cmdAcceder)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnCerrar)
                 .addGap(57, 57, 57))
             .addGroup(panelLayout.createSequentialGroup()
@@ -123,11 +124,11 @@ public class FrmBorrarProductos extends BaseFrame {
             .addGroup(panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(28, 28, 28)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdAcceder)
-                    .addComponent(btnCerrar))
-                .addContainerGap(55, Short.MAX_VALUE))
+                    .addComponent(btnCerrar)
+                    .addComponent(cmdAcceder))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -144,7 +145,7 @@ public class FrmBorrarProductos extends BaseFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();

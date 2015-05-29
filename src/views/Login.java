@@ -1,5 +1,6 @@
 package views;
 
+import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,7 +18,8 @@ public class Login extends BaseFrame {
     public Login() {
         initComponents();
         super.iniciarVentana(panel);
-        setTitle("Login");
+        setTitle("Iniciar Sesión");
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -93,7 +95,7 @@ public class Login extends BaseFrame {
                     .addComponent(jLabel2))
                 .addGap(36, 36, 36)
                 .addComponent(cmdAcceder)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -103,7 +105,7 @@ public class Login extends BaseFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

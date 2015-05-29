@@ -25,20 +25,16 @@ public class Usuarios extends BaseController{
                 if(usuarios.get(0).getUsuario().equals("administrador")){
                     return "admin";
                     }else{
-                    System.out.println("1");
                     return "vendedor";
                     }
                 }
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null, "Acceso como vendedor.");
-                System.out.println("2");
                 return "vendedor";
             }
         }else{
-            System.out.println("3");
             return "";
         }
-        System.out.println("4");
         return "";
     }
     

@@ -199,7 +199,6 @@ public class FrmPedidos extends BaseFrame {
             idPedido = pedidos.get(pedidos.size()-1).getId_pedido().intValue();
             productos.stream().forEach((producto)->{
                 PedidosProductos.executeQuery(Conexion.getDBConexion(), String.format("insert into pedidos_producto values (%s,%s,%s)", idPedido, producto.getId_producto(), producto.getCantidad_disponible()));
-                System.out.println("Si entro");
             });
             JOptionPane.showMessageDialog(rootPane, "Añadido exitosamente!");
             txtFechaEntrega.setText(Pedido.VACIO);

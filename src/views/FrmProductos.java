@@ -265,11 +265,9 @@ public class FrmProductos extends BaseFrame {
             Productos.executeQuery(Conexion.getDBConexion(), String.format("insert into productos(id_producto, nombre, precio_unitario, cantidad_disponible) values(%s, '%s', %s, 0)", id, nombreProducto, precioUnitario));
             productos= (List<Producto>) Productos.select(Conexion.getDBConexion(), "select * from productos", Producto.class);
             idProducto = productos.get(productos.size()-1).getId_producto().intValue();
-                  System.out.println(idProducto);
             Recetas.executeQuery(Conexion.getDBConexion(), String.format("insert into recetas(id_receta, id_producto, tiempo_coccion, cantidad_hecha, descripcion) values(%s, %s, %s, %s, '%s')", idReceta, idProducto, tiempoCoccion, cantidadHecha, descripcion));
             ingredientes.stream().forEach((ingrediente)->{
                 IngredientesRecetas.executeQuery(Conexion.getDBConexion(), String.format("insert into ingredientes_recetas values (%s,%s,%s)", idProducto, ingrediente.getId_ingrediente(), ingrediente.getCantidad_ingrediente()));
-                System.out.println("Si entro");
             });
             JOptionPane.showMessageDialog(rootPane, "Añadido exitosamente!");
             txtNombre.setText(Producto.VACIO);

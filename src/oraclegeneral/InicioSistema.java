@@ -17,11 +17,9 @@ public class InicioSistema {
     
     public static void main(String[] args) {
         if(Conexion.verificarUsuario()==true){
-            System.out.println("NO entro");
             Login frmLogin = new Login(); 
            frmLogin.setVisible(true);
         }else{
-            System.out.println("SI entro");
             if((Conexion.creacionUsuario() ==true) && (Conexion.creacionBase()==true)){
             Login frmLogin = new Login();
             frmLogin.setVisible(true);

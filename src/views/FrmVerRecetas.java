@@ -56,9 +56,7 @@ public class FrmVerRecetas extends BaseFrame {
         initComponents();
         setTitle("Recetas");
         super.iniciarVentana(panel);
-        System.out.println("Pene");
         recetas =(List<Receta>) Recetas.select(Conexion.getDBConexion(), "select * from recetas", Receta.class);
-        System.out.println("Pene2");
         try {
             Recetas.fillCombo(comboRecetas, recetas, "id_receta", Receta.class);
         } catch (Exception ex) {

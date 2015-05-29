@@ -377,14 +377,11 @@ public class FrmVerPedidos extends BaseFrame {
         productos.get(productos.indexOf(producto)).setCantidad_disponible(
                 BigDecimal.valueOf(productos.get(productos.indexOf(producto)).getCantidad_disponible().doubleValue()
                 - pedidosProducto.get(pedidosProducto.indexOf(tablaProductos)).getCantidad().doubleValue()));
-        System.out.println(producto.getId_producto());
-        System.out.println(producto.getCantidad_disponible());
         Productos.executeQuery(Conexion.getDBConexion(), "update productos set cantidad_disponible ="+productos.get(productos.indexOf(producto)).getCantidad_disponible().intValue()+" where id_producto="+productos.get(productos.indexOf(producto)).getId_producto());
         System.out.println("Se actualizo los productos");
     }
 
     private void borrarPedido() {
-        System.out.println(pedidosProducto.get(0).getId_pedido());
         PedidosProductos.executeQuery(Conexion.getDBConexion(), String.format("delete from pedidos_producto where id_pedido=%s",pedidosProducto.get(0).getId_pedido()));
         Pedidos.executeQuery(Conexion.getDBConexion(),String.format("delete from pedidos where id_pedido=%s", pedidosProducto.get(0).getId_pedido()));
         System.out.println("Se elimino el pedido");

@@ -131,7 +131,6 @@ public class FrmBorrarIngredientes extends BaseFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
-        System.out.println(ingredientes.get(comboIngrediente.getSelectedIndex()).getId_ingrediente());
         IngredientesRecetas.executeQuery(Conexion.getDBConexion(), String.format("delete from ingredientes_recetas where id_ingrediente=%s", ingredientes.get(comboIngrediente.getSelectedIndex()).getId_ingrediente()));
         Ingredientes.executeQuery(Conexion.getDBConexion(), String.format("delete from ingredientes where id_ingrediente=%s", ingredientes.get(comboIngrediente.getSelectedIndex()).getId_ingrediente()));
         this.dispose();

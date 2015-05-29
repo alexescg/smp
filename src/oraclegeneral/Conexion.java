@@ -68,16 +68,13 @@ public class Conexion {
     public static Boolean creacionUsuario(){
         JOptionPane.showMessageDialog(null, "Lo sentimos es la primera vez que entrara al sistema.\n"
                     + "Pongase en contacto con su DBA para que ingrese la contraseña del usuario \"System\" ...");
-        System.out.println(".....");
         File file = new File("CrearUsuario.txt");
         usuario = "system";
         contrasena = JOptionPane.showInputDialog("Introduzca la contraseña del usuario system");
         try {
             FileReader in =  new FileReader(file.getAbsolutePath());
             BufferedReader br = new BufferedReader(in);
-            System.out.println("-daosidjalsdjij");
             con=Conexion.getDBConexion();
-            System.out.println(con);
             st = con.createStatement();
             while (br.readLine()!=null)   {
                 query = br.readLine().toString();

@@ -68,7 +68,6 @@ public class BaseFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        System.out.println("asdasdasd");
     }//GEN-LAST:event_formWindowClosing
     
     

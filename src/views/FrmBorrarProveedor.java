@@ -165,7 +165,6 @@ public class FrmBorrarProveedor extends BaseFrame {
         IngredientesRecetas.executeQuery(Conexion.getDBConexion(), String.format("delete from ingredientes_recetas where id_ingrediente in (select id_ingrediente from ingredientes where id_proveedor=%s);",proveedoresCombo.get(comboProveedores.getSelectedIndex()).getId_proveedor()));
         Ingredientes.executeQuery(Conexion.getDBConexion(), String.format("delete from ingredientes where id_proveedor=%s", proveedoresCombo.get(comboProveedores.getSelectedIndex()).getId_proveedor()));
         Proveedores.executeQuery(Conexion.getDBConexion(), String.format("delete from proveedores where id_proveedor=%s", proveedoresCombo.get(comboProveedores.getSelectedIndex()).getId_proveedor() ));
-        System.out.println("Funciono?");
         this.dispose();
     }//GEN-LAST:event_btnBorrarActionPerformed
 

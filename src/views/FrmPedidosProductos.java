@@ -158,8 +158,6 @@ public class FrmPedidosProductos extends BaseFrame {
         productoAgregar.setCantidad_disponible(BigDecimal.valueOf(Double.parseDouble(txtCantidad.getText())));
         ventanaPedido.getProductos().add(productoAgregar);
         ventanaPedido.setCantidad(Integer.parseInt(txtCantidad.getText()));
-        System.out.println(ventanaPedido.getProductos().toString());
-        System.out.println(ventanaPedido.getCantidad());
         ventanaPedido.refrescarTabla();
         this.dispose();
     }//GEN-LAST:event_cmdAccederActionPerformed

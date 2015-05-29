@@ -214,7 +214,6 @@ public class FrmVerPedidos extends BaseFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdAgregarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAgregarPActionPerformed
-        Integer CantidadLograda=0;
         pedidosProducto.stream().forEach((tablaProductos)->{
             productos.stream().forEach((producto)->{
                 if(producto.getId_producto().equals(tablaProductos.getId_producto())){
@@ -238,6 +237,9 @@ public class FrmVerPedidos extends BaseFrame {
                     });
                 });
             }
+            System.out.println("this");
+            borrarPedido();
+            System.out.println("after this");
         
     }//GEN-LAST:event_cmdAgregarPActionPerformed
 
@@ -380,6 +382,12 @@ public class FrmVerPedidos extends BaseFrame {
         System.out.println(producto.getCantidad_disponible());
         Productos.executeQuery(Conexion.getDBConexion(), "update productos set cantidad_disponible ="+productos.get(productos.indexOf(producto)).getCantidad_disponible().intValue()+" where id_producto="+productos.get(productos.indexOf(producto)).getId_producto());
         
+    }
+
+    private void borrarPedido() {
+        System.out.println(pedidosProducto.get(0).getId_pedido());
+        PedidosProductos.executeQuery(Conexion.getDBConexion(), String.format("delete from pedidos_producto where id_pedido=%s",pedidosProducto.get(0).getId_pedido()));
+        Pedidos.executeQuery(Conexion.getDBConexion(),String.format("delete from pedidos where id_pedido=%s", pedidosProducto.get(0).getId_pedido()));
     }
     
 }

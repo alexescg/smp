@@ -156,8 +156,12 @@ public class FrmBorrarProductos extends BaseFrame {
                 for (int i = 0; i < tableProductos.getColumnCount(); i++) {
                     selection.add( "" + tableProductos.getModel().getValueAt(selectedRow, i));
                 }
-                System.out.println("select = " + Producto.constructDeleteQuery(selection, "productos",
-                        Producto.getColumnNamesNoId(Conexion.getDBConexion(), "productos")));
+                String query = Producto.constructDeleteQuery(selection, "productos",
+                        Producto.getColumnNamesNoId(Conexion.getDBConexion(), "productos"));
+                ((DefaultTableModel)tableProductos.getModel()).removeRow(tableProductos.getSelectedRow());
+                Productos.executeQuery(Conexion.getDBConexion(), query);
+                JOptionPane.showMessageDialog(rootPane, "Borrado con exito");
+                
             } catch (SQLException ex) {
                 Logger.getLogger(FrmBorrarProductos.class.getName()).log(Level.SEVERE, null, ex);
             }

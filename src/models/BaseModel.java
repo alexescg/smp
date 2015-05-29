@@ -1,7 +1,6 @@
 package models;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -10,7 +9,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import static javax.print.attribute.Size2DSyntax.MM;
 
 /**
  * Modelo que sirve como base para todos los demas modelos
@@ -78,11 +76,10 @@ public class BaseModel {
     public static String constructDeleteQuery(List<String> elements, String tabla, List<?> columnNames){
         String deleteFields = "";
         for (int i = 0; i < columnNames.size()-1; i++) {
-            deleteFields = String.format("%s %s = '%s' AND", deleteFields, columnNames.get(i), elements.get(i));
+            deleteFields = String.format("%s %s like '%s' AND", deleteFields, columnNames.get(i), elements.get(i));
         }
         deleteFields = String.format("%s %s = '%s'", deleteFields, columnNames.get(columnNames.size()-1), elements.get(elements.size()-1));
-        String sql = String.format("delete from %s where %s", tabla, deleteFields);
-        System.out.println("sql = " + sql);
+        String sql = String.format("delete from %s where%s", tabla, deleteFields);
         return sql;
     
     }

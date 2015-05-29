@@ -1,13 +1,8 @@
 package views;
 
-import controllers.BaseController;
 import controllers.Ingredientes;
-import controllers.Proveedores;
-import java.math.BigDecimal;
 import javax.swing.JOptionPane;
-import models.BaseModel;
 import models.Ingrediente;
-import models.Proveedor;
 import oraclegeneral.Conexion;
 
 /**
@@ -29,6 +24,7 @@ public class FrmIngredientes extends BaseFrame {
      */
     public FrmIngredientes() {
         initComponents();
+        setTitle("Agregar Ingredientes");
         super.iniciarVentana(panel);
     }
 

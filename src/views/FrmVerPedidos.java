@@ -345,18 +345,13 @@ public class FrmVerPedidos extends BaseFrame {
             });
             model.addRow(list.toArray());
         });
+            tblProductos.setModel(model);
     }
     
-    
-   
-
     public List<Producto> getProductos() {
         return productos;
     }
 
-    
-    
-    
     public Integer getCantidad() {
         return cantidad;
     }

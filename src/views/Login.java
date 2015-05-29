@@ -17,6 +17,7 @@ public class Login extends BaseFrame {
     public Login() {
         initComponents();
         super.iniciarVentana(panel);
+        setTitle("Login");
     }
 
     /**
@@ -53,28 +54,31 @@ public class Login extends BaseFrame {
                 cmdAccederActionPerformed(evt);
             }
         });
+        cmdAcceder.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cmdAccederKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(panelLayout.createSequentialGroup()
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(cmdAcceder))
-                    .addGroup(panelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(78, Short.MAX_VALUE))
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(cmdAcceder)))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,13 +87,13 @@ public class Login extends BaseFrame {
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(18, 18, 18)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                .addGap(36, 36, 36)
                 .addComponent(cmdAcceder)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -120,6 +124,12 @@ public class Login extends BaseFrame {
         
         usr = txtUsuario.getText();
         pass = txtContra.getText();
+        
+    }//GEN-LAST:event_cmdAccederActionPerformed
+
+    private void cmdAccederKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmdAccederKeyPressed
+         usr = txtUsuario.getText();
+        pass = txtContra.getText();
         if(controllers.Usuarios.checkUsuario(usr, pass).equals("admin")){
             MenuAdministrador menuAdmin = new MenuAdministrador();
             menuAdmin.setVisible(true);
@@ -132,7 +142,7 @@ public class Login extends BaseFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
         }
-    }//GEN-LAST:event_cmdAccederActionPerformed
+    }//GEN-LAST:event_cmdAccederKeyPressed
 
     /**
      * @param args the command line arguments

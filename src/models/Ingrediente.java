@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 public class Ingrediente extends BaseModel{
     public static final String PROP_ID_INGREDIENTE = "PROP_ID_INGREDIENTE";
     public static final String PROP_NOMBRE_INGREDIENTE = "PROP_NOMBRE_INGREDIENTE";
-    public static final String PROP_EXISTENCIA_INVENTARIO = "PROP_EXISTENCIA_INVENTARIO";
+    public static final String PROP_EXITENCIA_INVENTARIO = "PROP_EXITENCIA_INVENTARIO";
     public static final String PROP_COSTO_COMPRA = "PROP_COSTO_COMPRA";
     public static final String PROP_ID_PROVEEDOR = "PROP_ID_PROVEEDOR";
 
@@ -19,7 +19,7 @@ public class Ingrediente extends BaseModel{
     
     private String nombre_ingrediente;
     
-    private BigDecimal existencia_inventario;
+    private BigDecimal exitencia_inventario;
     
     private BigDecimal costo_compra;
     
@@ -66,18 +66,18 @@ public class Ingrediente extends BaseModel{
      * Método para obtener existencia_inventario de un objeto Ingrediente.
      * @return the existencia_inventario
      */
-    public BigDecimal getExistencia_inventario() {
-        return existencia_inventario;
+    public BigDecimal getExitencia_inventario() {
+        return exitencia_inventario;
     }
 
     /**
      * Método para asignar un nombre_ingrediente a un objeto Ingrediente.
-     * @param existencia_inventario the existencia_inventario to set
+     * @param exitencia_inventario the existencia_inventario to set
      */
-    public void setExistencia_inventario(BigDecimal existencia_inventario) {
-        java.math.BigDecimal oldExistencia_inventario = this.existencia_inventario;
-        this.existencia_inventario = existencia_inventario;
-        propertyChangeSupport.firePropertyChange(PROP_EXISTENCIA_INVENTARIO, oldExistencia_inventario, existencia_inventario);
+    public void setExitencia_inventario(BigDecimal exitencia_inventario) {
+        java.math.BigDecimal oldExitencia_inventario = this.exitencia_inventario;
+        this.exitencia_inventario = exitencia_inventario;
+        propertyChangeSupport.firePropertyChange(PROP_EXITENCIA_INVENTARIO, oldExitencia_inventario, exitencia_inventario);
     }
 
     /**

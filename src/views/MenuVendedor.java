@@ -19,6 +19,7 @@ public class MenuVendedor extends BaseFrame{
      */
     public MenuVendedor() {
         initComponents();
+        setTitle("Menú");
         super.iniciarVentana(panel);
     }
 
@@ -36,6 +37,7 @@ public class MenuVendedor extends BaseFrame{
         btnVender = new javax.swing.JButton();
         btnRecetas = new javax.swing.JButton();
         btnPedidosV = new javax.swing.JButton();
+        cmdCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +59,13 @@ public class MenuVendedor extends BaseFrame{
             }
         });
 
+        cmdCerrar.setText("Cerrar Sesion");
+        cmdCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCerrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
@@ -74,6 +83,10 @@ public class MenuVendedor extends BaseFrame{
                     .addComponent(btnVender)
                     .addComponent(btnPedidosV))
                 .addGap(26, 26, 26))
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGap(175, 175, 175)
+                .addComponent(cmdCerrar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,7 +99,8 @@ public class MenuVendedor extends BaseFrame{
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRecetas)
                     .addComponent(btnVender))
-                .addGap(46, 46, 46))
+                .addGap(23, 23, 23)
+                .addComponent(cmdCerrar))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -118,6 +132,12 @@ public class MenuVendedor extends BaseFrame{
         FrmVerPedidos frmVerPedidos = new FrmVerPedidos();
         frmVerPedidos.setVisible(true);
     }//GEN-LAST:event_btnPedidosVActionPerformed
+
+    private void cmdCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCerrarActionPerformed
+        this.dispose();
+        Login login = new Login();
+        login.setVisible(true);
+    }//GEN-LAST:event_cmdCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,6 +179,7 @@ public class MenuVendedor extends BaseFrame{
     private javax.swing.JButton btnPedidosV;
     private javax.swing.JButton btnRecetas;
     private javax.swing.JButton btnVender;
+    private javax.swing.JButton cmdCerrar;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 }

@@ -321,7 +321,7 @@ public class FrmVerPedidos extends BaseFrame {
     }
     public void mostrarTabla(){
         pedidosProducto.stream().forEach((tablaProductos)->{
-            List<String> list = new ArrayList<String>();
+            List<String> list = new ArrayList<>();
             productos.stream().forEach((producto)->{
                 if(producto.getId_producto().equals(tablaProductos.getId_producto())){
                     list.add(producto.getNombre());
@@ -329,24 +329,14 @@ public class FrmVerPedidos extends BaseFrame {
             });
             list.add(tablaProductos.getCantidad().toString());
             model.addRow(list.toArray());
-            
-               
         });
-        
             tblProductos.setModel(model);
-       
     }
     
-    
-   
-
     public List<Producto> getProductos() {
         return productos;
     }
 
-    
-    
-    
     public Integer getCantidad() {
         return cantidad;
     }

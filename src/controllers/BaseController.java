@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import utils.StringUtils;
 
 /**
@@ -35,9 +37,6 @@ public class BaseController {
      */
     public static List<?> select(Connection connection, String sql, Class clase) {
         List objects = new ArrayList<>();
-        System.out.println(connection);
-        System.out.println(sql);
-        System.out.println(clase);
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             try (ResultSet rs = ps.executeQuery()) {
 
@@ -112,5 +111,7 @@ public class BaseController {
         }
     });
 }
-
+    
+    
+    
 }

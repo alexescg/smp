@@ -31,9 +31,11 @@ public class FrmPedidos extends BaseFrame {
      */
     public FrmPedidos() {
         initComponents();
+        setTitle("Agregar Pedidos");
         super.iniciarVentana(panel);
         model = (DefaultTableModel) tblProductos.getModel();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -35,6 +35,7 @@ public class FrmProductos extends BaseFrame {
      */
     public FrmProductos() {
         initComponents();
+        setTitle("Agregar Productos");
         super.iniciarVentana(panel);
         model = (DefaultTableModel) tblProductos.getModel();
     }
@@ -199,7 +200,7 @@ public class FrmProductos extends BaseFrame {
                     .addComponent(jLabel4)
                     .addComponent(txtCantidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(txtTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))

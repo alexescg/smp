@@ -31,6 +31,7 @@ public class FrmIngredientesRecetas extends BaseFrame {
     private Ingrediente ingredienteAgregar = new Ingrediente();
     public FrmIngredientesRecetas(FrmProductos frm) {
         initComponents();
+        setTitle("Ingredientes");
         ventanaProductos = frm;
         ingredientesCombo = (List<Ingrediente>) Ingredientes.select(Conexion.getDBConexion(), "select * from ingredientes", Ingrediente.class);
         try {

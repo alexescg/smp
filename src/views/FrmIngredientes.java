@@ -24,6 +24,7 @@ public class FrmIngredientes extends BaseFrame {
      */
     public FrmIngredientes() {
         initComponents();
+        setTitle("Agregar Ingredientes");
         super.iniciarVentana(panel);
     }
 

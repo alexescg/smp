@@ -17,6 +17,7 @@ public class MenuAdministrador extends BaseFrame {
      */
     public MenuAdministrador() {
         initComponents();
+        setTitle("Menú");
         super.iniciarVentana(panel);
     }
 
@@ -36,6 +37,7 @@ public class MenuAdministrador extends BaseFrame {
         btnProducto = new javax.swing.JButton();
         btnIngrediente = new javax.swing.JButton();
         btnInventario = new javax.swing.JButton();
+        cmdCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,10 +53,32 @@ public class MenuAdministrador extends BaseFrame {
         });
 
         btnProducto.setText("Agregar Producto");
+        btnProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductoActionPerformed(evt);
+            }
+        });
 
         btnIngrediente.setText("Agregar Ingrediente");
+        btnIngrediente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngredienteActionPerformed(evt);
+            }
+        });
 
         btnInventario.setText("Ver Inventario");
+        btnInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventarioActionPerformed(evt);
+            }
+        });
+
+        cmdCerrar.setText("Cerrar Sesion");
+        cmdCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCerrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
@@ -69,9 +93,12 @@ public class MenuAdministrador extends BaseFrame {
                         .addComponent(btnProducto))
                     .addGroup(panelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnOrden)
-                        .addGap(75, 75, 75)
-                        .addComponent(btnInventario)))
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cmdCerrar)
+                            .addGroup(panelLayout.createSequentialGroup()
+                                .addComponent(btnOrden)
+                                .addGap(75, 75, 75)
+                                .addComponent(btnInventario)))))
                 .addGap(57, 57, 57)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnIngrediente)
@@ -91,7 +118,8 @@ public class MenuAdministrador extends BaseFrame {
                     .addComponent(btnOrden)
                     .addComponent(btnIngrediente)
                     .addComponent(btnInventario))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(cmdCerrar))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -108,7 +136,7 @@ public class MenuAdministrador extends BaseFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -119,6 +147,27 @@ public class MenuAdministrador extends BaseFrame {
         frmProveedores.setVisible(true);
     }//GEN-LAST:event_btnProveedorActionPerformed
 
+    private void cmdCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCerrarActionPerformed
+        this.dispose();
+        Login login = new Login();
+        login.setVisible(true);
+    }//GEN-LAST:event_cmdCerrarActionPerformed
+
+    private void btnIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngredienteActionPerformed
+        FrmIngredientes frmIngredientes = new FrmIngredientes();
+        frmIngredientes.setVisible(true);
+    }//GEN-LAST:event_btnIngredienteActionPerformed
+
+    private void btnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoActionPerformed
+        FrmProductos frmProductos = new FrmProductos();
+        frmProductos.setVisible(true);
+    }//GEN-LAST:event_btnProductoActionPerformed
+
+    private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
+        FrmInventario frmInventario = new FrmInventario();
+        frmInventario.setVisible(true);
+    }//GEN-LAST:event_btnInventarioActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngrediente;
     private javax.swing.JButton btnInventario;
@@ -126,6 +175,7 @@ public class MenuAdministrador extends BaseFrame {
     private javax.swing.JButton btnProducto;
     private javax.swing.JButton btnProveedor;
     private javax.swing.JButton btnUsuario;
+    private javax.swing.JButton cmdCerrar;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 }

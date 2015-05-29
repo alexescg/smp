@@ -30,6 +30,7 @@ public class FrmPedidosProductos extends BaseFrame {
     private Producto productoAgregar = new Producto();
     public FrmPedidosProductos(FrmPedidos frm) {
         initComponents();
+        setTitle("Productos");
         ventanaPedido = frm;
         productosCombo = (List<Producto>) Productos.select(Conexion.getDBConexion(), "select * from productos", Producto.class);
         try {

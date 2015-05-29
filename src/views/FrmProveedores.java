@@ -24,6 +24,7 @@ public class FrmProveedores extends BaseFrame {
      */
     public FrmProveedores() {
         initComponents();
+        setTitle("Agregar Proveedores");
         super.iniciarVentana(panel);
     }
 

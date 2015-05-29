@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package views;
 
 /**
- *
- * @author paradoja
+ *Ventana de menu para un administrador.
+ * @author Erik David Zubia Hernandez
+ * @version 1.0
+ * @since 29/05/2015
  */
 public class MenuAdministrador extends BaseFrame {
 
@@ -38,6 +34,9 @@ public class MenuAdministrador extends BaseFrame {
         btnIngrediente = new javax.swing.JButton();
         btnInventario = new javax.swing.JButton();
         cmdCerrar = new javax.swing.JButton();
+        btnBorrarProducto = new javax.swing.JButton();
+        btnBorrarProveedor = new javax.swing.JButton();
+        btnBorrarIngrediente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,6 +79,27 @@ public class MenuAdministrador extends BaseFrame {
             }
         });
 
+        btnBorrarProducto.setText("Borrar producto");
+        btnBorrarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarProductoActionPerformed(evt);
+            }
+        });
+
+        btnBorrarProveedor.setText("Eliminar  Proveedor");
+        btnBorrarProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarProveedorActionPerformed(evt);
+            }
+        });
+
+        btnBorrarIngrediente.setText("Eliminar Ingrediente");
+        btnBorrarIngrediente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarIngredienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
@@ -87,23 +107,32 @@ public class MenuAdministrador extends BaseFrame {
             .addGroup(panelLayout.createSequentialGroup()
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(btnUsuario)
-                        .addGap(65, 65, 65)
-                        .addComponent(btnProducto))
-                    .addGroup(panelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cmdCerrar)
                             .addGroup(panelLayout.createSequentialGroup()
                                 .addComponent(btnOrden)
                                 .addGap(75, 75, 75)
-                                .addComponent(btnInventario)))))
+                                .addComponent(btnInventario)
+                                .addGap(31, 31, 31))))
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelLayout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(btnUsuario))
+                            .addGroup(panelLayout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(btnBorrarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(65, 65, 65)
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBorrarProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(57, 57, 57)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnIngrediente)
-                    .addComponent(btnProveedor))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnProveedor)
+                    .addComponent(btnBorrarIngrediente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +147,12 @@ public class MenuAdministrador extends BaseFrame {
                     .addComponent(btnOrden)
                     .addComponent(btnIngrediente)
                     .addComponent(btnInventario))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBorrarProducto)
+                    .addComponent(btnBorrarProveedor)
+                    .addComponent(btnBorrarIngrediente))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(cmdCerrar))
         );
 
@@ -129,14 +163,14 @@ public class MenuAdministrador extends BaseFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -168,7 +202,27 @@ public class MenuAdministrador extends BaseFrame {
         frmInventario.setVisible(true);
     }//GEN-LAST:event_btnInventarioActionPerformed
 
+    private void btnBorrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarProductoActionPerformed
+        
+        FrmBorrarProductos frmBorrar = new FrmBorrarProductos();
+        frmBorrar.setVisible(true);
+        
+    }//GEN-LAST:event_btnBorrarProductoActionPerformed
+
+    private void btnBorrarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarProveedorActionPerformed
+        FrmBorrarProveedor frmBorrarProveedor = new FrmBorrarProveedor();
+        frmBorrarProveedor.setVisible(true);
+    }//GEN-LAST:event_btnBorrarProveedorActionPerformed
+
+    private void btnBorrarIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarIngredienteActionPerformed
+        FrmBorrarIngredientes frmBorrarIngredientes = new FrmBorrarIngredientes();
+        frmBorrarIngredientes.setVisible(true);
+    }//GEN-LAST:event_btnBorrarIngredienteActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBorrarIngrediente;
+    private javax.swing.JButton btnBorrarProducto;
+    private javax.swing.JButton btnBorrarProveedor;
     private javax.swing.JButton btnIngrediente;
     private javax.swing.JButton btnInventario;
     private javax.swing.JButton btnOrden;

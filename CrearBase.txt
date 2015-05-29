@@ -11,7 +11,7 @@ CREATE TABLE Proveedores(id_proveedor INTEGER NOT NULL, nombre_proveedor VARCHAR
 
 CREATE TABLE Ordenes_Ingredientes(id_orden INTEGER NOT NULL, id_proveedor INTEGER NULL, id_ingrediente INTEGER NULL, cantidad FLOAT NULL, fecha_pedido DATE NULL, total_compra FLOAT NULL, PRIMARY KEY (id_orden))
 
-CREATE TABLE Recetas(id_receta INTEGER NOT NULL, id_producto INTEGER NULL , tiempo_coccion INTEGER NULL , cantidad_hecha INTEGER NULL , descripcion VARCHAR(900) NULL , imagen BLOB NULL , PRIMARY KEY (id_receta))
+CREATE TABLE Recetas(id_receta INTEGER NOT NULL, id_producto INTEGER NULL , tiempo_coccion INTEGER NULL , cantidad_hecha INTEGER NULL , descripcion VARCHAR(900) NULL, PRIMARY KEY (id_receta))
 
 CREATE TABLE Ingredientes_Recetas(id_receta INTEGER NOT NULL, id_ingrediente INTEGER NOT NULL, cantidad_ingred FLOAT NULL,PRIMARY KEY (id_ingrediente,id_receta))
 
@@ -23,15 +23,15 @@ ALTER TABLE Ordenes_Ingredientes ADD (FOREIGN KEY (id_proveedor) REFERENCES Prov
 
 ALTER TABLE Ordenes_Ingredientes ADD (FOREIGN KEY (id_ingrediente) REFERENCES Ingredientes (id_ingrediente) ON DELETE SET NULL)
 
-ALTER TABLE Recetas ADD (FOREIGN KEY (id_producto) REFERENCES Productos (id_producto) ON DELETE CASCADE)
+ALTER TABLE Recetas ADD (FOREIGN KEY (id_producto) REFERENCES Productos (id_producto) ON DELETE SET NULL)
 
-ALTER TABLE Ingredientes_Recetas ADD (FOREIGN KEY (id_ingrediente) REFERENCES Ingredientes (id_ingrediente))
+ALTER TABLE Ingredientes_Recetas ADD (FOREIGN KEY (id_ingrediente) REFERENCES Ingredientes (id_ingrediente) ON DELETE SET NULL)
 
-ALTER TABLE Ingredientes_Recetas ADD (FOREIGN KEY (id_receta) REFERENCES Recetas (id_receta))
+ALTER TABLE Ingredientes_Recetas ADD (FOREIGN KEY (id_receta) REFERENCES Recetas (id_receta) ON DELETE SET NULL)
 
-ALTER TABLE Pedidos_Producto ADD (FOREIGN KEY (id_pedido) REFERENCES Pedidos (id_pedido))
+ALTER TABLE Pedidos_Producto ADD (FOREIGN KEY (id_pedido) REFERENCES Pedidos (id_pedido) ON DELETE SET NULL)
 
-ALTER TABLE Pedidos_Producto ADD (FOREIGN KEY (id_producto) REFERENCES Productos (id_producto))
+ALTER TABLE Pedidos_Producto ADD (FOREIGN KEY (id_producto) REFERENCES Productos (id_producto) ON DELETE SET NULL)
 
 create sequence usuarios_seq start with 1 increment by 1
 

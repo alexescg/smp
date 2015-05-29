@@ -49,8 +49,18 @@ public class MenuVendedor extends BaseFrame{
         });
 
         btnVender.setText("Vender Mercancia");
+        btnVender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVenderActionPerformed(evt);
+            }
+        });
 
         btnRecetas.setText("Ver Recetas");
+        btnRecetas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecetasActionPerformed(evt);
+            }
+        });
 
         btnPedidosV.setText("Ver Pedidos");
         btnPedidosV.addActionListener(new java.awt.event.ActionListener() {
@@ -138,6 +148,16 @@ public class MenuVendedor extends BaseFrame{
         Login login = new Login();
         login.setVisible(true);
     }//GEN-LAST:event_cmdCerrarActionPerformed
+
+    private void btnRecetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecetasActionPerformed
+        FrmVerRecetas frmVerRecetas = new FrmVerRecetas();
+        frmVerRecetas.setVisible(true);
+    }//GEN-LAST:event_btnRecetasActionPerformed
+
+    private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
+        FrmVenderMercancia frmVenderMercancia = new FrmVenderMercancia();
+        frmVenderMercancia.setVisible(true);
+    }//GEN-LAST:event_btnVenderActionPerformed
 
     /**
      * @param args the command line arguments

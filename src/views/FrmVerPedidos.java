@@ -90,7 +90,7 @@ public class FrmVerPedidos extends BaseFrame {
 
         jLabel3.setText("Fecha de Entrega: ");
 
-        cmdAgregarP.setText("Agregar");
+        cmdAgregarP.setText("Entregar");
         cmdAgregarP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdAgregarPActionPerformed(evt);
@@ -219,7 +219,6 @@ public class FrmVerPedidos extends BaseFrame {
                 if(producto.getId_producto().equals(tablaProductos.getId_producto())){
                     if(producto.getCantidad_disponible().intValue()<tablaProductos.getCantidad().intValue()){
                         cambiarBandera();
-                        System.out.println(bandera);
                     }
                 }
             });
@@ -227,20 +226,16 @@ public class FrmVerPedidos extends BaseFrame {
             if(bandera==true){
                 JOptionPane.showMessageDialog(null, "Lo sentimos no tienes la cantidad necesaria para entregar el producto en este momento");
             }else{
-                System.out.println("Si entro");
                 pedidosProducto.stream().forEach((tablaProductos)->{
                         productos.stream().forEach((producto)->{
                         if(producto.getId_producto().equals(tablaProductos.getId_producto())){
-                                System.out.println("Si entro aca");
                                 setNuevaCantidad(producto, tablaProductos);
                         }
                     });
                 });
             }
-            System.out.println("this");
             borrarPedido();
-            System.out.println("after this");
-        
+            this.dispose();
     }//GEN-LAST:event_cmdAgregarPActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
@@ -324,7 +319,6 @@ public class FrmVerPedidos extends BaseFrame {
         pedidosProducto =(List<PedidoProducto>) PedidosProductos.select(Conexion.getDBConexion(), String.format("select * from pedidos_producto where id_pedido=%s", pedidosCombo.get(comboPedidos.getSelectedIndex()).getId_pedido()), PedidoProducto.class);
         pedidosProducto.stream().forEach((pedidoPro)->{
             query= query + (","+ pedidoPro.getId_producto().toString());
-            System.out.println(query);
         });
         query+=")";
         productos=(List<Producto>) Productos.select(Conexion.getDBConexion(), String.format("select * from productos where id_producto in %s", query), Producto.class);
@@ -381,13 +375,14 @@ public class FrmVerPedidos extends BaseFrame {
         System.out.println(producto.getId_producto());
         System.out.println(producto.getCantidad_disponible());
         Productos.executeQuery(Conexion.getDBConexion(), "update productos set cantidad_disponible ="+productos.get(productos.indexOf(producto)).getCantidad_disponible().intValue()+" where id_producto="+productos.get(productos.indexOf(producto)).getId_producto());
-        
+        System.out.println("Se actualizo los productos");
     }
 
     private void borrarPedido() {
         System.out.println(pedidosProducto.get(0).getId_pedido());
         PedidosProductos.executeQuery(Conexion.getDBConexion(), String.format("delete from pedidos_producto where id_pedido=%s",pedidosProducto.get(0).getId_pedido()));
         Pedidos.executeQuery(Conexion.getDBConexion(),String.format("delete from pedidos where id_pedido=%s", pedidosProducto.get(0).getId_pedido()));
+        System.out.println("Se elimino el pedido");
     }
     
 }

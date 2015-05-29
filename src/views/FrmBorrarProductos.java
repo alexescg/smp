@@ -1,6 +1,9 @@
 package views;
 
+import controllers.BaseController;
+import controllers.IngredientesRecetas;
 import controllers.Productos;
+import controllers.Recetas;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +28,7 @@ public class FrmBorrarProductos extends BaseFrame {
     private String precioUnitario;
     private String cantidadDisponible;
     private final static String id = "product_seq.nextval";
+    
 
     List<Producto> productos = (List<Producto>) Productos.select(Conexion.getDBConexion(), "select * from productos", Producto.class);
     Integer rows = 0;
@@ -33,7 +37,7 @@ public class FrmBorrarProductos extends BaseFrame {
      * Creates new form Login
      * @throws java.sql.SQLException
      */
-    public FrmBorrarProductos() throws SQLException {
+    public FrmBorrarProductos() {
         initComponents();
         super.iniciarVentana(panel);
         DefaultTableModel model = (DefaultTableModel) tableProductos.getModel();
@@ -104,15 +108,15 @@ public class FrmBorrarProductos extends BaseFrame {
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
-            .addGroup(panelLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(cmdAcceder)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCerrar)
                 .addGap(57, 57, 57))
+            .addGroup(panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,11 +160,13 @@ public class FrmBorrarProductos extends BaseFrame {
                 for (int i = 0; i < tableProductos.getColumnCount(); i++) {
                     selection.add( "" + tableProductos.getModel().getValueAt(selectedRow, i));
                 }
+                IngredientesRecetas.executeQuery(Conexion.getDBConexion(), String.format("delete from ingredientes_recetas where id_receta = (select id_receta from recetas where id_producto=%s)",productos.get(tableProductos.getSelectedRow()).getId_producto()));
+                Recetas.executeQuery(Conexion.getDBConexion(), String.format("delete from recetas where id_receta=%s",productos.get(tableProductos.getSelectedColumn()).getId_producto()));
                 String query = Producto.constructDeleteQuery(selection, "productos",
                         Producto.getColumnNamesNoId(Conexion.getDBConexion(), "productos"));
                 ((DefaultTableModel)tableProductos.getModel()).removeRow(tableProductos.getSelectedRow());
                 Productos.executeQuery(Conexion.getDBConexion(), query);
-                JOptionPane.showMessageDialog(rootPane, "Borrado con exito");
+                       JOptionPane.showMessageDialog(rootPane, "Borrado con exito");
                 
             } catch (SQLException ex) {
                 Logger.getLogger(FrmBorrarProductos.class.getName()).log(Level.SEVERE, null, ex);
@@ -177,57 +183,6 @@ public class FrmBorrarProductos extends BaseFrame {
         this.dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmBorrarProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmBorrarProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmBorrarProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmBorrarProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            try {
-                new FrmBorrarProductos().setVisible(true);
-            } catch (SQLException ex) {
-                Logger.getLogger(FrmBorrarProductos.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;

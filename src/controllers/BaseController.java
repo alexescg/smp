@@ -36,16 +36,15 @@ public class BaseController {
      * @return Lista con los elementos que devuelva el select
      */
     public static List<?> select(Connection connection, String sql, Class clase) {
+        System.out.println(connection);
         List objects = new ArrayList<>();
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             try (ResultSet rs = ps.executeQuery()) {
-
                 ResultSetMetaData rsmd = rs.getMetaData();
                 Integer columnCount = rsmd.getColumnCount();
-
                 while (rs.next()) {
                     Object object = clase.newInstance();
-
+                    
                     for (int i = 1; i <= columnCount; i++) {
 
                         String name = rsmd.getColumnName(i).toLowerCase();
@@ -83,8 +82,14 @@ public class BaseController {
     public static void executeQuery(Connection connection, String sql) {
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.execute();
+            ps.close();
+            connection.close();
         } catch (SQLException e) {
-
+            try {
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(BaseController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     

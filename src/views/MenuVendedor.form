@@ -103,11 +103,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Vender Mercancia"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVenderActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnRecetas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ver Recetas"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRecetasActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnPedidosV">
           <Properties>

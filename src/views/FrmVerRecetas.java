@@ -1,6 +1,7 @@
 package views;
 
 import controllers.BaseController;
+import controllers.IngredientesRecetas;
 import controllers.Pedidos;
 import controllers.PedidosProductos;
 import controllers.Productos;
@@ -45,7 +46,7 @@ public class FrmVerRecetas extends BaseFrame {
     private static Integer tiempoCoccion;
     private static String descripcion;
     List<IngredienteReceta> ingredieteReceta = new ArrayList<>();
-    List<Receta> receta = new ArrayList<>();
+    List<Receta> recetas = new ArrayList<>();
     List<Producto> productosCombo;
     /**
      * Creates new form Login
@@ -55,10 +56,10 @@ public class FrmVerRecetas extends BaseFrame {
         initComponents();
         super.iniciarVentana(panel);
         System.out.println("Pene");
-        receta =(List<Receta>) Recetas.select(Conexion.getDBConexion(), "select * from recetas", Receta.class);
+        recetas =(List<Receta>) Recetas.select(Conexion.getDBConexion(), "select * from recetas", Receta.class);
         System.out.println("Pene2");
         try {
-            Recetas.fillCombo(comboRecetas, receta, "id_receta", Receta.class);
+            Recetas.fillCombo(comboRecetas, recetas, "id_receta", Receta.class);
         } catch (Exception ex) {
             Logger.getLogger(FrmPedidosProductos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -77,7 +78,6 @@ public class FrmVerRecetas extends BaseFrame {
         panel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        cmdAgregarP = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
         lblNombre = new javax.swing.JLabel();
         comboRecetas = new javax.swing.JComboBox();
@@ -90,19 +90,13 @@ public class FrmVerRecetas extends BaseFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescripcion = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Ver receta");
+        jLabel1.setText("Ver receta numero:");
 
         jLabel3.setText("Nombre:");
-
-        cmdAgregarP.setText("Agregar");
-        cmdAgregarP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmdAgregarPActionPerformed(evt);
-            }
-        });
 
         btnCerrar.setText("Cerrar");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -143,6 +137,8 @@ public class FrmVerRecetas extends BaseFrame {
         txtDescripcion.setRows(5);
         jScrollPane1.setViewportView(txtDescripcion);
 
+        jLabel2.setText("por unidades");
+
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
@@ -157,10 +153,7 @@ public class FrmVerRecetas extends BaseFrame {
                         .addComponent(btnRefrescar))
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addComponent(cmdAgregarP)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnCerrar))
+                            .addComponent(btnCerrar)
                             .addGroup(panelLayout.createSequentialGroup()
                                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel3)
@@ -170,14 +163,17 @@ public class FrmVerRecetas extends BaseFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblNombre)
-                                    .addComponent(lblCantidad)
+                                    .addGroup(panelLayout.createSequentialGroup()
+                                        .addComponent(lblCantidad)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel2))
                                     .addGroup(panelLayout.createSequentialGroup()
                                         .addComponent(lblTiempo)
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel6))
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(9, 9, 9)))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,7 +190,8 @@ public class FrmVerRecetas extends BaseFrame {
                 .addGap(36, 36, 36)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(lblCantidad))
+                    .addComponent(lblCantidad)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -205,9 +202,7 @@ public class FrmVerRecetas extends BaseFrame {
                     .addComponent(jLabel7)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCerrar)
-                    .addComponent(cmdAgregarP))
+                .addComponent(btnCerrar)
                 .addGap(31, 31, 31))
         );
 
@@ -218,7 +213,7 @@ public class FrmVerRecetas extends BaseFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,34 +225,6 @@ public class FrmVerRecetas extends BaseFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cmdAgregarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAgregarPActionPerformed
-//        Integer CantidadLograda=0;
-//        ingredieteReceta.stream().forEach((tablaProductos)->{
-//            productos.stream().forEach((producto)->{
-//                if(producto.getId_producto().equals(tablaProductos.getId_producto())){
-//                    if(producto.getCantidad_disponible().intValue()<tablaProductos.getCantidad().intValue()){
-//                        cambiarBandera();
-//                        System.out.println(bandera);
-//                    }
-//                }
-//            });
-//        });
-//            if(bandera==true){
-//                JOptionPane.showMessageDialog(null, "Lo sentimos no tienes la cantidad necesaria para entregar el producto en este momento");
-//            }else{
-//                System.out.println("Si entro");
-//                pedidosProducto.stream().forEach((tablaProductos)->{
-//                        productos.stream().forEach((producto)->{
-//                        if(producto.getId_producto().equals(tablaProductos.getId_producto())){
-//                                System.out.println("Si entro aca");
-//                                setNuevaCantidad(producto, tablaProductos);
-//                        }
-//                    });
-//                });
-//            }
-        
-    }//GEN-LAST:event_cmdAgregarPActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         this.dispose();
@@ -322,9 +289,9 @@ public class FrmVerRecetas extends BaseFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnRefrescar;
-    private javax.swing.JButton cmdAgregarP;
     private javax.swing.JComboBox comboRecetas;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -342,11 +309,12 @@ public class FrmVerRecetas extends BaseFrame {
      * Metodo que refresca los componentes de la tabla sacandolos de la base de datos referenciado
      * a la receta que se escoja.
      */
-    public void accionRefrescar(){ 
-        lblNombre.setText(productosCombo.get(comboRecetas.getSelectedIndex()).getNombre());
-        lblCantidad.setText(productosCombo.get(comboRecetas.getSelectedIndex()).getCantidad_disponible().toString());
-        lblTiempo.setText(receta.get(comboRecetas.getSelectedIndex()).getTiempo_coccion().toString());
-        txtDescripcion.setText(receta.get(comboRecetas.getSelectedIndex()).getDescripcion());
+    public void accionRefrescar(){
+        List<Producto> productos = (List<Producto>) Productos.select(Conexion.getDBConexion(), String.format("select * from productos where id_producto=%s", recetas.get(comboRecetas.getSelectedIndex()).getId_producto()), Producto.class);
+        lblNombre.setText(productos.get(0).getNombre());
+        lblCantidad.setText(recetas.get(comboRecetas.getSelectedIndex()).getCantidad_hecha().toString());
+        lblTiempo.setText(recetas.get(comboRecetas.getSelectedIndex()).getTiempo_coccion().toString());
+        txtDescripcion.setText(recetas.get(comboRecetas.getSelectedIndex()).getDescripcion());
     }
    
 }

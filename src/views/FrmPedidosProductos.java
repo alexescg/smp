@@ -34,7 +34,7 @@ public class FrmPedidosProductos extends BaseFrame {
         ventanaPedido = frm;
         productosCombo = (List<Producto>) Productos.select(Conexion.getDBConexion(), "select * from productos", Producto.class);
         try {
-            Pedidos.fillCombo(comboProductos, productosCombo, "nombre", Producto.class);
+            Productos.fillCombo(comboProductos, productosCombo, "nombre", Producto.class);
         } catch (Exception ex) {
             Logger.getLogger(FrmPedidosProductos.class.getName()).log(Level.SEVERE, null, ex);
         }

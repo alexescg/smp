@@ -1,8 +1,14 @@
 package views;
 
 import controllers.Ingredientes;
+import controllers.Proveedores;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import models.Ingrediente;
+import models.Proveedor;
 import oraclegeneral.Conexion;
 
 /**
@@ -18,6 +24,7 @@ public class FrmIngredientes extends BaseFrame {
     private String costo;
     private String proveedor;
     private final static String id = "ingredientes_seq.nextval";
+    private List<Proveedor> proveedoresIngredientes = new ArrayList<Proveedor>();
 
     /**
      * Creates new form Login
@@ -26,6 +33,12 @@ public class FrmIngredientes extends BaseFrame {
         initComponents();
         setTitle("Agregar Ingredientes");
         super.iniciarVentana(panel);
+        proveedoresIngredientes = (List<Proveedor>) Proveedores.select(Conexion.getDBConexion(), "select * from proveedores", Proveedor.class);
+        try {
+            Proveedores.fillCombo(comboProveedores, proveedoresIngredientes, "nombre_proveedor", Proveedor.class);
+        } catch (Exception ex) {
+            Logger.getLogger(FrmIngredientesRecetas.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -47,7 +60,7 @@ public class FrmIngredientes extends BaseFrame {
         txtCosto = new javax.swing.JTextField();
         btnCerrar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        txtProveedor = new javax.swing.JTextField();
+        comboProveedores = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +104,8 @@ public class FrmIngredientes extends BaseFrame {
 
         jLabel2.setText("Id. Proveedor:");
 
+        comboProveedores.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
@@ -110,23 +125,18 @@ public class FrmIngredientes extends BaseFrame {
                                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cmdAcceder))
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4))))
+                            .addComponent(cmdAcceder)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4))
                         .addGap(18, 18, 18)
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtCosto, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                                .addComponent(txtProveedor))
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtCosto, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                                 .addComponent(btnCerrar)
-                                .addGap(30, 30, 30)))))
+                                .addGap(30, 30, 30))
+                            .addComponent(comboProveedores, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         panelLayout.setVerticalGroup(
@@ -145,10 +155,10 @@ public class FrmIngredientes extends BaseFrame {
                     .addComponent(jLabel4)
                     .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(comboProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCerrar)
                     .addComponent(cmdAcceder))
@@ -169,7 +179,7 @@ public class FrmIngredientes extends BaseFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -183,24 +193,15 @@ public class FrmIngredientes extends BaseFrame {
 
         if (Ingrediente.isValidString(txtNombre.getText())
                 && Ingrediente.isNumeric(txtExistencia.getText())
-                && Ingrediente.isNumeric(txtCosto.getText())
-                && Ingrediente.isNumeric(txtProveedor.getText())) {
+                && Ingrediente.isNumeric(txtCosto.getText())) {
 
             nombreIngrediente = txtNombre.getText();
-            System.out.println("nombreIngrediente = " + nombreIngrediente);
             existencia = txtExistencia.getText();
-            System.out.println("existencia = " + existencia);
             costo = txtCosto.getText();
-            System.out.println("costo = " + costo);
-            proveedor = txtProveedor.getText();
-            System.out.println("proveedor = " + proveedor);
             
-            Ingredientes.executeQuery(Conexion.getDBConexion(), String.format("insert into ingredientes values(%s, '%s', %s, %s, %s)", id, nombreIngrediente, existencia, costo, proveedor));
+            Ingredientes.executeQuery(Conexion.getDBConexion(), String.format("insert into ingredientes values(%s, '%s', %s, %s, %s)", id, nombreIngrediente, existencia, costo, proveedoresIngredientes.get(comboProveedores.getSelectedIndex()).getId_proveedor()));
             JOptionPane.showMessageDialog(rootPane, "Añadido exitosamente!");
-            txtNombre.setText(Ingrediente.VACIO);
-            txtExistencia.setText(Ingrediente.VACIO);
-            txtCosto.setText(Ingrediente.VACIO);
-            txtProveedor.setText(Ingrediente.VACIO);
+            this.dispose();
 
         } else {
             JOptionPane.showMessageDialog(rootPane, "Invalido");
@@ -264,6 +265,7 @@ public class FrmIngredientes extends BaseFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton cmdAcceder;
+    private javax.swing.JComboBox comboProveedores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -272,6 +274,5 @@ public class FrmIngredientes extends BaseFrame {
     private javax.swing.JTextField txtCosto;
     private javax.swing.JTextField txtExistencia;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtProveedor;
     // End of variables declaration//GEN-END:variables
 }

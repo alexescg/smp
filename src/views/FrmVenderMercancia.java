@@ -67,7 +67,7 @@ public class FrmVenderMercancia extends BaseFrame {
             }
         });
 
-        jLabel3.setText("Id. Producto:");
+        jLabel3.setText("Producto:");
 
         jLabel4.setText("Cantidad Disponible:");
 
